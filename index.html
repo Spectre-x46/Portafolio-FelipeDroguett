@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio de Felipe Droguett - Desarrollador especializado en interfaces seguras y optimización operativa.">
+    <title>Felipe Droguett | Portfolio</title>
+    <!-- Esto le dice a Google cuál es la URL original de mi sitio -->
+    <link rel="canonical" href="https://felipe-droguett.netlify.app">
+    <!-- El icono que sale en la pestaña del navegador -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <!-- Open Graph: Esto es para que cuando comparta el link en WhatsApp o LinkedIn salga bonito con foto y texto -->
+    <meta property="og:title" content="Felipe Droguett - Full Stack Developer">
+    <meta property="og:description"
+        content="10 años optimizando operaciones de alto volumen. Desarrollador enfocado en rentabilidad y seguridad. Escalé negocios de $500K a $15M/mes.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://felipe-droguett.netlify.app">
+    <meta property="og:locale" content="es_CL">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Felipe Droguett - Full Stack Developer">
+    <meta name="twitter:description"
+        content="10 años optimizando operaciones de alto volumen. No solo entrego código; entrego soluciones blindadas que escalan el negocio.">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Felipe Droguett",
+      "jobTitle": "Full Stack Developer",
+      "description": "Desarrollador Full-Stack enfocado en Rentabilidad y Seguridad",
+      "url": "https://felipe-droguett.netlify.app",
+      "sameAs": [
+        "https://github.com/Spectre-x46/",
+        "https://www.linkedin.com/in/fdroguetto/"
+      ],
+      "knowsAbout": ["Python", "Django", "JavaScript", "HTML5", "CSS3", "Bootstrap", "Linux", "Cybersecurity", "E-commerce", "Digital Marketing", "SEO"],
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Desafío Latam - Talento Digital"
+      }
+    }
+    </script>
+
+    </script>
+
+    <!-- Preconnect: Le aviso al navegador que se vaya conectando a estos sitios para que carguen más rápido las fuentes y estilos -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Bootstrap 5 CSS: El framework que uso para que todo se ordene fácil (columnas, botones, etc) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!-- FontAwesome 6: De aquí saco los iconos (el del camión, el código, etc) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts: Mis fuentes personalizadas (Inter y Outfit) para que no se vea aburrido con Arial -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+    <!-- AOS Animation Library: Esta librería hace que las cosas aparezcan flotando cuando bajo (scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"
+        integrity="sha384-WqhuYgVbMDg4l5Q3cqZYdbdJbJ0p0vXN1F8S3S8S3S8S3S8S3S8S3S8S3S8S3S8S" crossorigin="anonymous">
+
+    <!-- Mi hoja de estilos propia: Aquí pongo los colores neón y mis ajustes personales -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-slate-900 text-light">
+
+    <!-- Barra de Navegación (Navbar) -->
+    <!-- 'fixed-top' es para que me persiga cuando bajo, 'glass-nav' es mi efecto Glassphorm -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav">
+        <div class="container">
+            <a class="navbar-brand font-outfit" href="#">FD<span class="text-cyan-neon">.dev</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#about">Sobre Mí</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#roadmap">Trayectoria</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Proyectos</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="https://github.com/Spectre-x46/" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-outline-light btn-sm rounded-pill px-4 hover-cyan-border">
+                            <i class="fa-brands fa-github me-2"></i>GitHub & Proyectos
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section: La portada, lo primero que ven. Tiene que impactar. -->
+    <header class="min-vh-100 d-flex align-items-center position-relative overflow-hidden bg-gradient-dark">
+        <!-- Fondo con brillo (Glow) para que se vea moderno -->
+        <div class="absolute-bg-glow"></div>
+
+        <div class="container position-relative z-1">
+            <div class="row align-items-center">
+                <!-- Columna Izquierda: Texto y Presentación -->
+                <div class="col-lg-7 col-12 px-3 px-lg-0" data-aos="fade-up">
+                    <span
+                        class="badge bg-cyan-dim text-cyan-neon border border-cyan-dim mb-3 px-4 py-2 rounded-pill font-inter shadow-sm">
+                        <i class="fa-solid fa-circle-check me-2"></i>Front-End Developer | Especializándome en Full
+                        Stack Python
+                    </span>
+                    <h1 class="display-3 display-md-3 display-sm-4 fw-bold font-inter mb-3 text-white">
+                        Felipe Droguett
+                    </h1>
+                    <h2 class="h3 h4-sm text-light-50 mb-3">
+                        Front-End Developer Especializándome en <span class="text-cyan-neon">Full Stack Python</span>
+                    </h2>
+                    <p class="lead text-light-50 mb-4">
+                        10 años gestionando, resolviendo y optimizando operaciones de alto volumen.
+                        Desde la sala de ventas hasta el E-commerce buscando siempre servir para que un negocio sea mas
+                        eficiente, seguro y rentable. Actualmente, traduzco esa experiencia operativa al mundo del
+                        Desarrollo Ful Stack en Python.
+                    </p>
+                    </p>
+                    <!-- Números de Impacto: Mis logros cuantificables para que vean que hablo en serio -->
+                    <div class="row g-3 mb-4 mt-3">
+                        <div class="col-md-6">
+                            <div
+                                class="p-3 rounded-3 bg-slate-800 border border-slate-700 hover-border-cyan transition-all h-100">
+                                <div class="text-white fw-bold h5 mb-1 impact-number">$15M/mes</div>
+                                <div class="text-sm text-light-50">Arquitectura & Escalabilidad (Tokyo Tunning)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div
+                                class="p-3 rounded-3 bg-slate-800 border border-slate-700 hover-border-cyan transition-all h-100">
+                                <div class="text-white fw-bold h5 mb-1 impact-number">100+ personas</div>
+                                <div class="text-sm text-light-50">Gestiòn de Equipos y Procesos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Botones de llamada a la acción (CTA) -->
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="#roadmap" class="btn btn-cyan-glow btn-lg rounded-pill px-5 shadow-lg">
+                        Ver Mi Trayectoria
+                    </a>
+                    <a href="https://github.com/Spectre-x46/" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-outline-light btn-lg rounded-circle icon-btn" title="Ver GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/fdroguetto/" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-outline-light btn-lg rounded-circle icon-btn" title="Ver LinkedIn">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Ejemplo de Código: Para mostrar que sé programar y me preocupa la seguridad -->
+            <!-- 'd-none d-lg-block' significa que en celulares se oculta para no ocupar tanto espacio -->
+            <div class="col-lg-5 d-none d-lg-block" data-aos="fade-left">
+                <div class="code-block p-4 rounded-4 bg-slate-900 border border-slate-700 shadow-lg">
+                    <p class="font-monospace text-sm mb-0" style="color: #94a3b8; line-height: 1.6;">
+                        <span class="text-slate-500">// Perfil en constante evolución...</span><br>
+                        <span class="text-purple-400">const</span> <span class="text-white">felipe</span> = {<br>
+                        &nbsp;&nbsp;rol: <span class="text-cyan-neon">"Front-End Developer"</span>,<br>
+                        &nbsp;&nbsp;status: <span class="text-cyan-neon">"Transicionando a Full Stack
+                            Python"</span>,<br>
+                        <br>
+                        &nbsp;&nbsp;<span class="text-slate-500">// Stack sólido y funcional</span><br>
+                        &nbsp;&nbsp;stack_actual: [<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-cyan-neon">"JavaScript (ES6+)"</span>,<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-cyan-neon">"Bootstrap 5"</span>,<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-cyan-neon">"Git / GitHub"</span><br>
+                        &nbsp;&nbsp;],<br>
+                        <br>
+                        &nbsp;&nbsp;<span class="text-slate-500">// Bootcamp SENCE (Nov 2025 - Ago 2026)</span><br>
+                        &nbsp;&nbsp;en_progreso: [<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-warning">"Python"</span>, <span
+                            class="text-warning">"Django"</span>, <span class="text-warning">"SQL"</span><br>
+                        &nbsp;&nbsp;],<br>
+                        <br>
+                        &nbsp;&nbsp;<span class="text-slate-500">// Mi valor diferencial</span><br>
+                        &nbsp;&nbsp;intereses: [<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-cyan-neon">"Linux Hardening"</span>,<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-cyan-neon">"Pentesting"</span>,<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-cyan-neon">"Automatización"</span><br>
+                        &nbsp;&nbsp;]<br>
+                        };
+                    </p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <!-- Features / Highlights: Mis 3 pilares fuertes -->
+    <!-- bg-slate-800 es un fondo un poco más claro que el negro total para dar contraste -->
+    <section class="py-5 bg-slate-800" id="about">
+        <div class="container">
+            <div class="row g-4 g-md-5">
+                <!-- Resilience -->
+                <div class="col-md-4 col-12" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-center h-100 p-3 hover-lift-subtle">
+                        <div class="icon-sq bg-slate-900 border border-slate-700 text-cyan-neon mb-4 mx-auto shadow-lg">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <h3 class="h5 font-outfit text-white">Resiliencia Operativa</h3>
+                        <p class="text-light-50 text-sm">
+                            Escalé un emprendimiento a $15M/mes y también gestioné el cierre de proyectos propios. Mi
+                            valor
+                            es saber iterar y mantener la operatividad cuando las cosas se ponen difíciles.
+                        </p>
+                    </div>
+                </div>
+                <!-- Hands-on Business -->
+                <div class="col-md-4 col-12" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center h-100 p-3 hover-lift-subtle">
+                        <div class="icon-sq bg-slate-900 border border-slate-700 text-cyan-neon mb-4 mx-auto shadow-lg">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <h3 class="h5 font-outfit text-white">Visión de Negocio Real</h3>
+                        <p class="text-light-50 text-sm">
+                            Sé lo que ocurre cuando un negocio crece de golpe porque estuve a cargo de la tecnología que
+                            lo sostuvo.
+                            Mi visión no es teórica: es la capacidad de anticipar fallos en el inventario, la logística
+                            y la operabilidad
+                            antes de que se conviertan en pérdidas reales.
+                        </p>
+                    </div>
+                </div>
+                <!-- Technical Curiosity -->
+                <div class="col-md-4 col-12" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-center h-100 p-3 hover-lift-subtle">
+                        <div class="icon-sq bg-slate-900 border border-slate-700 text-cyan-neon mb-4 mx-auto shadow-lg">
+                            <i class="fa-solid fa-terminal"></i>
+                        </div>
+                        <h3 class="h5 font-outfit text-white">Curiosidad Técnica desde la Infancia</h3>
+                        <p class="text-light-50 text-sm">
+                            Desde pequeño exploraba sistemas operativos, ingeniería inversa de software y
+                            personalización de entornos. La lógica detrás de la tecnología siempre ha sido mi
+                            motivación.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section: Mi historia laboral -->
+    <!-- 'position-relative' es necesario porque la línea vertical se posiciona en base a esto -->
+    <section class="py-5 position-relative" id="roadmap">
+        <div class="container py-lg-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-5 font-outfit fw-bold text-white">Mi Evolución Profesional</h2>
+                <p class="text-light-50">De la gestión comercial al desarrollo de software.</p>
+            </div>
+
+            <div class="roadmap-container position-relative">
+                <!-- Línea Vertical: El hilo conductor de la historia. Es un div flaco y alto al medio. -->
+                <div class="roadmap-line"></div>
+
+                <!-- 1. EL PRESENTE: La Meta -->
+                <div class="roadmap-item row align-items-center mb-5" data-aos="fade-right">
+                    <div class="col-md-5 text-md-end order-md-1 order-2">
+                        <div
+                            class="roadmap-content p-4 rounded-4 bg-slate-800 border border-cyan-dim shadow-lg position-relative hover-border-cyan transition-all">
+                            <span class="badge bg-cyan-dim text-cyan-neon border border-cyan-dim mb-3">
+                                <i class="fa-solid fa-location-dot me-1"></i>ACTUALIDAD
+                            </span>
+                            <h3 class="h4 font-outfit text-white mb-2">Desarrollador Web & Fortificación de Sistemas
+                            </h3>
+                            <h4 class="h6 text-cyan-neon mb-3">Arquitectura Front-End & Estudiante Full Stack Python
+                            </h4>
+                            <p class="text-light-50 text-sm mb-2">
+                                Finalizado el Módulo de Desarrollo Front-End con dominio de HTML5 semántico, CSS3
+                                responsivo y JavaScript (ES6+).
+                                He desplegado sitios funcionales usando Bootstrap 5 y Git/GitHub para el control de
+                                versiones.
+                            </p>
+                            <p class="text-light-50 text-sm mb-0">
+                                Próximo a iniciar la fase de Full Stack con Python y Django para conectar interfaces con
+                                bases de datos reales.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-2 text-center order-md-2 order-1 position-relative">
+                        <div class="roadmap-node bg-slate-900 border border-cyan-dim icon-glow shadow-lg">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-5 order-md-3">
+                        <p class="text-light fw-bold ps-md-3 font-monospace text-sm">Nov 2025 - Actualidad</p>
+                    </div>
+                </div>
+
+                <!-- 2. PHANTOM CUSTOMS: Emprendimiento Familiar -->
+                <div class="roadmap-item row align-items-center mb-5" data-aos="fade-left">
+                    <div class="col-md-5 text-md-end order-md-1 order-3">
+                        <p class="text-light-50 pe-md-3 font-monospace text-sm">Mayo 2025 - Nov 2025</p>
+                    </div>
+                    <div class="col-md-2 text-center order-md-2 position-relative">
+                        <div class="roadmap-node bg-slate-900 border border-slate-700 icon-glow">
+                            <i class="fa-solid fa-car"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-5 order-md-3">
+                        <div
+                            class="roadmap-content p-4 rounded-4 bg-slate-800 border border-slate-700 shadow hover-border-cyan position-relative">
+                            <h3 class="h6 font-outfit text-white mb-2">PHANTOM CUSTOMS</h3>
+                            <h4 class="h6 text-cyan-dim mb-3">Co-Fundador & Jefe de Operaciones</h4>
+                            <p class="text-light-50 text-sm mb-2">
+                                Taller de Estética automotriz (Wrapping/Detailing).
+                                Gestioné y Lideré operaciones completas: arriendo de local, la capacitación técnica y la
+                                estrategia de marketing digital multicanal
+                                (Shopify + Meta Ads), gestión de equipo, automatización de contenido
+                                (CapCut, DaVinci Resolve).
+                            </p>
+                            <p class="text-xs text-light-50 mb-0 opacity-75">
+                                <i class="fa-solid fa-lightbulb me-1 text-cyan-dim"></i>
+                                <strong>Aprendizaje Clave:</strong> Flujo de caja crítico + posicionamiento físico sin
+                                visibilidad = fallo operativo. Pivote en 4 meses evitó mayor pérdida. Lección: validar
+                                mercado ANTES de cualquier gran inversión técnica.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. EL ÉXITO Y LA TECNOLOGÍA: La Escala -->
+                <div class="roadmap-item row align-items-center mb-5" data-aos="fade-right">
+                    <div class="col-md-5 text-md-end order-md-1 order-2">
+                        <div
+                            class="roadmap-content p-4 rounded-4 bg-slate-800 border border-slate-700 shadow hover-border-cyan position-relative">
+                            <h3 class="h5 font-outfit text-white mb-2">Digitalización de Modelo Tradicional $500K A $15M
+                            </h3>
+                            <h4 class="h6 text-cyan-dim mb-3">Co-Fundador & Lead de E-commerce TOKYO TUNNING</h4>
+                            <p class="text-light-50 text-sm mb-2">
+                                Negocio de <strong class="text-white">Accesorios y Performance Automotriz</strong>.
+                                Diseñé, Propuse y ejecuté la transición de un puesto de venta tradicional a la
+                                digitalización completa del
+                                modelo (Persa → E-commerce → Local).
+                            </p>
+                            <p class="text-light-50 text-sm mb-2">
+                                <strong class="text-white">Mi Rol (Líder Tecnológico y Operativo):</strong>
+                            </p>
+                            <p class="text-light-50 text-sm mb-2">
+                                <strong>Estrategia:</strong> Crear un ecosistema web y de redes sociales que,
+                                aunque procesaba el 25% de ventas directas online, fue el responsable del 100% del
+                                reconocimiento de marca y del flujo constante de clientes hacia los locales físicos y el
+                                taller mecánico.
+                            </p>
+                            <p class="text-light-50 text-sm mb-2">
+                                Ejecuté el despliegue Full Stack de la plataforma e-commerce
+                                (WordPress + WooCommerce) y la tarea de generar contenido viral para generar tráfico
+                                constante.
+                            </p>
+                            <p class="text-light-50 text-sm mb-2">
+                                <strong>Performance Marketing:</strong> Gestión de SEO orgánico y campañas multicanal en
+                                Meta Ads,
+                                logrando un ROI superior al 400% mediante contenido de alto valor.
+                            </p>
+                            <p class="text-light-50 text-sm mb-2">
+                                <strong>Optimización Operativa:</strong> Digitalización total del control de inventario
+                                y la logística
+                                de envíos nacionales,
+                                permitiendo que la operación soportara un crecimiento del 2,900% en solo 18 meses.
+                            </p>
+                            <p class="text-light-50 text-sm mb-3">
+                                <strong>Sistematización y Liderazgo:</strong> Transformé una operación unipersonal en
+                                una estructura
+                                empresarial sólida, gestionando la creación societaria, administración financiera,
+                                contratos y nóminas de
+                                personal técnico.
+                            </p>
+                            <p class="text-sm text-cyan-neon mb-1"><strong>Resultados:</strong></p>
+                            <p class="text-xs text-light-50 mb-3">• Escalamiento: $500k → $15M/mes (18 meses)</p>
+
+                            <p class="text-xs text-light-50 mb-0 opacity-75">
+                                <i class="fa-solid fa-code-branch me-1 text-cyan-dim"></i>
+                                <strong>Transición:</strong> El negocio estaba sistematizado. Mi rol se volvió
+                                administrativo. Buscaba desafíos técnicos complejos, no solo gestión de ventas.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-2 text-center order-md-2 order-1 position-relative">
+                        <div class="roadmap-node bg-slate-900 border border-slate-700 icon-glow">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-5 order-md-3">
+                        <p class="text-light-50 ps-md-3 font-monospace text-sm">Marzo 2023 - Abril 2025</p>
+                    </div>
+                </div>
+
+
+                <!-- 4. ESTRATEGIA DIGITAL -->
+                <div class="roadmap-item row align-items-center mb-5" data-aos="fade-left">
+                    <div class="col-md-5 text-md-end order-md-1 order-3">
+                        <p class="text-light-50 pe-md-3 font-monospace text-sm">Sep 2021 - Mar 2023</p>
+                    </div>
+                    <div class="col-md-2 text-center order-md-2 position-relative">
+                        <div class="roadmap-node bg-slate-900 border border-slate-700 icon-glow">
+                            <i class="fa-solid fa-magnifying-glass-chart"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-5 order-md-3">
+                        <div
+                            class="roadmap-content p-4 rounded-4 bg-slate-800 border border-slate-700 shadow hover-border-cyan position-relative">
+                            <h3 class="h6 font-outfit text-white mb-2">CONSULTORIA & ESTRATEGIA DIGITAL INDEPENDIENTE
+                            </h3>
+                            <h4 class="h6 text-cyan-dim mb-3">Consultoría Web & Marketing de Performance Freelance</h4>
+                            <p class="text-light-50 text-sm mb-2">
+                                Desarrollé landing pages de alta conversión usando WordPress
+                                y Elementor, optimizadas para la captura de leads y ventas directas.
+                            </p>
+                            <p class="text-light-50 text-sm mb-2">
+                                Administré campañas de Meta Ads con inversiónes de hasta $500K
+                                mensuales, aplicando los conocimientos de mis certificaciones en "Anuncios Ganadores" e
+                                "Instagram Big-Bang".
+                            </p>
+                            <p class="text-light-50 text-sm mb-2">
+                                <strong>Producción Multimedia:</strong> Ejecuté la creación de contenido audiovisual y
+                                diseño gráfico
+                                profesional (DaVinci Resolve, Photoshop) para mejorar el engagement de marcas en el
+                                sector retail y servicios.
+                            </p>
+                            <p class="text-light-50 text-sm mb-2">
+                                <strong>Investigación de Mercado:</strong> El análisis constante de métricas y nichos
+                                durante estos años permitió identificar la oportunidad de mercado en negocios
+                                posteriores.
+                            </p>
+                            <p class="text-light-50 text-sm mb-2">
+                                <strong>Respaldo Técnico:</strong> Validé mi experiencia mediante certificaciones de
+                                Google
+                                (Digitalización de Negocio) y Academia Metrics (Community Manager Estratégico).
+                            </p>
+                            <p class="text-xs text-light-50 mb-0 opacity-75">
+                                <i class="fa-solid fa-lightbulb me-1 text-cyan-dim"></i>
+                                <strong>Resultado:</strong> Detección de brechas de mercado y nichos de alta demanda
+                                insatisfecha mediante el análisis constante de métricas publicitarias, contenido digital
+                                y comportamiento del consumidor digital.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. OPERACIONES DE ÚLTIMA MILLA - Starken -->
+                <div class="roadmap-item row align-items-center mb-5" data-aos="fade-right">
+                    <div class="col-md-5 text-md-end order-md-1 order-2">
+                        <div
+                            class="roadmap-content p-4 rounded-4 bg-slate-800 border border-slate-700 shadow hover-border-cyan position-relative">
+                            <h3 class="h6 font-outfit text-white mb-2">OPERACIONES DE ÚLTIMA MILLA</h3>
+                            <h4 class="h6 text-secondary mb-3">Conductor Operativo @ Starken</h4>
+                            <p class="text-light-50 text-sm mb-2">
+                                +90 entregas diarias en Santiago (5:00 AM - 20:00 hrs regulares). Cumplimiento SLA:
+                                100%. Herramientas: App interna de ruteo, scanner código de barras, optimización manual
+                                de rutas.
+                            </p>
+                            <p class="text-xs text-light-50 mb-0 opacity-75">
+                                <i class="fa-solid fa-code-branch me-1 text-cyan-dim"></i>
+                                <strong>Duración:</strong> Este periodo fue un "puente" financiero tras el cierre de mi
+                                primer emprendimiento.
+                                Aunque fue un rol de ejecución física, me permitió desarrollar una disciplina de trabajo
+                                inquebrantable
+                                y una visión lógica sobre la eficiencia ; Cada ruta es un problema de optimización
+                                algorítmica.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-2 text-center order-md-2 order-1 position-relative">
+                        <div class="roadmap-node bg-slate-900 border border-slate-700 icon-glow">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-5 order-md-3">
+                        <p class="text-light-50 ps-md-3 font-monospace text-sm">Jun 2021 - Sep 2021</p>
+                    </div>
+                </div>
+
+                <!-- 6. FUNDADOR @ MOANA KAI -->
+                <div class="roadmap-item row align-items-center mb-5" data-aos="fade-left">
+                    <div class="col-md-5 text-md-end order-md-1 order-3">
+                        <p class="text-light-50 pe-md-3 font-monospace text-sm">Jul 2019 - May 2021</p>
+                    </div>
+                    <div class="col-md-2 text-center order-md-2 position-relative">
+                        <div class="roadmap-node bg-slate-900 border border-slate-700 icon-glow">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-5 order-md-3">
+                        <div
+                            class="roadmap-content p-4 rounded-4 bg-slate-800 border border-slate-700 shadow hover-border-cyan position-relative">
+                            <h3 class="h6 font-outfit text-white mb-2">DIRECTOR DE OPERACIONES & FUNDADOR</h3>
+                            <h4 class="h6 text-secondary mb-3">Agua Purificada @ MOANA KAI</h4>
+                            <p class="text-light-50 text-sm mb-2">
+                                Mi primera experiencia real gestionando un modelo de negocio completo, desde la
+                                producción hasta la logística
+                                de última milla.
+                            </p>
+                            <p class="text-light-50 text-sm mb-2">
+                                <strong>Tracción Digital Temprana:</strong> Logré una captación de clientes 100% digital
+                                mediante
+                                estrategias en Facebook Marketplace y Meta Ads, gestionando una cartera de 80 a 120
+                                clientes mensuales.
+                            </p>
+                            <p class="text-light-50 text-sm mb-2">
+                                <strong>Gestión Integral:</strong> Administré la cadena de suministro, desde el proceso
+                                de embotellado y
+                                control de inventario físico hasta la distribución directa.
+                            </p>
+                            <p class="text-xs text-light-50 mb-0 opacity-75">
+                                <i class="fa-solid fa-triangle-exclamation me-1 text-warning"></i>
+                                <strong>Cierre (Mayo 2021):</strong> Accidente de tránsito destruyó vehículo +
+                                mercadería. Reinversión no viable. Esta experiencia fue mi primera inmersión profunda en
+                                los unit economics y en la resiliencia necesaria para enfrentar crisis operativas y
+                                financieras.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. FUNDAMENTOS DE LIDERAZGO - Retail -->
+                <div class="roadmap-item row align-items-center" data-aos="fade-right">
+                    <div class="col-md-5 text-md-end order-md-1 order-2">
+                        <div
+                            class="roadmap-content p-4 rounded-4 bg-slate-800 border border-slate-700 shadow hover-border-cyan position-relative opacity-75">
+                            <h3 class="h6 font-outfit text-white mb-2">FUNDAMENTOS DE LIDERAZGO</h3>
+                            <h4 class="h6 text-secondary mb-3">Retail de Alto Volumen (2014-2018)</h4>
+
+                            <p class="text-light-50 text-sm mb-2">
+                                <strong class="text-white">AutoTattersall (~2018):</strong> Vendedor de Vehículos
+                                (part-time, fines de semana). Atención consultiva a clientes de alto ticket. Gestión de
+                                leads y cierre de ventas. Networking con clientes de alto poder adquisitivo.
+                            </p>
+
+                            <p class="text-light-50 text-sm mb-2">
+                                <strong class="text-white">La Polar (2017-2018):</strong> Jefe de Tienda Part-Time
+                                (turnos fin de semana + festivos). Responsable operativo de 100+ personas en turnos
+                                peak. Gestión de inventario crítico, KPIs: ventas, merma, rotación de
+                                personal.
+                            </p>
+
+                            <p class="text-light-50 text-sm mb-2">
+                                <strong class="text-white">Falabella (2014-2016):</strong> Asesor Comercial → Encargado
+                                de Zona Jeanería. Lideré 7 personas, cumplimiento consistente de cuota mensual (+15%
+                                promedio sobre meta). Cursos internos: Ventas consultivas, liderazgo sin antigüedad.
+                            </p>
+
+                            <p class="text-light-50 text-sm mb-2">
+                                <strong class="text-white">Adrenalin (2013-2014):</strong> Vendedor en tiendas premium
+                                (Volcom, Maui and Sons). Primera experiencia en retail profesional, ventas consultivas.
+                            </p>
+
+                            <p class="text-xs text-cyan-neon mb-2">
+                                <i class="fa-solid fa-code-branch me-1"></i>
+                                <strong>¿Qué habilidades traigo realmente al mundo IT?</strong>
+                            </p>
+                            <p class="text-xs text-light-50 mb-1">
+                                • <strong>Responsabilidad y Autonomía:</strong> Experiencia real respondiendo por la
+                                operatividad de
+                                negocios y el trabajo de decenas de personas.
+                            </p>
+                            <p class="text-xs text-light-50 mb-1">
+                                • <strong>Resolución de Conflictos:</strong> Capacidad probada para mantener la calma y
+                                solucionar
+                                problemas en tiempo real frente al cliente y el equipo.
+                            </p>
+                            <p class="text-xs text-light-50 mb-1">
+                                • <strong>Orientación a Métricas (KPIs):</strong> Mentalidad acostumbrada a trabajar
+                                bajo objetivos
+                                medibles de rendimiento y eficiencia.
+                            </p>
+                            <p class="text-xs text-light-50 mb-0">
+                                • <strong>Adaptabilidad y Aprendizaje:</strong> Trayectoria marcada por ascensos rápidos
+                                y la capacidad de
+                                dominar nuevos rubros en poco tiempo.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-2 text-center order-md-2 order-1 position-relative">
+                        <div class="roadmap-node bg-slate-900 border border-slate-700 icon-glow">
+                            <i class="fa-solid fa-users-gear"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-5 order-md-3">
+                        <p class="text-light-50 ps-md-3 font-monospace text-sm">2014 - 2018</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+    <!-- ===== FORMACIÓN ACADÉMICA ===== -->
+    <!-- Aquí muestro que estudio  -->
+    <section id="education" class="py-5 bg-slate-900">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="h2 font-inter fw-bold text-white mb-3">
+                    <i class="fa-solid fa-graduation-cap icon-glow me-3"></i>Formación Académica
+                </h2>
+                <p class="text-light-50">Certificaciones y cursos que respaldan mi experiencia técnica y de negocio</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- En Curso -->
+                <div class="col-md-6 col-12" data-aos="fade-right">
+                    <div
+                        class="p-4 rounded-4 bg-slate-800 border border-slate-700 hover-border-cyan transition-all h-100">
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fa-solid fa-code icon-glow fs-3 me-3"></i>
+                            <div>
+                                <h3 class="h6 font-inter text-white mb-1">Full Stack Python Trainee</h3>
+                                <p class="text-sm text-light-50 mb-0">Talento Digital - Desafío Latam</p>
+                                <p class="text-xs text-cyan-neon mb-0">Nov 2024 - Ago 2026 (En curso)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linux 2024 -->
+                <div class="col-md-6 col-12" data-aos="fade-left">
+                    <div
+                        class="p-4 rounded-4 bg-slate-800 border border-slate-700 hover-border-cyan transition-all h-100">
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fa-brands fa-linux icon-glow fs-3 me-3"></i>
+                            <div>
+                                <h3 class="h6 font-inter text-white mb-1">Linux & System Hardening</h3>
+                                <p class="text-sm text-light-50 mb-0">Hack4u Academy</p>
+                                <p class="text-xs text-cyan-neon mb-0">2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community Manager 2022 -->
+                <div class="col-md-6 col-12" data-aos="fade-right">
+                    <div
+                        class="p-4 rounded-4 bg-slate-800 border border-slate-700 hover-border-cyan transition-all h-100">
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fa-solid fa-users icon-glow fs-3 me-3"></i>
+                            <div>
+                                <h3 class="h6 font-inter text-white mb-1">Community Manager Estratégico</h3>
+                                <p class="text-sm text-light-50 mb-0">Academia Metrics</p>
+                                <p class="text-xs text-cyan-neon mb-0">2021</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google 2022 -->
+                <div class="col-md-6 col-12" data-aos="fade-left">
+                    <div
+                        class="p-4 rounded-4 bg-slate-800 border border-slate-700 hover-border-cyan transition-all h-100">
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fa-brands fa-google icon-glow fs-3 me-3"></i>
+                            <div>
+                                <h3 class="h6 font-inter text-white mb-1">Digitalización de Negocio</h3>
+                                <p class="text-sm text-light-50 mb-0">Google</p>
+                                <p class="text-xs text-cyan-neon mb-1">Septiembre 2022</p>
+                                <p class="text-xs text-light-50 mb-0">ID: U6V VCC VW4</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instagram Big-Bang 2020 -->
+                <div class="col-md-6 col-12" data-aos="fade-right">
+                    <div
+                        class="p-4 rounded-4 bg-slate-800 border border-slate-700 hover-border-cyan transition-all h-100">
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fa-brands fa-instagram icon-glow fs-3 me-3"></i>
+                            <div>
+                                <h3 class="h6 font-inter text-white mb-1">Instagram Big-Bang de 0 a 50k</h3>
+                                <p class="text-sm text-light-50 mb-0">Academia Metrics</p>
+                                <p class="text-xs text-cyan-neon mb-0">2020</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Haciéndola ~2020 -->
+                <div class="col-md-6 col-12" data-aos="fade-left">
+                    <div
+                        class="p-4 rounded-4 bg-slate-800 border border-slate-700 hover-border-cyan transition-all h-100">
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fa-solid fa-bullhorn icon-glow fs-3 me-3"></i>
+                            <div>
+                                <h3 class="h6 font-inter text-white mb-1">Anuncios Ganadores (Meta Ads)</h3>
+                                <p class="text-sm text-light-50 mb-0">Haciéndola</p>
+                                <p class="text-xs text-cyan-neon mb-0">2020</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Técnico Administración de Empresas -->
+                <div class="col-md-6 col-12 mx-auto" data-aos="fade-up">
+                    <div
+                        class="p-4 rounded-4 bg-slate-800 border border-slate-700 h-100 opacity-75 hover-border-cyan transition-all">
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fa-solid fa-chart-line text-light-50 fs-3 me-3 icon-glow"></i>
+                            <div>
+                                <h3 class="h6 font-inter text-white mb-1">Técnico en Administración de Empresas mención
+                                    Marketing</h3>
+                                <p class="text-sm text-light-50 mb-0">DuocUC San Bernardo</p>
+                                <p class="text-xs text-light-50 mb-0">2018-2020
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Skills Section: ¿Qué tecnologías manejo? -->
+    <!-- Las separé en dos columnas: Front-End (lo que se ve) y Back-End/Otros (lo que no se ve o es más técnico) -->
+    <section class="py-5 bg-slate-800" id="skills">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="h3 font-outfit fw-bold">Stack Técnico & Habilidades</h2>
+                <p class="text-light-50">Herramientas y tecnologías que domino actualmente.</p>
+            </div>
+            <div class="row g-4">
+                <!-- Front-End (Actual) -->
+                <div class="col-lg-6 col-12" data-aos="fade-right">
+                    <div
+                        class="p-4 rounded-4 bg-slate-900 border border-slate-700 hover-border-cyan transition-all h-100">
+                        <h3 class="h6 font-inter text-white mb-3">
+                            <i class="fa-solid fa-code text-cyan-neon me-2"></i>Front-End (Actual)
+                        </h3>
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="badge bg-slate-800 border border-cyan-dim text-cyan-neon p-2">HTML5</span>
+                            <span class="badge bg-slate-800 border border-cyan-dim text-cyan-neon p-2">CSS3</span>
+                            <span class="badge bg-slate-800 border border-cyan-dim text-cyan-neon p-2">JavaScript
+                                (Vanilla &
+                                jQuery)</span>
+                            <span class="badge bg-slate-800 border border-cyan-dim text-cyan-neon p-2">Bootstrap
+                                5</span>
+                            <span class="badge bg-slate-800 border border-cyan-dim text-cyan-neon p-2">Git/GitHub</span>
+                        </div>
+                        <p class="text-xs text-light-50 mb-2"><strong class="text-white">Herramientas CMS:</strong></p>
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="badge bg-slate-800 border border-slate-700 text-light-50 p-2">WordPress</span>
+                        </div>
+                        <p class="text-xs text-cyan-dim mb-2"><strong>En Desarrollo:</strong></p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-slate-800 border border-slate-700 text-light-50 p-2">Python</span>
+                            <span class="badge bg-slate-800 border border-slate-700 text-light-50 p-2">Django</span>
+                            <span class="badge bg-slate-800 border border-slate-700 text-light-50 p-2">Base de Datos
+                                SQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Linux & Security + Inteligencia de Negocios -->
+                <div class="col-lg-6 col-12" data-aos="fade-left">
+                    <!-- Linux & Security -->
+                    <div
+                        class="p-4 rounded-4 bg-slate-900 border border-slate-700 hover-border-cyan transition-all mb-4">
+                        <h3 class="h6 font-inter text-white mb-3">
+                            <i class="fa-solid fa-shield-halved text-cyan-neon me-2"></i>Linux & Security
+                        </h3>
+                        <div class="d-flex flex-wrap gap-2 mb-2">
+                            <span class="badge bg-slate-800 border border-cyan-dim text-cyan-neon p-2">Linux
+                                (Debian/Ubuntu)</span>
+                            <span class="badge bg-slate-800 border border-cyan-dim text-cyan-neon p-2">Bash
+                                Scripting</span>
+                            <span class="badge bg-slate-800 border border-cyan-dim text-cyan-neon p-2">SUID /
+                                SGID</span>
+                            <span class="badge bg-slate-800 border border-cyan-dim text-cyan-neon p-2">System
+                                Hardening</span>
+                            <span class="badge bg-slate-800 border border-cyan-dim text-cyan-neon p-2">Cron
+                                Auditing</span>
+                            <span class="badge bg-slate-800 border border-cyan-dim text-cyan-neon p-2">SSH
+                                Hardening</span>
+                            <span class="badge bg-slate-800 border border-cyan-dim text-cyan-neon p-2">Netcat /
+                                Redes</span>
+                        </div>
+                    </div>
+
+                    <!-- Inteligencia de Negocios & Operaciones -->
+                    <div class="p-4 rounded-4 bg-slate-900 border border-slate-700 hover-border-cyan transition-all">
+                        <h3 class="h6 font-inter text-white mb-3">
+                            <i class="fa-solid fa-lightbulb text-cyan-neon me-2"></i>Inteligencia de Negocios &
+                            Operaciones
+                        </h3>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-slate-800 border border-slate-700 text-light-50 p-2">Marketing
+                                Digital</span>
+                            <span class="badge bg-slate-800 border border-slate-700 text-light-50 p-2">E-commerce</span>
+                            <span class="badge bg-slate-800 border border-slate-700 text-light-50 p-2">Community
+                                Management</span>
+                            <span class="badge bg-slate-800 border border-slate-700 text-light-50 p-2">SEO/SEM</span>
+                            <span class="badge bg-slate-800 border border-slate-700 text-light-50 p-2">Gestión de
+                                Equipos</span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Section -->
+    <section class="py-5 position-relative" id="projects">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-6 font-outfit fw-bold">Proyectos Destacados</h2>
+                <p class="text-light-50">Trabajo real, resultados medibles.</p>
+            </div>
+            <div class="row g-4">
+                <!--Project 1: PCAltiro -->
+                <div class="col-md-6 col-lg-4 col-12" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="project-card bg-slate-800 border border-slate-700 rounded-4 overflow-hidden h-100">
+                        <div class="project-img-placeholder d-flex align-items-center justify-content-center"
+                            style="height: 200px;">
+                            <i class="fa-solid fa-laptop-code fa-4x icon-glow"></i>
+                        </div>
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h4 class="h5 font-outfit text-white mb-0">PCAltiro</h4>
+                                <a href="https://pcaltiro.netlify.app/" target="_blank" rel="noopener noreferrer"
+                                    class="text-cyan-neon text-decoration-none hover-glow">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                            <p class="text-light-50 text-sm mb-2">
+                                <strong class="text-white">Stack Técnico:</strong> Landing page responsive con
+                                HTML5/CSS3/Bootstrap. Optimizada para SEO local estratégico y conversión rápida.
+                            </p>
+                            <p class="text-light-50 text-sm mb-3">
+                                <strong class="text-white">Security Hardening:</strong><br>
+                                • Formularios validados y sanitizados (prevención XSS/Input Validation)<br>
+                                • Headers de seguridad implementados (CSP, X-Frame-Options)<br>
+                                • Deployment automatizado en Netlify (CI/CD)
+                            </p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-slate-900 border border-cyan-dim text-cyan-neon">HTML/CSS</span>
+                                <span class="badge bg-slate-900 border border-cyan-dim text-cyan-neon">SEO</span>
+                                <span class="badge bg-slate-900 border border-cyan-dim text-cyan-neon">Responsive</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Tokyo Tunning -->
+                <div class="col-md-6 col-lg-4 col-12" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="project-card bg-slate-800 border border-slate-700 rounded-4 overflow-hidden h-100">
+                        <div class="project-img-placeholder d-flex align-items-center justify-content-center"
+                            style="height: 200px;">
+                            <i class="fa-solid fa-store fa-4x icon-glow"></i>
+                        </div>
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h4 class="h5 font-outfit text-white mb-0">Tokyo Tunning</h4>
+                                <a href="https://tokyotunning.cl" target="_blank" rel="noopener noreferrer"
+                                    class="text-cyan-neon text-decoration-none hover-glow">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                            <p class="text-light-50 text-sm mb-3">
+                                E-commerce completo de accesorios automotrices. Escalamiento de $500k a $15M mensuales
+                                mediante estrategia digital.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-slate-900 border border-slate-700 text-light-50">WordPress</span>
+                                <span class="badge bg-slate-900 border border-slate-700 text-light-50">E-commerce</span>
+                                <span class="badge bg-slate-900 border border-slate-700 text-light-50">Marketing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: GitHub Portfolio -->
+                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="project-card bg-slate-800 border border-slate-700 rounded-4 overflow-hidden h-100">
+                        <div class="project-img-placeholder d-flex align-items-center justify-content-center"
+                            style="height: 200px;">
+                            <i class="fa-brands fa-github fa-4x icon-glow"></i>
+                        </div>
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h4 class="h5 font-outfit text-white mb-0">GitHub Portfolio</h4>
+                                <a href="https://github.com/Spectre-x46/" target="_blank" rel="noopener noreferrer"
+                                    class="text-cyan-neon text-decoration-none hover-glow">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                            <p class="text-light-50 text-sm mb-3">
+                                Repositorios de proyectos en desarrollo: scripts, ejercicios Full Stack, y
+                                herramientas de automatización.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-slate-900 border border-slate-700 text-light-50">Python</span>
+                                <span class="badge bg-slate-900 border border-slate-700 text-light-50">Git</span>
+                                <span class="badge bg-slate-900 border border-slate-700 text-light-50">Linux</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer: El pie de página. Simple, créditos y redes sociales de nuevo por si no las vieron arriba. -->
+    <footer class="py-5 bg-slate-900 text-center border-top border-slate-800">
+        <div class="container">
+
+            <p class="text-light-50 text-sm mb-2">&copy; 2026 <strong class="text-white">Felipe Droguett O.</strong> –
+                Sistemas Seguros, Soluciones Estratégicas.</p>
+            <p class="text-xs text-light-50 mb-0">
+                <a href="https://github.com/Spectre-x46/" target="_blank" rel="noopener noreferrer"
+                    class="text-cyan-neon text-decoration-none hover-glow">
+                    <i class="fa-brands fa-github me-1"></i>Explorar Proyectos en GitHub
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts: La magia que hace que las cosas se muevan -->
+
+    <!-- Bootstrap JS Bundle: Necesario para que funcionen los menús desplegables y modales de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+    <!-- AOS Animation Library: El script de la librería que hace que los textos aparezcan "fade-in" -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"
+        integrity="sha384-hC084VlAhZlkqI1nk9T5xJNhTGjWV5lqDMV2lqDMV2lqDMV2lqDMV2lqDMV2lqDM"
+        crossorigin="anonymous"></script>
+
+    <!-- Custom JavaScript: Mi propio código para inicializar las animaciones -->
+    <script src="script.js"></script>
+</body>
+
+</html>
