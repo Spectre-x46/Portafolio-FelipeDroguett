@@ -1,0 +1,685 @@
+:root {
+    /* === PALETA PERSONALIZADA INSPIRADA EN Spectre-x46 BASH === */
+    /* Aquí defino mis variables para no tener que escribir el código de color a cada rato */
+
+    /* Backgrounds: Colores oscuros para el fondo tipo hacker */
+    --bg-slate-900: #0a0e1a;
+    --bg-slate-800: #141824;
+    --border-slate-700: #1f2937;
+
+    /* Text Colors: Colores claros para que se lea bien sobre el negro */
+    --text-light: #e0f2fe;
+    --text-light-50: #94a3b8;
+
+    /* === COLORES PRINCIPALES (NEON/MARKETING) === */
+    /* Primary -> Cyan Neon Check: Este es mi color principal, el celeste neón */
+    --primary-color: #06b6d4;
+    /* Cyan Neon Principal */
+    --primary-glow: #22d3ee;
+    /* Brillo Cyan */
+
+    /* Success -> Spring Green (Corregido): Para cosas positivas o badges */
+    --success-color: #34d399;
+    /* Emerald/Spring Green */
+
+    /* Info & Secondary: Azules para información secundaria */
+    --info-color: #3b82f6;
+    /* Deep Sky Blue */
+    --secondary-blue: #2563eb;
+
+    /* Warning -> Gold: Para destacar cosas importantes */
+    --warning-color: #f59e0b;
+    --gold-color: #f59e0b;
+
+    /* Purple -> Neon Purple: Un toque de morado para variar */
+    --purple-color: #a855f7;
+    --purple-dark: #7e22ce;
+
+    /* Fonts: Mis fuentes importadas de Google Fonts */
+    --font-inter: 'Inter', sans-serif;
+    --font-outfit: 'Outfit', sans-serif;
+}
+
+/* === BOOTSTRAP OVERRIDES === */
+/* Aquí cambio los colores por defecto de Bootstrap para usar los míos */
+.text-primary {
+    color: var(--primary-glow) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.border-primary {
+    border-color: var(--primary-color) !important;
+}
+
+.text-success {
+    color: var(--success-color) !important;
+}
+
+.bg-success {
+    background-color: var(--success-color) !important;
+}
+
+.border-success {
+    border-color: var(--success-color) !important;
+}
+
+.text-warning {
+    color: var(--warning-color) !important;
+}
+
+.bg-warning {
+    background-color: var(--warning-color) !important;
+}
+
+.text-info {
+    color: var(--info-color) !important;
+}
+
+.text-purple {
+    color: var(--purple-color) !important;
+}
+
+.bg-purple {
+    background-color: var(--purple-color) !important;
+}
+
+.border-purple {
+    border-color: var(--purple-color) !important;
+}
+
+body {
+    background-color: var(--bg-slate-900);
+    color: var(--text-light);
+    font-family: var(--font-inter);
+    /* Para que no aparezca barra horizontal fea */
+    overflow-x: hidden;
+}
+
+/* Typography Enhancements: Mejoras para que las letras se vean pro */
+.font-outfit {
+    font-family: var(--font-outfit);
+}
+
+.font-inter {
+    font-family: var(--font-inter);
+}
+
+/* Outfit SOLO para números de impacto (sentencia de muerte, jaja es broma, es para que impacten) */
+.impact-number {
+    font-family: var(--font-outfit);
+    font-weight: 700;
+}
+
+/* Headings con Inter (más serio y profesional) */
+/* === UTILITIES & THEME CLASSES === */
+/* Efecto de texto neón: le pongo sombra brillante */
+.text-cyan-neon {
+    color: var(--primary-glow) !important;
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.6), 0 0 20px rgba(6, 182, 212, 0.4);
+}
+
+.icon-glow {
+    color: var(--primary-glow) !important;
+    text-shadow: 0 0 15px rgba(6, 182, 212, 0.8);
+    opacity: 1 !important;
+}
+
+/* Colores un poco más apagados para no encandilar */
+.text-cyan-dim {
+    color: rgba(6, 182, 212, 0.7) !important;
+}
+
+.bg-cyan-dim {
+    background-color: rgba(6, 182, 212, 0.05) !important;
+}
+
+.border-cyan-dim {
+    border-color: rgba(6, 182, 212, 0.2) !important;
+}
+
+.text-purple-400 {
+    color: #c084fc !important;
+}
+
+/* Solo para syntax highlighting "const" o comentarios en el código de ejemplo */
+.text-slate-500 {
+    color: #64748b !important;
+}
+
+/* Buttons Custom: Mis botones personalizados */
+.btn-cyan-glow {
+    background: linear-gradient(135deg, var(--primary-color), #0891b2);
+    color: white;
+    border: none;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover: cuando paso el mouse por encima cambia un poco */
+.btn-cyan-glow:hover {
+    background: linear-gradient(135deg, #22d3ee, #06b6d4);
+    box-shadow: 0 0 25px rgba(34, 211, 238, 0.5);
+    transform: translateY(-2px);
+    color: white;
+}
+
+.hover-cyan-border:hover {
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+}
+
+.hover-border-cyan:hover {
+    border-color: var(--primary-color) !important;
+    box-shadow: inset 0 0 20px rgba(6, 182, 212, 0.05);
+}
+
+/* Icon Square Refined: Los cuadritos donde van los iconos */
+.icon-sq {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Efectito de levantar cuando paso el mouse */
+.hover-lift-subtle:hover .icon-sq {
+    transform: translateY(-5px) rotate(5deg);
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.2) !important;
+}
+
+/* Typography Overrides */
+.text-light-50 {
+    color: #94a3b8 !important;
+}
+
+.bg-slate-900 {
+    background-color: #0a0e1a !important;
+}
+
+.bg-slate-800 {
+    background-color: #141824 !important;
+}
+
+.border-slate-700 {
+    border-color: #1f2937 !important;
+}
+
+.bg-purple {
+    background-color: var(--purple-color) !important;
+}
+
+.bg-blue {
+    background-color: var(--primary-color) !important;
+}
+
+/* Navbar Glass Effect - Premium Cyan Glow */
+/* Efecto de vidrio esmerilado para el menú: se ve borroso lo de atrás */
+.glass-nav {
+    background: rgba(10, 14, 26, 0.90);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+    box-shadow: 0 4px 16px rgba(34, 211, 238, 0.1);
+}
+
+/* Hero Section Glow - Cyan Neon Effect */
+/* El brillo de fondo que se mueve un poco (mentira, no se mueve, pero parece) */
+.absolute-bg-glow {
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 80%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.18) 0%, rgba(56, 189, 248, 0.08) 40%, rgba(10, 14, 26, 0) 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Icon Buttons (Accesibilidad Protanopia) */
+.icon-btn {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.icon-btn:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.5), 0 0 40px rgba(34, 211, 238, 0.2);
+}
+
+/* Link hover glow - Cyan Neon */
+.hover-glow:hover {
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.7), 0 0 24px rgba(34, 211, 238, 0.4);
+}
+
+/* Profile Code Card */
+.profile-card-glass {
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid var(--border-slate-700);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.rotate-3 {
+    transform: rotate(3deg);
+    transition: transform 0.5s ease;
+}
+
+.rotate-3:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+/* Feature Cards (Animación Mínima) */
+.hover-lift {
+    transition: border-color 0.3s ease;
+}
+
+.hover-lift:hover {
+    border-color: var(--primary-color);
+}
+
+.icon-sq {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+/* Whitespace Profesional (Mejor balance PC/Mobile) */
+/* Espaciado para que no se vea todo apretado */
+section {
+    padding: 5rem 0;
+}
+
+.container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* Container más ancho para PC (mejor uso del espacio horizontal) */
+/* Media Queries: Si la pantalla es grande, agrando el contenedor */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1320px;
+        /* Aumentado de 1140px */
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1440px;
+        /* Para pantallas ultra-wide */
+    }
+}
+
+/* CTA Buttons - Premium Cyan Neon */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--info-color));
+    border: 1px solid var(--primary-glow);
+    box-shadow: 0 4px 14px rgba(6, 182, 212, 0.4), 0 0 20px rgba(34, 211, 238, 0.2);
+    color: #fff;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-glow), var(--primary-color));
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.6), 0 0 30px rgba(34, 211, 238, 0.4);
+    transform: translateY(-2px);
+    border-color: #fff;
+}
+
+/* --- Vertical Roadmap --- */
+/* Estilos para la línea de tiempo */
+.roadmap-container {
+    position: relative;
+    padding: 20px 0;
+}
+
+.roadmap-line {
+    position: absolute;
+    left: 50%;
+    /* Center the line */
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--border-slate-700) 10%, var(--border-slate-700) 90%, transparent);
+    transform: translateX(-50%);
+}
+
+/* Los circulitos (nodos) del roadmap */
+.roadmap-node {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 2;
+    margin: 0 auto;
+    /* Center in the column */
+    border: 4px solid var(--bg-slate-900);
+    /* Border matches bg to create 'gap' */
+}
+
+/* Glow Effects - Neo's Palette */
+.shadow-glow-success {
+    box-shadow: 0 0 24px rgba(52, 211, 153, 0.5), 0 0 40px rgba(52, 211, 153, 0.2);
+}
+
+.shadow-glow-purple {
+    box-shadow: 0 0 24px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.2);
+}
+
+.shadow-glow-blue {
+    box-shadow: 0 0 24px rgba(56, 189, 248, 0.5), 0 0 40px rgba(56, 189, 248, 0.2);
+}
+
+.roadmap-content {
+    transition: border-color 0.3s ease;
+}
+
+.roadmap-content:hover {
+    border-color: var(--primary-color);
+}
+
+/* Responsive Roadmap Adjustment for Mobile */
+/* Ajuste para celulares: que la línea se mueva a un lado y no estorbe */
+@media (max-width: 767.98px) {
+    .roadmap-line {
+        left: 25px;
+        /* Move line to left */
+    }
+
+    .roadmap-item {
+        margin-bottom: 3rem !important;
+    }
+
+    /* Reorder columns for mobile flow: Node -> Content */
+    .roadmap-item .col-md-5.order-md-1,
+    .roadmap-item .col-md-5.order-md-3 {
+        text-align: left !important;
+        padding-left: 60px;
+        /* Space for the line/node */
+    }
+
+    .roadmap-node {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        left: 5px;
+        /* Align with line */
+        top: 0;
+    }
+
+    /* Hide the 'year' column if it's redundant or style it differently */
+    .roadmap-item .col-md-5 p.text-sm {
+        margin-bottom: 0.5rem;
+    }
+
+    /* Mobile text sizing improvements */
+    .display-sm-4 {
+        font-size: 2.5rem !important;
+    }
+
+    .h4-sm {
+        font-size: 1.25rem !important;
+    }
+
+    /* Mobile padding improvements */
+    .lead {
+        font-size: 1.1rem !important;
+    }
+
+    /* Better mobile spacing */
+    .px-3 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}
+
+
+
+/* Color Utilities */
+.text-purple {
+    color: var(--purple-color) !important;
+}
+
+.text-blue {
+    color: var(--primary-color) !important;
+}
+
+.border-purple {
+    border-color: var(--purple-color) !important;
+}
+
+.border-blue {
+    border-color: var(--primary-color) !important;
+}
+
+/* Skill Badges - Cyan Neon Theme */
+.skill-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(56, 189, 248, 0.06));
+    border: 1px solid rgba(34, 211, 238, 0.35);
+    color: var(--success-color);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.skill-badge:hover {
+    background: rgba(34, 211, 238, 0.22);
+    border-color: var(--success-color);
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.3);
+    transform: translateY(-2px);
+}
+
+.skill-badge-soft {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(56, 189, 248, 0.06));
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    color: var(--primary-color);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.skill-badge-soft:hover {
+    background: rgba(56, 189, 248, 0.22);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Skills Section - Badge Hover Effects */
+#skills .badge {
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover effect for success badges (cyan neon) */
+#skills .badge.border-success:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 18px rgba(34, 211, 238, 0.5), 0 0 25px rgba(34, 211, 238, 0.3);
+    background-color: rgba(34, 211, 238, 0.18) !important;
+    border-color: var(--success-color) !important;
+}
+
+/* Hover effect for warning badges (gold/orange) */
+#skills .badge.border-warning:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 18px rgba(245, 158, 11, 0.5), 0 0 25px rgba(251, 146, 60, 0.3);
+    background-color: rgba(245, 158, 11, 0.18) !important;
+    border-color: var(--gold-color) !important;
+}
+
+/* Hover effect for secondary badges (gray) */
+#skills .badge.border-secondary:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 15px rgba(148, 163, 184, 0.35);
+    background-color: rgba(148, 163, 184, 0.15) !important;
+    border-color: #94a3b8 !important;
+}
+
+/* Hover effect for primary badges (cyan blue) */
+#skills .badge.border-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 18px rgba(56, 189, 248, 0.5), 0 0 25px rgba(56, 189, 248, 0.3);
+    background-color: rgba(56, 189, 248, 0.18) !important;
+    border-color: var(--primary-color) !important;
+}
+
+/* Shimmer effect on hover */
+#skills .badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+#skills .badge:hover::before {
+    left: 100%;
+}
+
+/* Active/tap effect for mobile */
+#skills .badge:active {
+    transform: scale(0.98);
+}
+
+/* Hover Card (Animación Mínima - Solo Borde) */
+.hover-card {
+    transition: border-color 0.3s ease;
+}
+
+.hover-card:hover {
+    border-color: var(--primary-color) !important;
+}
+
+/* Project Cards (Solo Clickables) */
+.project-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+/* Unificando Project Placeholders - Clean & Professional */
+.project-img-placeholder {
+    background: linear-gradient(135deg, var(--bg-slate-800), #0f172a) !important;
+    /* Dark neutral base */
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-slate-700);
+}
+
+/* Iconos dentro de las cards siempre con el color de marca (o blanco) */
+.project-img-placeholder i {
+    color: var(--primary-glow) !important;
+    opacity: 0.8 !important;
+    text-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+}
+
+/* Override de las clases antiguas de gradientes para que no rompan el esquema */
+.bg-gradient-primary,
+.bg-gradient-purple,
+.bg-gradient-blue {
+    background: linear-gradient(135deg, var(--bg-slate-800), #0f172a) !important;
+}
+
+/* --- Print Styling (Resume Mode) --- */
+/* Esto es por si alguien imprime la página (ctrl+p), que salga limpio y en blanco/negro */
+@media print {
+    body {
+        background-color: white !important;
+        color: black !important;
+    }
+
+    .navbar,
+    .absolute-bg-glow,
+    .icon-btn,
+    footer {
+        display: none !important;
+    }
+
+    /* Reset text colors for print */
+    .text-light,
+    .text-light-50,
+    h1,
+    h2,
+    h3,
+    p {
+        color: black !important;
+    }
+
+    .text-white {
+        color: black !important;
+    }
+
+    /* Hide decorative elements */
+    .roadmap-line,
+    .roadmap-node {
+        display: none !important;
+    }
+
+    /* Layout for print: Simple List */
+    .roadmap-item {
+        display: block !important;
+        margin-bottom: 20px !important;
+        page-break-inside: avoid;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+    }
+
+    .roadmap-content {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+
+    .badge {
+        border: 1px solid #000 !important;
+        color: #000 !important;
+        background: transparent !important;
+    }
+
+    /* Expand containers */
+    .container {
+        width: 100% !important;
+        max-width: none !important;
+    }
+}

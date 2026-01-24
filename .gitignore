@@ -1,0 +1,20 @@
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# MacOS
+.DS_Store
+
+# VS Code directory
+.vscode/
+
+# Node modules (si en el futuro usas Node.js)
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment variables (claves secretas)
+.env
