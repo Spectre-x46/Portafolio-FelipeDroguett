@@ -60,7 +60,7 @@ export default function About() {
             <Reveal key={p.n} delay={i * 0.06}>
               <div className="grid gap-4 border-t border-[color:var(--line)] py-9 sm:py-12 md:grid-cols-[5rem_minmax(0,22rem)_minmax(0,1fr)] md:gap-10">
                 <p
-                  className="measure font-display font-extrabold leading-none text-[color:var(--line-strong)]"
+                  className="measure font-display font-extrabold leading-none text-[color:var(--ink-deco)]"
                   style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)' }}
                   aria-hidden="true"
                 >

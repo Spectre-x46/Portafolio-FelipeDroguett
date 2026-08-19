@@ -43,17 +43,16 @@ export default function Hero() {
           Se coloca arriba a propósito: así el retrato entra por debajo y sólo
           muerde el tercio inferior de las letras. Leemos por la parte alta de
           los caracteres, de modo que el nombre sigue completo. */}
-      <div className="relative z-10 flex flex-1 items-start justify-center px-5 pt-[13svh] sm:px-8 sm:pt-[14svh] lg:pt-[23svh]">
+      <div className="relative z-10 flex flex-1 items-start justify-center px-5 pt-[13svh] sm:px-8 sm:pt-[14svh] xl:pt-[16svh]">
         <h1 className="enter enter-1 w-full text-center">
           <span className="sr-only">Felipe Droguett</span>
           <span
             aria-hidden="true"
-            className="display-metal block font-display font-extrabold uppercase leading-[0.86] tracking-[-0.04em] lg:leading-[0.84] lg:tracking-[-0.045em]"
-            style={{ fontSize: 'clamp(2.9rem, 15vw, 8.6rem)' }}
+            className="hero-name display-metal block font-display font-extrabold uppercase leading-[0.86] tracking-[-0.04em] xl:leading-[0.84] xl:tracking-[-0.05em]"
           >
-            <span className="block lg:inline">Felipe</span>
-            <span className="hidden lg:inline">&nbsp;</span>
-            <span className="block lg:inline">Droguett</span>
+            <span className="block xl:inline">Felipe</span>
+            <span className="hidden xl:inline">&nbsp;</span>
+            <span className="block xl:inline">Droguett</span>
           </span>
         </h1>
       </div>
@@ -64,7 +63,7 @@ export default function Hero() {
           solapando el nombre, y el torso se disuelve sobre el texto. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-[26svh] z-20 flex justify-center lg:top-auto lg:bottom-0"
+        className="pointer-events-none absolute inset-x-0 top-[26svh] z-20 flex justify-center xl:top-auto xl:bottom-0"
       >
         <div ref={portrait} className="enter enter-2 portrait-mask">
           <picture>
@@ -76,7 +75,7 @@ export default function Hero() {
               height="1639"
               fetchpriority="high"
               decoding="async"
-              className="block h-auto w-[74vw] sm:w-[52vw] lg:w-[clamp(300px,38vw,448px)]"
+              className="block h-auto w-[74vw] sm:w-[52vw] lg:w-[44vw] xl:w-[clamp(300px,34vw,470px)]"
             />
           </picture>
         </div>
@@ -87,7 +86,7 @@ export default function Hero() {
           del personaje y por debajo del contenido. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[25] h-[52svh] lg:hidden"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[25] h-[52svh] xl:hidden"
         style={{ background: 'linear-gradient(to top, var(--bg) 18%, rgba(11,13,16,0.94) 42%, rgba(11,13,16,0.55) 68%, transparent 100%)' }}
       />
 
