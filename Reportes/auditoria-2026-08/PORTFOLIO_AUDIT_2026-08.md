@@ -37,6 +37,138 @@
 
 ---
 
+# 0-BIS. EJECUCIÓN LOCAL — 2026-08-19
+
+> **Estado:** portfolio reconstruido y funcionando **sólo en local**. Sin push, sin deploy, sin cambios en Netlify, GitHub ni LinkedIn. Punto de retorno: `git reset --hard 1e8b5bb`.
+> Registro de tickets, correcciones al backlog y deuda abierta: `PORTFOLIO_AUDIT_2026-08_BACKLOG.md`, sección «Registro de ejecución local».
+
+## 0B.1 Métricas antes / después
+
+| | Antes (producción, ago 2026) | Después (build local) |
+|---|---|---|
+| **Fallos de contraste** | 36 | **0** en las 3 rutas |
+| **Reglas `:focus`** | 0 — foco invisible | `:focus-visible` global, contraste ≥3:1 |
+| **Objetivos táctiles < 44px** | 8 a 320px | 1 (enlace en línea, exento WCAG 2.5.8) |
+| **JS inicial** | 363,2 kB (1 chunk) | **216,3 kB** · 70,0 kB gzip · 3 chunks |
+| **Peso total descargado** | ~768 kB | **~389 kB** |
+| **Peticiones** | 8 | **5** |
+| **`og:image`** | ausente | 1200×630, enlazada y verificada |
+| **Favicon** | devolvía `text/html` | `image/svg+xml` |
+| **Meta por ruta** | los casos heredaban el `<title>` | título, description y canonical propios |
+| **Reparto Trayectoria / Proyectos** | 39% / 16% | **20% / 20%** + 21% de capacidades |
+| **Posición de los proyectos** | 5ª, al 59% del scroll | **2ª, justo tras el hero** |
+| **Casos de estudio** | 1 | **2** |
+| **Evidencia en el hero en móvil** | ninguna (`hidden lg:block`) | visible en todos los anchos |
+| **Contenido si falla el JS** | 85% invisible | visible (el ocultamiento requiere JS activo) |
+| **CLS** | no medido | 0 (Lighthouse) · 0,0132 (medición propia) |
+| **Lighthouse mobile** | A11y 100 · BP 100 · SEO 100 | A11y 100 · BP 100 · SEO 100 |
+
+**Sobre el Lighthouse.** Sigue dando 100, y sigue sin ser prueba de nada: la página oculta bloques hasta que se hace scroll, así que el auditor evalúa una parte. **La diferencia real es que ahora mi propia medición —que sí recorre la página entera y resuelve fondos compuestos— también da cero fallos.** El 100 de Lighthouse no se usa como argumento en ninguna parte del sitio.
+
+## 0B.2 El flujo real del agente, reconstruido desde el código
+
+No lo inventé. Sale de `src/b_product_v1/runtime/product_agent.js`, `ingress/kommo_ingress.js` y `policy/handoff_routing.js`. El propio archivo de orquestación lo documenta en su cabecera:
+
+```
+sobre CRM → normalización → contexto/historial → Understanding (modelo,
+salida estructurada) → validación determinista → núcleo operacional
+(line items · faltantes · plan · ejecución · evidencia) → Response Objective
+(determinista, incluye la derivación) → Composer (modelo, cero tools) →
+Validator + reparación (máx. 1) → gate de ownership pre-envío →
+sobre de salida O derivación humana → traza
+```
+
+Y la frase que resume la arquitectura mejor que cualquier diagrama, escrita en ese mismo archivo:
+
+> *«El modelo aparece exactamente dos veces y en ninguna de las dos decide algo con consecuencias.»*
+
+**Respuestas a las 20 preguntas que pediste**, todas verificadas contra el código:
+
+| # | Pregunta | Respuesta |
+|---|---|---|
+| 1 | Canal de entrada | Instagram y WhatsApp, a través del CRM |
+| 2 | Dónde se recibe | Kommo (CRM); el sobre entrante se normaliza en `ingress` |
+| 3 | Qué lo activa | Un webhook de mensaje entrante emitido por el CRM |
+| 4 | Cómo entra al flujo | `parseKommoWebhook` reconstruye la notación con corchetes de Kommo y valida la forma; rechaza lo que no es mensaje entrante de cliente |
+| 5 | Información inicial | Mensaje, hilo, lead, contacto, adjuntos, más el historial de esa conversación que aporta el llamador |
+| 6 | Cómo entiende | Primera llamada al modelo, con salida estructurada estricta y validación de contrato posterior |
+| 7 | Cómo identifica producto/vehículo/intención | El modelo propone; una traducción determinista la mapea contra el vocabulario operacional |
+| 8 | Qué consulta | Catálogo, precios, stock, reglas de negocio y verificaciones de servicio |
+| 9 | Qué es determinista | Todo lo que tiene consecuencias: resolución de producto, precio, stock, plan de ejecución, evidencia y la decisión de derivar |
+| 10 | Qué decide el LLM | Interpretar cómo escribió la persona, y redactar sobre evidencia ya resuelta. Nada más |
+| 11 | Reglas comerciales | Fuente única de reglas del negocio, cargadas por la capa operacional |
+| 12 | Cuándo consulta cada fuente | Cuando el plan de ejecución lo exige, antes de redactar |
+| 13 | Cómo evita inventar | Un validador posterior contiene afirmaciones no respaldadas; permite una reparación y, si sigue sin cuadrar, no se envía |
+| 14 | Cuándo no responde | Comprensión inválida, evidencia insuficiente, o validador que no puede respaldar la respuesta |
+| 15 | Cuándo deriva | Tres motivos codificados: verificación de pago, postventa (garantía, devolución, reclamo) y petición explícita de hablar con una persona |
+| 16 | Si hay takeover humano | Se comprueba **antes** de gastar el modelo y **otra vez** justo antes de enviar. Si la conversación es de una persona, el turno termina sin coste |
+| 17 | Cómo se compone la respuesta | Segunda llamada al modelo, sin herramientas, sobre el objetivo de respuesta ya decidido |
+| 18 | Cómo vuelve al canal | Sobre de salida hacia el CRM, o supresión con motivo registrado |
+| 19 | Qué se registra | Traza por etapa, uso y latencia de cada modelo, decisiones y evidencia |
+| 20 | Cómo se demuestra después | Por la traza: qué se entendió, qué se consultó, qué se decidió y por qué. Es lo que hizo posible la auditoría de procedencia (§15) |
+
+**Detalle que no esperaba encontrar y que se incorporó al caso:** la derivación trabaja con **roles** (`PAYMENT_VERIFIER`, `POSTSALE_OWNER`, `GENERAL_ADVISOR`), no con personas. El propio código explica por qué: si el núcleo conociera el nombre de alguien, un cambio de encargado obligaría a tocar política de negocio y una persona de vacaciones se convertiría en un defecto del agente. En el sitio se cuenta la idea; ningún nombre real aparece.
+
+## 0B.3 Estado real del agente — lo que se publica
+
+Verificado contra `mvp-agente-wf-first/ESTADO.md` (modificado 2026-08-19 04:35) y contra el runtime, que usa adaptador de composición simulado, proveedor de ownership simulado y **emisor simulado**:
+
+| Etapa | Estado publicado |
+|---|---|
+| Pruebas deterministas locales | ✅ verificado — todo en verde, sin llamar a ningún modelo |
+| Reproducción de mensajes reales con modelo | ✅ verificado — 84 turnos, 0 errores duros, 0 comprensiones inválidas |
+| Transporte hacia el CRM sobre capturas reales | ✅ verificado |
+| Pruebas E2E contra el CRM en vivo | ⏳ **no ejecutadas · no autorizadas** |
+| Envío real a clientes | ⏳ **no · el envío está simulado** |
+| Operación autónoma | ⏳ **no** |
+
+**En el sitio no aparece la expresión «en producción» para el agente.** La tarjeta dice *«En validación»* y el caso lo explica en un capítulo propio. Es lo que la evidencia sostiene.
+
+## 0B.4 Dirección de arte aplicada
+
+«Taller de ingeniería» se usó **como principio, nunca como temática**. No hay metal, tornillos, franjas industriales, señalética ni ninguna referencia visual automotriz — eso habría atado la identidad de Felipe a la de un cliente.
+
+Lo que sí se aplicó:
+
+| Principio | Decisión concreta |
+|---|---|
+| Precisión | Escala tipográfica modular de 7 pasos; suelo real de 13px; **dos** opacidades de línea y **tres** radios (antes 6 y 5) |
+| Evidencia | Ninguna capacidad se declara sin un enlace que la respalde |
+| Medición | Componente `Measure`: significado en lenguaje normal primero, sigla y metodología después |
+| Documentación | Secciones numeradas (`01 — Trabajo`), etiquetas en monoespaciada, capítulos en los casos |
+| Proceso | Los casos cuentan iteraciones y fallos, no sólo resultados |
+| Iteración | Fechas visibles en cada dato |
+
+**Cambio de paleta.** Se abandonó cyan sobre slate —la combinación por defecto del portfolio de desarrollador— por un neutro frío (`#0B0D10`) con un único acento ámbar (`#E8A33D`). Se retiraron el violeta decorativo, los tres orbes de desenfoque, la retícula de fondo, los resplandores y el `text-shadow` del titular.
+
+**La prueba del nombre:** si se sustituye «Felipe Droguett» por otro, la página **deja de tener sentido**. El hero cuenta una secuencia concreta (grabar videos → tienda → publicidad → automatizar la atención), la sección de capacidades está construida sobre los problemas de un negocio real, y los dos casos son suyos. No es una plantilla con un nombre encima.
+
+## 0B.5 Segunda auditoría — las seis lecturas
+
+| Lectura | Pregunta | Veredicto |
+|---|---|---|
+| **Persona común** | ¿Entiendo qué hace sin conocer sus herramientas? | ✅ Sí. El hero no tiene una sola sigla |
+| **Cliente de marketing** | ¿Hay método detrás de campañas y contenido? | ⚠️ **Parcial.** Existe la capacidad «Traer clientes» con evidencia y los capítulos «Atraer» y «Medir» del caso. Falta superficie propia (D3) |
+| **Recruiter** | ¿Hay trabajo técnico real y reciente? | ✅ Sí. Tarjeta «En validación · 2026 · en curso», stack real, formación acreditada y verificable |
+| **Tech Lead** | ¿Puedo bajar hasta arquitectura, fallos, tests y decisiones? | ✅ Sí. Nueve capítulos, con modos de fallo medidos y límites declarados |
+| **Founder** | ¿Entiendo por qué una capacidad llevó a la siguiente? | ✅ Sí. Es la tesis explícita de la sección de capacidades y la estructura del caso longitudinal |
+| **Diseñador** | ¿Se siente diseñado para esta historia? | ✅ Razonablemente. El sistema (secciones numeradas, dato con metodología, monoespaciada como etiqueta) nace del contenido. No es memorable todavía |
+
+**Cinco de seis son claramente positivas. La del cliente de marketing es la que queda a medias**, y depende de una decisión tuya (D-02, opción B completa = tercer caso sobre el CyberDay).
+
+## 0B.6 Decisiones que siguen necesitándote
+
+| # | Qué necesito | Por qué |
+|---|---|---|
+| 1 | **D-02** — ¿se hace el tercer caso (marketing/CyberDay)? | Es lo único que cierra la lectura del cliente de marketing |
+| 2 | **D-03** — repositorio remoto | El proyecto tiene historial local pero no destino |
+| 3 | **Confirmar la fecha de cierre de la consultoría independiente** | Puse «Sep 2021 — Feb 2026» para eliminar el doble «Actualidad». Es una asunción mía |
+| 4 | **Confirmar cómo se calcularon los $800.000** | Escribí «revisión manual de las consultas cruzada con el ticket promedio». Si el método fue otro, hay que corregirlo |
+| 5 | **Confirmar el «≈25% online»** y su fuente | Lo atribuí a reportes internos del cliente |
+| 6 | **¿Hay capturas publicables?** | Panel de campañas, antes/después, tienda. Es la deuda D2 y la más visible |
+
+---
+
 # 1. EXECUTIVE SUMMARY
 
 ## 1.1 La conclusión en una frase

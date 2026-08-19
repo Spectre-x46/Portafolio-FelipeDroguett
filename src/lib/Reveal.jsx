@@ -72,7 +72,15 @@ export default function Reveal({ children, delay = 0, as: Tag = 'div', className
     const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
     if (reduce) { setShown(true); return }
 
-    return register({ el, show: () => setShown(true) })
+    const unregister = register({ el, show: () => setShown(true) })
+
+    // Red de seguridad. Si por cualquier motivo la barrida no llegase a este
+    // elemento —un scroll muy rápido, un navegador que no dispara eventos como
+    // esperamos, una pestaña en segundo plano— se muestra igual a los 3
+    // segundos. Prefiero perder la animación antes que dejar texto invisible.
+    const net = setTimeout(() => setShown(true), 3000)
+
+    return () => { unregister(); clearTimeout(net) }
   }, [])
 
   return (

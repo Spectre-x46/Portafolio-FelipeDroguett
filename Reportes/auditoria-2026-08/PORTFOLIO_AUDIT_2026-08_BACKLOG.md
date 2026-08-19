@@ -1,8 +1,114 @@
-# BACKLOG EJECUTABLE — AUDITORÍA 2026-08  ·  v2
+# BACKLOG EJECUTABLE — AUDITORÍA 2026-08  ·  v3
 
 **Documento maestro:** `PORTFOLIO_AUDIT_2026-08.md`
-**Fecha:** 2026-08-19 · **Revisión v2:** 2026-08-19
+**Fecha:** 2026-08-19 · **v2:** revisión estratégica · **v3:** ejecución local
 **Uso:** ejecutar sprints sin repetir la investigación. Basta con *"Ejecuta Sprint 0"* o *"Ejecuta PORT-P0-005"*.
+
+---
+
+# ⚑ REGISTRO DE EJECUCIÓN LOCAL — 2026-08-19
+
+**Alcance ejecutado:** Sprints 0, 1, 2, 3 y hardening técnico. **Sólo en local.**
+**NO ejecutado (por instrucción):** Sprint 1B (GitHub), Sprint 4 (GitHub), Sprint 5 (LinkedIn), dominio, email, rotación de secretos.
+**Sin push, sin deploy, sin remoto, sin cambios en Netlify, GitHub, LinkedIn ni en el repositorio de El Bajón.**
+
+## Checkpoints locales
+
+```
+860051b  hardening: a11y, foco, imagen social, enlaces duplicados, escala base
+5f79530  sprint 0-3: reposicionamiento, dos case studies, sistema de diseño
+1e8b5bb  checkpoint: baseline pre-auditoría v2   ← punto de retorno
+```
+`git remote -v` está vacío a propósito. Para volver atrás: `git reset --hard 1e8b5bb`.
+
+## Estado de los tickets
+
+| Ticket | Estado | Nota |
+|---|---|---|
+| `INFRA-P0-001` | ✅ **parcial** | Repositorio Git local inicializado con 3 checkpoints. **Falta el remoto** (D-03) |
+| `PORT-P0-002` | ✅ hecho | `href="/assets/favicon.svg"` + favicon redibujado en la paleta nueva |
+| `PORT-P0-003` | ✅ hecho | `og-image.png` 1200×630 generada y enlazada, con `og:image:*` y `twitter:image` |
+| `PORT-P0-004` | ✅ hecho | `:focus-visible` global + variante oscura sobre el enlace de salto |
+| `PORT-P0-005` | ✅ hecho | Todo claim fechado, con herramienta y lab/campo. Ver §Metodología abajo |
+| `PORT-P0-006` | ✅ hecho | `<title>`, description, Schema y `knowsAbout` reescritos. **Sin título-eslogan** |
+| `PORT-P0-007` | ✅ hecho | Tarjeta "Este Portafolio" y `proyecto-portfolio.jpg` eliminados |
+| `PORT-P0-008` | ✅ hecho | Formación acreditada con enlace de verificación a Acreditta |
+| `PORT-P2-009` | ✅ hecho | Sitemap con las 3 rutas y `lastmod` real |
+| `PORT-P3-010` | ✅ hecho | Logo → `/` con objetivo táctil de 44px |
+| `PORT-P0-101` | ✅ hecho | Entrada "actualidad" reescrita con las tres capas |
+| `PORT-P0-102` | ✅ hecho | `Skills` → `Capabilities`: 4 capacidades, cada una con evidencia enlazada |
+| `PORT-P1-103` | ⚠️ **parcial** | El marketing tiene capacidad propia y capítulos «Atraer» y «Medir» en el caso de TT. **No** tiene case study propio (depende de D-02 opción B completa) |
+| `PORT-P1-104` | ✅ hecho | Formación jerarquizada, cursos cortos agrupados, credencial enlazada |
+| `PORT-P2-105` | ✅ hecho | Colapso del timeline en **todos** los anchos. 7 entradas → 2 visibles |
+| `PORT-P2-106` | ⚠️ **requiere confirmación** | Entrada id 4 cerrada en «Feb 2026» para eliminar el doble «Actualidad». **Asunción mía** |
+| `PORT-P1-107` | ✅ hecho | Hero sin eslogan: nombre + descripción factual + evidencia |
+| `CASE-P0-201` | ✅ hecho | Case study del agente, 9 capítulos, anonimizado |
+| `CASE-P1-202` | ✅ hecho | Arquitectura por capas, en texto estructurado (no SVG: más legible y accesible) |
+| `CASE-P1-203` | ✅ hecho | Embudo de evaluación 3.990 → 48.937 → 500 |
+| `CASE-P0-204` | ✅ hecho | `/caso/agente-comercial` + tarjeta + sitemap |
+| `CASE-P1-205` | ❌ **anulado** | Sustituido: el caso de TT termina en el problema operativo y **no** enlaza al agente (§18 de tus instrucciones) |
+| `CASE-P0-206` | ✅ hecho | Revisión de confidencialidad aplicada. Ver §Anonimización abajo |
+| `PORT-P1-301` | ✅ hecho | Hero → Trabajo → Criterio → Capacidades → Trayectoria → Contacto |
+| `PORT-P1-302` | ✅ hecho | «Leer el caso» es botón de 44px; el enlace de 190×16 px ya no existe |
+| `PORT-P1-303` | ✅ hecho | La tarjeta de evidencia se renderiza en **todos** los anchos |
+| `PORT-P1-304` | ✅ hecho | Caso de TT reestructurado en 6 capítulos longitudinales |
+| `PORT-P1-305` | ⚠️ **parcial** | Hay evidencia estructural (tablas, embudos, flujo, arquitectura, deuda técnica). **Faltan capturas reales** — ver deuda |
+| `PORT-P1-306` | ✅ hecho | **0 fallos de contraste** en las 3 rutas (antes 36) |
+| `PORT-P1-307` | ✅ hecho | Sólo queda un enlace en línea dentro de un párrafo (exento por WCAG 2.5.8) |
+| `PORT-P2-308` | ✅ hecho | Escala modular de 7 pasos, suelo real de 13px |
+| `PORT-P3-309` | ⏸️ no hecho | La miniatura de TT sigue siendo la misma captura |
+| `PORT-P3-310` | ✅ hecho | Enlace «Saltar al contenido» con foco propio |
+| `PORT-P2-604` | ✅ **adelantado** | Code splitting: los casos son chunks aparte |
+| `PORT-P2-607` | ✅ **adelantado** | `prefers-reduced-motion` real, ahora sí gobierna el JS |
+| `PORT-P2-608` | ✅ **adelantado** | Meta por ruta sin añadir dependencias (`useSeo`) |
+| `DESIGN-P2-601/602` | ✅ **adelantado parcial** | Tokens completos y dirección visual nueva. Ver §Dirección de arte |
+| `GH-*`, `LI-*` | ⏸️ **no ejecutado** | Fuera del alcance de esta sesión por instrucción |
+| `INFRA-P1-701/702/703` | ⏸️ diferidos | Dominio, email y rotación de secretos |
+
+## Correcciones al propio backlog (pediste que las hiciera)
+
+| # | Corrección |
+|---|---|
+| 1 | **«Medir» no sustituye a «Atender».** Los cinco movimientos canónicos siguen siendo **Vender → Atraer → Convertir → Atender → Confiar**. «Medir» es transversal y existe únicamente como **capítulo 04 dentro del caso de Tokyo Tunning**, no como movimiento global |
+| 2 | **Metodología de métricas.** Se eliminó la fórmula «940 ms campo» aplicada a un dato de Lighthouse. Ahora: Lighthouse = **laboratorio** siempre; y se dice explícitamente que **un 100 de Lighthouse no demuestra conformidad WCAG** |
+| 3 | **Anonimización del agente.** Se elimina `CASE-P1-205` (enlace cruzado). Los dos casos no se enlazan en ninguna dirección |
+| 4 | **Hardening separado de dirección artística.** Los tickets de rendimiento, accesibilidad y build ya no dependen del Sprint 6 |
+| 5 | **Conteo.** 62 tickets → **35 ejecutados o adelantados**, 3 parciales, 1 anulado, 23 fuera de alcance o diferidos |
+
+## Metodología de métricas aplicada en el sitio
+
+Toda cifra pública lleva ahora: qué se midió · cuándo · con qué herramienta · laboratorio o campo · limitación cuando la hay. Ejemplos reales del sitio:
+
+```
+0,3 s      LCP · Lighthouse, laboratorio · jun 2026
+0,00       CLS · medido de nuevo hoy, ago 2026 · sigue en cero
+100/100    Lighthouse Accessibility · laboratorio · jun 2026
+           + nota explícita: un 100 de Lighthouse NO demuestra conformidad WCAG,
+             y al remedir hoy da 96 con 18 avisos de contraste
+27,6×      ROAS · Meta Ads · CyberDay, jun 2026 · 3 días
+$800.000   estimación del negocio por revisión manual, no dato de plataforma
+```
+
+## Anonimización del agente — comprobado
+
+No aparece en ninguna parte del case study: nombre del cliente · cifras de contrato · personas · identificadores de workflow · rutas o URLs de webhook · ids de ejecución · puertos · credenciales · conversaciones · corpus · código propietario · datos bancarios.
+
+Sí aparece, porque se pidió que la función se entendiera: que existe un **webhook de entrada desde el CRM**, descrito por su papel en el flujo y sin ningún dato que permita alcanzarlo.
+
+## Deuda técnica que queda abierta
+
+| # | Deuda | Prioridad |
+|---|---|---|
+| D1 | **Sin prerender.** Sigue siendo render en cliente puro. `PORT-P2-605` no ejecutado | P2 |
+| D2 | **Una sola imagen fotográfica en todo el sitio.** La evidencia es estructural. Faltan capturas reales (panel de campañas, antes/después, tienda) que sean seguras de publicar | P1 |
+| D3 | **El marketing no tiene case study propio.** Vive como capacidad y como capítulos del caso de TT | P1 · D-02 |
+| D4 | **Página larga en móvil:** ~12 viewports a 390px (antes ~10,5). El contenido creció | P3 |
+| D5 | **CLS de 0,0132** en el build local, probablemente por el intercambio de fuentes. Bajo el umbral de 0,1, pero no es cero | P3 |
+| D6 | **Imágenes sin `srcset` ni WebP.** `PORT-P2-606` no ejecutado | P2 |
+| D7 | **Sin CSP.** `PORT-P3-609` no ejecutado | P3 |
+| D8 | La miniatura de Tokyo Tunning sigue sin recapturar | P3 |
+
+---
 
 ## Cambios v1 → v2
 
