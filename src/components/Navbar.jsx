@@ -37,7 +37,7 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <Link
             to="/"
-            className="font-display text-sm font-semibold tracking-tight text-ink"
+            className="inline-flex min-h-[44px] items-center font-display text-sm font-semibold tracking-tight text-ink"
           >
             Felipe Droguett<span className="text-accent">.</span>
           </Link>

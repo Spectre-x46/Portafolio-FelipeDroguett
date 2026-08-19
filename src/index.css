@@ -83,7 +83,7 @@
   /* Etiqueta de sección: numerada, como en documentación técnica. */
   .eyebrow {
     font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
-    font-size: 0.75rem;
+    font-size: 0.8125rem;   /* 13px — suelo del proyecto, nada por debajo */
     letter-spacing: 0.08em;
     color: var(--ink-faint);
   }
@@ -131,11 +131,16 @@
     z-index: 100;
     background: var(--accent);
     color: #0B0D10;
-    padding: 0.6rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 1rem;
     border-radius: 0.375rem;
     font-weight: 600;
     font-size: 0.875rem;
     transition: top 160ms ease;
   }
   .skip-link:focus { top: 0.75rem; }
+  /* Sobre fondo ámbar, un contorno ámbar no se ve. */
+  .skip-link:focus-visible { outline: 2px solid #0B0D10; outline-offset: 2px; }
 }
