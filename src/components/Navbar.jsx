@@ -1,104 +1,110 @@
-import { useState, useEffect } from 'react'
-import { Menu, X, Github } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { Menu, X } from 'lucide-react'
 
 const links = [
-  { href: '#about', label: 'Sobre Mí' },
-  { href: '#roadmap', label: 'Trayectoria' },
-  { href: '#projects', label: 'Proyectos' },
-  { href: '#contact', label: 'Contacto' },
+  { href: '#trabajo',     label: 'Trabajo' },
+  { href: '#criterio',    label: 'Criterio' },
+  { href: '#capacidades', label: 'Capacidades' },
+  { href: '#trayectoria', label: 'Trayectoria' },
+  { href: '#contacto',    label: 'Contacto' },
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const { pathname } = useLocation()
+  const isHome = pathname === '/'
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll)
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => { setOpen(false) }, [pathname])
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'glass-nav shadow-2xl' : 'bg-transparent'
-        }`}
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-200 ${
+        scrolled || open
+          ? 'border-[color:var(--line)] bg-[color:var(--bg)]/95 backdrop-blur'
+          : 'border-transparent bg-transparent'
+      }`}
     >
-      <div className="max-w-6xl mx-auto px-5 sm:px-6">
-        <div className="flex items-center justify-between h-16">
-
-          {/* Logo */}
-          <a href="#" className="font-outfit font-bold text-lg text-white tracking-tight select-none">
-            Droguett<span className="text-cyan-400"> Consulting</span>
-          </a>
-
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-7">
-            {links.map(l => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="text-slate-400 hover:text-cyan-400 text-sm font-medium transition-colors duration-200 cursor-pointer"
-              >
-                {l.label}
-              </a>
-            ))}
-            <a
-              href="https://github.com/Spectre-x46/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 text-slate-300 text-sm font-medium hover:border-cyan-400/50 hover:text-cyan-400 transition-all duration-200 cursor-pointer"
-            >
-              <Github size={14} />
-              GitHub
-            </a>
-          </nav>
-
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setOpen(v => !v)}
-            className="md:hidden text-slate-300 hover:text-white p-2 cursor-pointer transition-colors"
-            aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+      <nav aria-label="Principal" className="mx-auto max-w-page px-5 sm:px-8">
+        <div className="flex h-16 items-center justify-between">
+          <Link
+            to="/"
+            className="font-display text-sm font-semibold tracking-tight text-ink"
           >
-            {open ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-      </div>
+            Felipe Droguett<span className="text-accent">.</span>
+          </Link>
 
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.22, ease: 'easeInOut' }}
-            className="md:hidden glass-nav overflow-hidden"
-          >
-            <div className="max-w-6xl mx-auto px-5 py-4 flex flex-col gap-0.5">
+          {isHome && (
+            <ul className="hidden items-center gap-1 md:flex">
               {links.map(l => (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    className="inline-flex min-h-[44px] items-center rounded px-3 text-sm text-ink-muted transition-colors duration-150 hover:text-ink"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {!isHome && (
+            <Link
+              to="/"
+              className="hidden min-h-[44px] items-center rounded px-3 text-sm text-ink-muted transition-colors hover:text-ink md:inline-flex"
+            >
+              ← Volver al inicio
+            </Link>
+          )}
+
+          {isHome && (
+            <button
+              type="button"
+              onClick={() => setOpen(v => !v)}
+              aria-expanded={open}
+              aria-controls="menu-movil"
+              aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+              className="inline-flex h-11 w-11 items-center justify-center rounded border border-strong text-ink md:hidden"
+            >
+              {open ? <X size={18} aria-hidden="true" /> : <Menu size={18} aria-hidden="true" />}
+            </button>
+          )}
+
+          {!isHome && (
+            <Link
+              to="/"
+              className="inline-flex min-h-[44px] items-center rounded px-3 text-sm text-ink-muted md:hidden"
+            >
+              ← Inicio
+            </Link>
+          )}
+        </div>
+
+        {isHome && open && (
+          <ul id="menu-movil" className="border-t border-[color:var(--line)] py-2 md:hidden">
+            {links.map(l => (
+              <li key={l.href}>
                 <a
-                  key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="text-slate-300 hover:text-cyan-400 py-3 text-sm font-medium border-b border-white/5 last:border-0 transition-colors cursor-pointer"
+                  className="flex min-h-[48px] items-center rounded px-2 text-base text-ink-muted transition-colors hover:text-ink"
                 >
                   {l.label}
                 </a>
-              ))}
-              <a
-                href="https://github.com/Spectre-x46/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-3 px-4 py-2 rounded-full border border-white/20 text-slate-300 text-sm w-fit cursor-pointer"
-              >
-                <Github size={14} />
-                GitHub & Proyectos
-              </a>
-            </div>
-          </motion.div>
+              </li>
+            ))}
+          </ul>
         )}
-      </AnimatePresence>
+      </nav>
     </header>
   )
 }

@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#0a0e1a"/>
-  <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle"
-    font-family="'Outfit', 'Inter', sans-serif" font-weight="700" font-size="26" fill="#22d3ee">FD</text>
+  <rect width="64" height="64" rx="14" fill="#0B0D10"/>
+  <rect x="6" y="6" width="52" height="52" rx="10" fill="none" stroke="#E8A33D" stroke-width="2" opacity="0.5"/>
+  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle"
+    font-family="Outfit, Inter, sans-serif" font-weight="700" font-size="25" fill="#E8A33D">FD</text>
 </svg>
