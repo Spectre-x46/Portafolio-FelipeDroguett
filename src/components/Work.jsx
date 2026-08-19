@@ -27,11 +27,12 @@ export default function Work() {
             className="font-display font-extrabold uppercase leading-[0.9] tracking-[-0.035em] text-ink"
             style={{ fontSize: 'clamp(2.4rem, 8vw, 5.5rem)' }}
           >
-            Dos casos
+            Dos casos en profundidad
           </h2>
           <p className="mt-6 max-w-prose text-base text-ink-muted">
-            Uno es un negocio que acompañé tres años. El otro es el sistema que estoy construyendo
-            ahora y todavía no está terminado — también cuento eso.
+            Los dos primeros están documentados de punta a punta: qué había, qué decidí, qué se
+            rompió y qué falta. Más abajo hay otros proyectos funcionales que muestran otra parte
+            del trabajo.
           </p>
         </Reveal>
       </div>

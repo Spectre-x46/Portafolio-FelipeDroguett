@@ -1,4 +1,5 @@
-import { Mail, MessageSquare, Linkedin, ArrowUpRight } from 'lucide-react'
+import { Mail, MessageSquare, Linkedin, Github, ArrowUpRight } from 'lucide-react'
+import { EXTERNOS, EXTERNO_ATTRS } from '../lib/links'
 import Reveal from '../lib/Reveal'
 
 /**
@@ -11,7 +12,8 @@ import Reveal from '../lib/Reveal'
 const canales = [
   { Icon: Mail, label: 'Correo', value: 'felipedroguett18@gmail.com', href: 'mailto:felipedroguett18@gmail.com', note: 'Lo reviso todos los días' },
   { Icon: MessageSquare, label: 'WhatsApp', value: '+56 9 7621 4891', href: 'https://wa.me/56976214891', note: 'Para algo corto' },
-  { Icon: Linkedin, label: 'LinkedIn', value: '/in/fdroguetto', href: 'https://www.linkedin.com/in/fdroguetto/', note: 'Trayectoria y formación' },
+  { Icon: Linkedin, label: EXTERNOS.linkedin.label, value: EXTERNOS.linkedin.handle, href: EXTERNOS.linkedin.href, note: EXTERNOS.linkedin.nota },
+  { Icon: Github,   label: EXTERNOS.github.label,   value: EXTERNOS.github.handle,   href: EXTERNOS.github.href,   note: EXTERNOS.github.nota },
 ]
 
 export default function Contact() {
@@ -49,8 +51,7 @@ export default function Contact() {
             <Reveal key={label} delay={i * 0.06}>
               <a
                 href={href}
-                target={href.startsWith('mailto') ? undefined : '_blank'}
-                rel="noopener noreferrer"
+                {...(href.startsWith('mailto') ? {} : EXTERNO_ATTRS)}
                 className="group grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-5 gap-y-1 border-t border-[color:var(--line)] py-6 transition-colors duration-200 hover:bg-[color:var(--bg-raised)] sm:gap-x-8 sm:py-8"
               >
                 <Icon size={18} className="text-ink-faint transition-colors group-hover:text-accent-ink" aria-hidden="true" />
