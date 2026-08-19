@@ -16,10 +16,10 @@ import useParallax from '../lib/useParallax'
  * Sin eslogan. El nombre y dos frases de hechos.
  */
 export default function Hero() {
-  const portrait = useParallax({ max: 9 })
+  const { areaRef, targetRef } = useParallax()
 
   return (
-    <section className="relative flex min-h-[100svh] flex-col overflow-hidden">
+    <section ref={areaRef} className="relative flex min-h-[100svh] flex-col overflow-hidden">
 
       {/* ── Capa 0 · fondo ── */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -34,7 +34,7 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              'radial-gradient(ellipse 46% 62% at 50% 92%, #000 0%, rgba(0,0,0,0.92) 34%, rgba(0,0,0,0.62) 58%, rgba(0,0,0,0.24) 78%, transparent 94%)',
+              'radial-gradient(ellipse 44% 92% at 50% 100%, #000 0%, rgba(0,0,0,0.93) 36%, rgba(0,0,0,0.66) 60%, rgba(0,0,0,0.26) 80%, transparent 96%)',
           }}
         />
       </div>
@@ -63,9 +63,16 @@ export default function Hero() {
           solapando el nombre, y el torso se disuelve sobre el texto. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-[26svh] z-20 flex justify-center xl:top-auto xl:bottom-0"
+        className="pointer-events-none absolute inset-x-0 top-[26svh] z-20 flex justify-center [perspective:1400px] xl:top-auto xl:bottom-0"
       >
-        <div ref={portrait} className="enter enter-2 portrait-mask">
+        {/* La animación de entrada y el parallax viven en elementos distintos:
+            una animación CSS con fill `both` sigue aplicando su transform al
+            terminar y pisaría el que escribe el hook. */}
+        <div className="enter enter-2">
+          <div
+            ref={targetRef}
+            className="portrait-mask [backface-visibility:hidden] [transform-style:preserve-3d]"
+          >
           <picture>
             <source srcSet="/assets/felipe-3d-sm.webp" media="(max-width: 640px)" />
             <img
@@ -75,9 +82,10 @@ export default function Hero() {
               height="1639"
               fetchpriority="high"
               decoding="async"
-              className="block h-auto w-[74vw] sm:w-[52vw] lg:w-[44vw] xl:w-[clamp(300px,34vw,470px)]"
+              className="block h-auto w-[74vw] sm:w-[52vw] lg:w-[44vw] xl:w-[clamp(300px,34vw,545px)]"
             />
-          </picture>
+            </picture>
+          </div>
         </div>
       </div>
 
