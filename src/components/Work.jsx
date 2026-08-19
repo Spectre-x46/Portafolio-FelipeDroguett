@@ -157,8 +157,11 @@ export default function Work() {
               </div>
 
               <div className="order-2 border-t border-[color:var(--line)] bg-[color:var(--bg)] p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10">
-                <p className="eyebrow mb-6">Qué pasa cuando alguien escribe</p>
-                <FlowPreview />
+                <p className="eyebrow mb-1">Orquestación</p>
+                <p className="mb-6 text-sm text-ink-muted">
+                  El recorrido de un mensaje, tal como está en el workflow.
+                </p>
+                <WorkflowGraph />
               </div>
             </div>
           </article>
@@ -175,10 +178,47 @@ export default function Work() {
 /**
  * Trabajos menores.
  *
- * Deliberadamente más pequeños que los dos casos. Son reales y merecen estar,
- * pero no tienen el mismo peso de evidencia y presentarlos igual restaría a los
- * que sí lo tienen. También es el sitio donde irán los siguientes.
+ * Deliberadamente más pequeños que 01 y 02: son reales y merecen estar, pero no
+ * tienen el mismo peso de evidencia y presentarlos igual restaría a los que sí
+ * lo tienen. Ahora con miniatura real —captura del sitio funcionando, no un
+ * mockup— porque una fila de puro texto se leía como una nota al pie.
+ *
+ * En escritorio: número → imagen → contenido → CTA.
+ * En móvil: imagen → número y título → contenido → CTA.
  */
+const otros = [
+  {
+    n: '03',
+    titulo: 'El Telégrafo',
+    estado: 'Funcional · interfaz en curso',
+    tono: 'pending',
+    contexto: 'Estación de práctica de CW · proyecto personal',
+    href: 'https://codigo-morse-online.netlify.app/',
+    img: '/assets/trabajo-telegrafo.webp',
+    alt: 'Interfaz del Telégrafo: la llave abierta con su medidor de duración y la palabra SOS traducida a puntos y rayas',
+    texto:
+      'Volví al código Morse que aprendí de niño y terminé construyendo el sitio donde practicarlo. Es una llave que funciona en el navegador: se mantiene pulsada la barra espaciadora y el sistema mide cuánto dura cada pulsación para distinguir punto de raya. Tiene modo de copia y de transmisión, con velocidad en palabras por minuto y tono ajustable, como en un equipo real.',
+    nota:
+      'Lo hice funcional antes que bonito y se nota: la interfaz todavía le debe bastante al contenido.',
+    tags: ['JavaScript', 'Web Audio', 'Temporización CW', 'Sin dependencias'],
+  },
+  {
+    n: '04',
+    titulo: 'El Bajón de la Cami',
+    estado: 'Proyecto de cliente · pausado',
+    tono: 'neutral',
+    contexto: 'Menú digital y pedidos · Santiago',
+    href: 'https://elbajondelacami.netlify.app/',
+    img: '/assets/trabajo-bajon.webp',
+    alt: 'Catálogo de El Bajón de la Cami con fichas de producto, precios y la barra de carrito con el total',
+    texto:
+      'Menú digital para un local de comida: catálogo por categorías con foto, precio y descripción, promociones aparte, ficha de producto con notas para la cocina, carrito con total, elección entre retiro en local o envío a domicilio, y el pedido armado y enviado por WhatsApp. También muestra la ubicación en un mapa.',
+    nota:
+      'Está pausado. Verifiqué el recorrido completo —agregar, carrito, entrega y envío del pedido— y funciona.',
+    tags: ['JavaScript', 'Alpine.js', 'Tailwind', 'Pedido por WhatsApp'],
+  },
+]
+
 function OtrosTrabajos() {
   return (
     <div className="mx-auto mt-20 max-w-page px-5 sm:mt-28 sm:px-8">
@@ -186,95 +226,163 @@ function OtrosTrabajos() {
         <p className="eyebrow mb-8">Otros trabajos</p>
       </Reveal>
 
-      <Reveal delay={0.05}>
-        <a
-          href="https://codigo-morse-online.netlify.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group grid gap-5 border-t border-[color:var(--line)] py-8 transition-colors duration-200 hover:bg-[color:var(--bg-raised)] sm:py-10 md:grid-cols-[minmax(0,5rem)_minmax(0,1fr)_auto] md:items-start md:gap-10"
-        >
-          <span
-            className="measure font-display text-xl font-extrabold leading-none text-[color:var(--ink-deco)]"
-            aria-hidden="true"
+      {otros.map((o, i) => (
+        <Reveal key={o.n} delay={i * 0.06}>
+          <a
+            href={o.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group grid gap-x-8 gap-y-5 border-t border-[color:var(--line)] py-8 transition-colors duration-200 hover:bg-[color:var(--bg-raised)] sm:py-10 lg:grid-cols-[3.5rem_19rem_minmax(0,1fr)_auto] lg:items-start"
           >
-            03
-          </span>
-
-          <span className="min-w-0">
-            <span className="flex flex-wrap items-center gap-x-3 gap-y-2">
-              <span className="font-display text-lg font-semibold text-ink">El Telégrafo</span>
-              <Status tone="pending">Funcional · interfaz en curso</Status>
-            </span>
-            <span className="mt-1 block text-sm text-ink-faint">
-              Estación de práctica de CW · para un radioaficionado
+            {/* número — en móvil va junto al título */}
+            <span
+              className="measure hidden font-display text-xl font-extrabold leading-none text-[color:var(--ink-deco)] lg:block"
+              aria-hidden="true"
+            >
+              {o.n}
             </span>
 
-            <span className="mt-4 block max-w-prose text-base text-ink-muted">
-              Una llave de telégrafo que funciona en el navegador: se pulsa con la barra
-              espaciadora y el sistema mide cuánto dura cada pulsación para distinguir punto de
-              raya. Tiene modo de copia —escuchar y transcribir— y modo de transmisión, con
-              velocidad en palabras por minuto y tono ajustable, como en un equipo real.
+            <span className="block overflow-hidden rounded border border-[color:var(--line)] bg-sunken">
+              <img
+                src={o.img}
+                alt={o.alt}
+                width="760"
+                height="475"
+                loading="lazy"
+                decoding="async"
+                className="block h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]"
+              />
             </span>
 
-            <span className="mt-4 block max-w-prose text-sm text-ink-faint">
-              Lo hice funcional antes que bonito y se nota: la interfaz todavía le debe bastante al
-              contenido. Lo dejo así porque es lo que es.
+            <span className="min-w-0">
+              <span className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <span className="measure text-sm text-[color:var(--ink-deco)] lg:hidden" aria-hidden="true">
+                  {o.n}
+                </span>
+                <span className="font-display text-lg font-semibold text-ink">{o.titulo}</span>
+                <Status tone={o.tono}>{o.estado}</Status>
+              </span>
+              <span className="mt-1 block text-sm text-ink-faint">{o.contexto}</span>
+
+              <span className="mt-4 block max-w-prose text-base text-ink-muted">{o.texto}</span>
+              <span className="mt-3 block max-w-prose text-sm text-ink-faint">{o.nota}</span>
+
+              <span className="mt-5 flex flex-wrap gap-1.5">
+                {o.tags.map(t => <Tag key={t}>{t}</Tag>)}
+              </span>
             </span>
 
-            <span className="mt-5 flex flex-wrap gap-1.5">
-              {['JavaScript', 'Web Audio', 'Temporización CW', 'Sin dependencias'].map(t => (
-                <Tag key={t}>{t}</Tag>
-              ))}
+            <span className="inline-flex min-h-[44px] items-center gap-2 text-sm text-accent-ink transition-transform duration-200 group-hover:translate-x-0.5 lg:self-center">
+              Abrir <ArrowUpRight size={15} aria-hidden="true" />
             </span>
-          </span>
-
-          <span className="inline-flex min-h-[44px] items-center gap-2 self-center text-sm text-accent-ink transition-transform duration-200 group-hover:translate-x-0.5">
-            Abrir <ArrowUpRight size={15} aria-hidden="true" />
-          </span>
-        </a>
-      </Reveal>
+          </a>
+        </Reveal>
+      ))}
 
       <div className="border-t border-[color:var(--line)]" />
     </div>
   )
 }
 
-/* Vista previa del recorrido. Es evidencia —el flujo real, resumido—, no adorno. */
-const pasos = [
-  ['Llega un mensaje', 'Instagram o WhatsApp'],
-  ['El CRM avisa', 'webhook de entrada'],
-  ['Se entiende', 'modelo · salida estructurada'],
-  ['Se verifica', 'catálogo, precios, reglas'],
+/**
+ * Grafo real del workflow de orquestación.
+ *
+ * No es un dibujo ilustrativo: los nodos y las conexiones se transcribieron del
+ * JSON del workflow que estuvo recibiendo eventos. Se conservan los nombres
+ * reales salvo dos, cambiados por seguridad: la ruta del webhook y el canal
+ * concreto de salida. No aparecen identificadores, URLs, puertos ni cliente.
+ *
+ * Lo que hace legible el diagrama es la forma: dos compuertas pueden terminar
+ * el turno antes de que el mensaje llegue al modelo.
+ */
+const NODOS = [
+  { id: 'wh',   t: 'Webhook de entrada', y: 6 },
+  { id: 'pre',  t: 'Preprocess',         y: 44 },
+  { id: 'g1',   t: 'V2RejectGate',       y: 82,  gate: true },
+  { id: 'g2',   t: 'TakeoverGate',       y: 120, gate: true },
+  { id: 'ag',   t: 'AI Agent',           y: 166, alto: 40 },
+  { id: 'val',  t: 'Validator',          y: 226 },
+  { id: 'snd',  t: 'Envío al canal',     y: 264 },
+  { id: 'env',  t: 'Build V2 Envelope',  y: 302 },
+  { id: 'res',  t: 'Respond',            y: 340 },
+]
+const RAMAS = [
+  { t: 'V2RejectResponder',  y: 82 },
+  { t: 'SilencedResponder',  y: 120 },
 ]
 
-function FlowPreview() {
+function WorkflowGraph() {
+  const W = 186, X = 8, RX = 196, RW = 116
   return (
-    <div>
-      <ol className="space-y-0">
-        {pasos.map(([t, d], i) => (
-          <li key={t} className="relative border-l border-[color:var(--line-strong)] pb-5 pl-5 last:pb-5">
-            <span
-              aria-hidden="true"
-              className="absolute -left-[3px] top-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--line-strong)]"
+    <figure className="m-0">
+      <svg
+        viewBox="0 0 320 372"
+        className="w-full"
+        role="img"
+        aria-label="Grafo del workflow: el webhook entra en Preprocess y pasa por dos compuertas. La primera puede rechazar el turno; la segunda lo silencia si una persona ya tomó la conversación. Sólo si ambas dejan pasar interviene el modelo, después el validador y el envío."
+      >
+        <defs>
+          <marker id="wf-a" markerWidth="5" markerHeight="5" refX="4.2" refY="2.5" orient="auto">
+            <path d="M0,0 L5,2.5 L0,5 Z" fill="var(--ink-faint)" />
+          </marker>
+        </defs>
+
+        {/* columna principal */}
+        {NODOS.map((n, i) => {
+          const h = n.alto ?? 22
+          const next = NODOS[i + 1]
+          return (
+            <g key={n.id}>
+              <rect
+                x={X} y={n.y} width={W} height={h} rx="2"
+                fill={n.id === 'ag' ? 'var(--accent-weak)' : 'var(--bg-raised)'}
+                stroke={n.gate ? 'var(--accent-line)' : n.id === 'ag' ? 'var(--accent-line)' : 'var(--line-strong)'}
+              />
+              <text
+                x={X + 10} y={n.y + 14.5}
+                fill={n.gate || n.id === 'ag' ? 'var(--accent-ink)' : 'var(--ink-muted)'}
+                fontSize="9.5" fontFamily="ui-monospace, monospace"
+              >{n.t}</text>
+              {n.id === 'ag' && (
+                <text x={X + 10} y={n.y + 30} fill="var(--ink-faint)" fontSize="8" fontFamily="ui-monospace, monospace">
+                  modelo · memoria · 4 herramientas
+                </text>
+              )}
+              {next && (
+                <line
+                  x1={X + 30} y1={n.y + h} x2={X + 30} y2={next.y - 1}
+                  stroke="var(--ink-faint)" strokeWidth="1" markerEnd="url(#wf-a)"
+                />
+              )}
+            </g>
+          )
+        })}
+
+        {/* salidas laterales de las dos compuertas */}
+        {RAMAS.map((r, i) => (
+          <g key={r.t}>
+            <line x1={X + W} y1={r.y + 11} x2={RX - 1} y2={r.y + 11}
+                  stroke="var(--ink-faint)" strokeWidth="1" markerEnd="url(#wf-a)" />
+            <rect x={RX} y={r.y} width={RW} height="22" rx="2"
+                  fill="var(--bg-raised)" stroke="var(--line-strong)" />
+            <text x={RX + 8} y={r.y + 14.5} fill="var(--ink-muted)"
+                  fontSize="9.5" fontFamily="ui-monospace, monospace">{r.t}</text>
+            {/* bajan a reunirse con el tramo final */}
+            <path
+              d={`M ${RX + RW / 2} ${r.y + 22} V ${i === 0 ? 345 : 307} H ${X + W + 4}`}
+              fill="none" stroke="var(--line-strong)" strokeWidth="1"
+              strokeDasharray="3 3" markerEnd="url(#wf-a)"
             />
-            <p className="text-sm text-ink">{t}</p>
-            <p className="measure mt-0.5 text-xs text-ink-faint">{d}</p>
-          </li>
+          </g>
         ))}
-      </ol>
+      </svg>
 
-      <div className="ml-5 border-l border-[color:var(--line-strong)] pb-4 pl-5">
-        <p className="measure text-xs text-ink-faint">¿puede responder con seguridad?</p>
-      </div>
-
-      <div className="ml-5 grid gap-2 pl-5 sm:grid-cols-2">
-        <div className="rounded-sm border border-[color:var(--accent-line)] bg-[color:var(--accent-weak)] px-3 py-2">
-          <p className="measure text-xs text-accent-ink">sí → responde</p>
-        </div>
-        <div className="rounded-sm border border-strong px-3 py-2">
-          <p className="measure text-xs text-ink-muted">no → una persona</p>
-        </div>
-      </div>
-    </div>
+      <figcaption className="measure mt-4 text-xs leading-relaxed text-ink-faint">
+        Transcrito del workflow real. Dos compuertas pueden cerrar el turno antes del modelo:
+        una rechaza el mensaje si no cumple el contrato, la otra se calla si una persona ya
+        está atendiendo.
+      </figcaption>
+    </figure>
   )
 }
+
