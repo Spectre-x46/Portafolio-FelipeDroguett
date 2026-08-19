@@ -82,7 +82,7 @@
   /* Tamaño del nombre. Dos líneas hasta 1280px; una sola línea por encima,
      donde sí cabe entera. El salto estaba en 1024 y ahí "DROGUETT" se cortaba. */
   .hero-name { font-size: clamp(2.9rem, 15vw, 9rem); }
-  @media (min-width: 1280px) { .hero-name { font-size: min(10.2vw, 11rem); } }
+  @media (min-width: 1280px) { .hero-name { font-size: min(10.2vw, 12.5rem); } }
 
   .display-metal {
     color: #D3D9DE;
@@ -92,12 +92,7 @@
     -webkit-text-fill-color: transparent;
   }
   @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
-    /* Tamaño del nombre. Dos líneas hasta 1280px; una sola línea por encima,
-     donde sí cabe entera. El salto estaba en 1024 y ahí "DROGUETT" se cortaba. */
-  .hero-name { font-size: clamp(2.9rem, 15vw, 9rem); }
-  @media (min-width: 1280px) { .hero-name { font-size: min(10.2vw, 11rem); } }
-
-  .display-metal { background-image: none; -webkit-text-fill-color: currentColor; }
+    .display-metal { background-image: none; -webkit-text-fill-color: currentColor; }
   }
 
   /* Retrato: el original viene sobre negro puro. En lugar de recortarlo
