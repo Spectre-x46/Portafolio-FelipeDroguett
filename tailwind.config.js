@@ -34,7 +34,7 @@ export default {
       fontSize: {
         xs:   ['0.8125rem', { lineHeight: '1.5' }],    // 13px — suelo absoluto
         sm:   ['0.9375rem', { lineHeight: '1.6' }],    // 15px
-        base: ['1.0625rem', { lineHeight: '1.7' }],    // 17px — cuerpo
+        base: ['1rem',      { lineHeight: '1.65' }],   // 16px — cuerpo
         lg:   ['1.25rem',   { lineHeight: '1.5' }],    // 20px
         xl:   ['1.625rem',  { lineHeight: '1.3' }],    // 26px
         '2xl':['2.25rem',   { lineHeight: '1.15' }],   // 36px

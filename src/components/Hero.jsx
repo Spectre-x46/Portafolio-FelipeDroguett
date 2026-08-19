@@ -21,8 +21,8 @@ export default function Hero() {
         style={{ background: 'radial-gradient(60% 100% at 22% 0%, rgba(232,163,61,0.10) 0%, transparent 70%)' }}
       />
 
-      <div className="relative mx-auto max-w-page px-5 pb-10 pt-28 sm:px-8 sm:pb-12 sm:pt-32">
-        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-16">
+      <div className="relative mx-auto max-w-page px-5 pb-10 pt-24 sm:px-8 sm:pb-12 sm:pt-32">
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-14">
 
           {/* ── Identidad ── */}
           <div>
@@ -44,8 +44,7 @@ export default function Hero() {
                 </p>
                 <p className="text-ink">
                   Desde julio construyo un sistema que responde consultas comerciales por chat. No
-                  planifiqué esa secuencia: cada parte apareció cuando la anterior funcionó y dejó al
-                  descubierto el problema siguiente.
+                  planifiqué esa secuencia: cada parte apareció cuando la anterior funcionó.
                 </p>
               </div>
             </Reveal>
@@ -111,7 +110,7 @@ export default function Hero() {
             de con espacio vacío, y es donde vive la credencial: enlazada y
             verificable, pero sin ocupar el titular. */}
         <Reveal delay={0.26}>
-          <dl className="mt-12 grid gap-px overflow-hidden rounded border border-[color:var(--line)] bg-[color:var(--line)] sm:mt-14 sm:grid-cols-3">
+          <dl className="mt-8 grid gap-px overflow-hidden rounded border border-[color:var(--line)] bg-[color:var(--line)] sm:mt-10 sm:grid-cols-3">
             <div className="bg-raised px-5 py-4">
               <dt className="measure text-xs text-ink-faint">Con el mismo cliente</dt>
               <dd className="mt-1 text-sm text-ink">Tres años · 2023 – 2026</dd>

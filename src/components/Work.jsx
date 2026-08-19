@@ -26,19 +26,20 @@ export default function Work() {
         {/* ── Caso 1 · Tokyo Tunning ── */}
         <Reveal>
           <article className="surface group flex h-full flex-col overflow-hidden rounded-lg transition-colors duration-200 hover:border-[color:var(--accent-line)]">
-            <Link to="/caso/tokyo-tunning" className="block focus-visible:outline-offset-[-2px]">
-              <div className="relative aspect-[16/9] overflow-hidden border-b border-[color:var(--line)]">
-                <img
-                  src="/assets/proyecto-tokyo.jpg"
-                  alt="Tienda online de Tokyo Tunning en producción, mostrando el catálogo de accesorios automotrices"
-                  width="1280"
-                  height="720"
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                />
-              </div>
-            </Link>
+            {/* La imagen no es un enlace: duplicaría el botón "Leer el caso" que
+                está más abajo, y dos enlaces al mismo destino dentro de la misma
+                tarjeta molestan a quien navega con lector de pantalla. */}
+            <div className="relative aspect-[16/9] overflow-hidden border-b border-[color:var(--line)]">
+              <img
+                src="/assets/proyecto-tokyo.jpg"
+                alt="Tienda online de Tokyo Tunning en producción, mostrando el catálogo de accesorios automotrices"
+                width="1280"
+                height="720"
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+            </div>
 
             <div className="flex flex-1 flex-col p-6">
               <div className="mb-4 flex flex-wrap items-center gap-2">
@@ -77,11 +78,9 @@ export default function Work() {
         {/* ── Caso 2 · Agente comercial (anonimizado) ── */}
         <Reveal delay={0.08}>
           <article className="surface group flex h-full flex-col overflow-hidden rounded-lg transition-colors duration-200 hover:border-[color:var(--accent-line)]">
-            <Link to="/caso/agente-comercial" className="block focus-visible:outline-offset-[-2px]">
-              <div className="relative aspect-[16/9] overflow-hidden border-b border-[color:var(--line)] bg-sunken">
-                <FlowPreview />
-              </div>
-            </Link>
+            <div className="relative aspect-[16/9] overflow-hidden border-b border-[color:var(--line)] bg-sunken">
+              <FlowPreview />
+            </div>
 
             <div className="flex flex-1 flex-col p-6">
               <div className="mb-4 flex flex-wrap items-center gap-2">
@@ -129,7 +128,10 @@ function FlowPreview() {
   const steps = ['Mensaje', 'CRM', 'Se entiende', 'Se verifica', '¿Seguro?']
   return (
     <div className="flex h-full w-full items-center justify-center p-6">
-      <svg viewBox="0 0 340 130" className="h-full w-full" role="img" aria-label="Recorrido de un mensaje: llega por el CRM, se entiende, se verifica contra datos reales y se decide si responde el sistema o una persona">
+      {/* Decorativo aquí: el mismo recorrido está descrito paso a paso, en texto,
+          dentro del caso. Marcarlo como imagen con nombre propio haría que su
+          texto compitiera con el nombre accesible del enlace que lo envuelve. */}
+      <svg viewBox="0 0 340 130" className="h-full w-full" aria-hidden="true" focusable="false">
         <defs>
           <marker id="wk-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
             <path d="M0,0 L6,3 L0,6 Z" fill="var(--ink-faint)" />
