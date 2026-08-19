@@ -59,7 +59,7 @@ export default function Work() {
               <div className="order-1 flex flex-col p-6 sm:p-8 lg:order-2 lg:p-10">
                 <div className="flex items-start justify-between gap-4">
                   <span
-                    className="measure font-display font-extrabold leading-none text-[color:var(--line-strong)]"
+                    className="measure font-display font-extrabold leading-none text-[color:var(--ink-deco)]"
                     style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
                     aria-hidden="true"
                   >
@@ -113,7 +113,7 @@ export default function Work() {
               <div className="order-1 flex flex-col p-6 sm:p-8 lg:p-10">
                 <div className="flex items-start justify-between gap-4">
                   <span
-                    className="measure font-display font-extrabold leading-none text-[color:var(--line-strong)]"
+                    className="measure font-display font-extrabold leading-none text-[color:var(--ink-deco)]"
                     style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
                     aria-hidden="true"
                   >

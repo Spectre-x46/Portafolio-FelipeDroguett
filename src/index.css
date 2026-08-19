@@ -28,6 +28,11 @@
     --accent-weak: rgba(232, 163, 61, 0.14);
     --accent-line: rgba(232, 163, 61, 0.34);
 
+    /* Números de índice. Decorativos, pero se mantienen sobre 3:1 igual:
+       son texto renderizado y el estándar del proyecto no admite excepciones
+       cómodas. Medidos: 3.55:1 sobre --bg-raised y 3.29:1 sobre la clara. */
+    --ink-deco:    rgba(255, 255, 255, 0.38);
+
     /* Semánticos de estado (evidencia) */
     --ok:          #6BBF8A;
     --pending:     #C9A227;
@@ -74,6 +79,11 @@
      Gradiente vertical mate. Busca aspecto editorial y ligeramente metálico,
      no cromado ni neón. El color de respaldo importa: si el navegador no
      soporta background-clip:text, el nombre se ve igual de legible. */
+  /* Tamaño del nombre. Dos líneas hasta 1280px; una sola línea por encima,
+     donde sí cabe entera. El salto estaba en 1024 y ahí "DROGUETT" se cortaba. */
+  .hero-name { font-size: clamp(2.9rem, 15vw, 9rem); }
+  @media (min-width: 1280px) { .hero-name { font-size: min(10.2vw, 11rem); } }
+
   .display-metal {
     color: #D3D9DE;
     background-image: linear-gradient(180deg, #5C636D 0%, #AEB7BF 46%, #E6EBEF 100%);
@@ -82,7 +92,12 @@
     -webkit-text-fill-color: transparent;
   }
   @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
-    .display-metal { background-image: none; -webkit-text-fill-color: currentColor; }
+    /* Tamaño del nombre. Dos líneas hasta 1280px; una sola línea por encima,
+     donde sí cabe entera. El salto estaba en 1024 y ahí "DROGUETT" se cortaba. */
+  .hero-name { font-size: clamp(2.9rem, 15vw, 9rem); }
+  @media (min-width: 1280px) { .hero-name { font-size: min(10.2vw, 11rem); } }
+
+  .display-metal { background-image: none; -webkit-text-fill-color: currentColor; }
   }
 
   /* Retrato: el original viene sobre negro puro. En lugar de recortarlo
@@ -140,9 +155,7 @@
      depende del fondo y aquí 27 textos bajaban de 4.5:1 sin que se notara. */
   .on-light .ink-2 { color: #3C424A; }   /*  8.4:1 — cuerpo secundario */
   .on-light .ink-3 { color: #5B626B; }   /*  5.2:1 — etiquetas y notas */
-  .on-light .ink-deco {                   /* decorativo, aria-hidden */
-    color: rgba(20, 23, 27, 0.17);
-  }
+  .on-light .ink-deco { color: rgba(20, 23, 27, 0.50); }   /* 3.29:1 */
   .on-light .eyebrow-light {
     font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
     font-size: 0.8125rem;
