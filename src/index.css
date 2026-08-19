@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #020617;
+    color: #f8fafc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism — slate-based para mejor contraste sobre fondo oscuro */
+  .glass {
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .glass-strong {
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+  }
+  .glass-nav {
+    background: rgba(2, 6, 23, 0.90);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  /* Glows */
+  .glow-cyan {
+    box-shadow: 0 0 40px rgba(6,182,212,0.22), 0 0 80px rgba(6,182,212,0.09), inset 0 0 40px rgba(6,182,212,0.03);
+  }
+  .glow-cyan-sm {
+    box-shadow: 0 0 20px rgba(6,182,212,0.35);
+  }
+  .glow-violet {
+    box-shadow: 0 0 40px rgba(139,92,246,0.18);
+  }
+  .text-glow-cyan {
+    text-shadow: 0 0 28px rgba(6,182,212,0.6);
+  }
+
+  /* Background grid */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /* Tag / badge chip — sin @apply anidado sobre custom utilities */
+  .chip-cyan {
+    @apply px-3 py-1.5 rounded-lg text-xs font-medium cursor-default transition-all duration-200 text-cyan-400;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(34, 211, 238, 0.4);
+  }
+  .chip-cyan:hover {
+    border-color: rgba(34, 211, 238, 0.7);
+    background: rgba(34, 211, 238, 0.05);
+  }
+  .chip-muted {
+    @apply px-3 py-1.5 rounded-lg text-xs font-medium cursor-default transition-all duration-200 text-slate-400;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .chip-muted:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+}
