@@ -165,8 +165,77 @@ export default function Work() {
         </div>
       </div>
 
+      <OtrosTrabajos />
+
       <div className="h-20 sm:h-28" />
     </section>
+  )
+}
+
+/**
+ * Trabajos menores.
+ *
+ * Deliberadamente más pequeños que los dos casos. Son reales y merecen estar,
+ * pero no tienen el mismo peso de evidencia y presentarlos igual restaría a los
+ * que sí lo tienen. También es el sitio donde irán los siguientes.
+ */
+function OtrosTrabajos() {
+  return (
+    <div className="mx-auto mt-20 max-w-page px-5 sm:mt-28 sm:px-8">
+      <Reveal>
+        <p className="eyebrow mb-8">Otros trabajos</p>
+      </Reveal>
+
+      <Reveal delay={0.05}>
+        <a
+          href="https://codigo-morse-online.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group grid gap-5 border-t border-[color:var(--line)] py-8 transition-colors duration-200 hover:bg-[color:var(--bg-raised)] sm:py-10 md:grid-cols-[minmax(0,5rem)_minmax(0,1fr)_auto] md:items-start md:gap-10"
+        >
+          <span
+            className="measure font-display text-xl font-extrabold leading-none text-[color:var(--ink-deco)]"
+            aria-hidden="true"
+          >
+            03
+          </span>
+
+          <span className="min-w-0">
+            <span className="flex flex-wrap items-center gap-x-3 gap-y-2">
+              <span className="font-display text-lg font-semibold text-ink">El Telégrafo</span>
+              <Status tone="pending">Funcional · interfaz en curso</Status>
+            </span>
+            <span className="mt-1 block text-sm text-ink-faint">
+              Estación de práctica de CW · para un radioaficionado
+            </span>
+
+            <span className="mt-4 block max-w-prose text-base text-ink-muted">
+              Una llave de telégrafo que funciona en el navegador: se pulsa con la barra
+              espaciadora y el sistema mide cuánto dura cada pulsación para distinguir punto de
+              raya. Tiene modo de copia —escuchar y transcribir— y modo de transmisión, con
+              velocidad en palabras por minuto y tono ajustable, como en un equipo real.
+            </span>
+
+            <span className="mt-4 block max-w-prose text-sm text-ink-faint">
+              Lo hice funcional antes que bonito y se nota: la interfaz todavía le debe bastante al
+              contenido. Lo dejo así porque es lo que es.
+            </span>
+
+            <span className="mt-5 flex flex-wrap gap-1.5">
+              {['JavaScript', 'Web Audio', 'Temporización CW', 'Sin dependencias'].map(t => (
+                <Tag key={t}>{t}</Tag>
+              ))}
+            </span>
+          </span>
+
+          <span className="inline-flex min-h-[44px] items-center gap-2 self-center text-sm text-accent-ink transition-transform duration-200 group-hover:translate-x-0.5">
+            Abrir <ArrowUpRight size={15} aria-hidden="true" />
+          </span>
+        </a>
+      </Reveal>
+
+      <div className="border-t border-[color:var(--line)]" />
+    </div>
   )
 }
 
