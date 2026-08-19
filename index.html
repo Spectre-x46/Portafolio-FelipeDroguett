@@ -3,23 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#0B0D10" />
 
-  <!-- SEO Primary -->
-  <title>Felipe Droguett | Consultor Digital & Desarrollador Web</title>
-  <meta name="description" content="Portafolio de Felipe Droguett — Consultor Digital & Desarrollador Web. Fusiono 10 años de experiencia comercial con desarrollo de software para escalar negocios reales." />
-  <link rel="canonical" href="https://felipe-droguett.netlify.app" />
+  <!-- SEO. Estos valores son el punto de partida; cada ruta los sobreescribe
+       con los suyos desde src/lib/useSeo.js -->
+  <title>Felipe Droguett — desarrollo, campañas y automatización comercial</title>
+  <meta name="description" content="Trabajo dentro de negocios que venden online: su tienda, su publicidad y la automatización de su atención. Dos casos documentados con métricas fechadas." />
+  <link rel="canonical" href="https://felipe-droguett.netlify.app/" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Felipe Droguett | Consultor Digital & Desarrollador Web" />
-  <meta property="og:description" content="Ayudo a escalar negocios mediante tecnología y desarrollo web. Ex-Fundador con track record de $15M/mes." />
+  <meta property="og:site_name" content="Felipe Droguett" />
+  <meta property="og:title" content="Felipe Droguett — desarrollo, campañas y automatización comercial" />
+  <meta property="og:description" content="Trabajo dentro de negocios que venden online: su tienda, su publicidad y la automatización de su atención. Dos casos documentados con métricas fechadas." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://felipe-droguett.netlify.app" />
+  <meta property="og:url" content="https://felipe-droguett.netlify.app/" />
   <meta property="og:locale" content="es_CL" />
+  <meta property="og:image" content="https://felipe-droguett.netlify.app/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Felipe Droguett — desarrollo, campañas y automatización comercial" />
 
-  <!-- Twitter Card -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Felipe Droguett | Consultor Digital & Desarrollador Web" />
-  <meta name="twitter:description" content="Ayudo a escalar negocios mediante tecnología y desarrollo web. Ex-Fundador con track record de $15M/mes." />
+  <meta name="twitter:title" content="Felipe Droguett — desarrollo, campañas y automatización comercial" />
+  <meta name="twitter:description" content="Trabajo dentro de negocios que venden online: su tienda, su publicidad y la automatización de su atención." />
+  <meta name="twitter:image" content="https://felipe-droguett.netlify.app/assets/og-image.png" />
 
   <!-- Schema.org -->
   <script type="application/ld+json">
@@ -27,24 +36,44 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Felipe Droguett",
-    "jobTitle": "Consultor Digital & Desarrollador Web",
-    "description": "Consultor Digital y Desarrollador Web con 10 años de experiencia en operaciones, marketing y e-commerce",
+    "alternateName": "Felipe Orlando Droguett Ortiz",
+    "jobTitle": "Desarrollo web, campañas y automatización comercial",
+    "description": "Trabajo dentro de negocios que venden online: desarrollo de su tienda, gestión de su publicidad y automatización de su atención comercial.",
     "url": "https://felipe-droguett.netlify.app",
     "email": "felipedroguett18@gmail.com",
+    "worksFor": { "@type": "Organization", "name": "Droguett Consulting SpA" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Santiago", "addressCountry": "CL" },
     "sameAs": [
       "https://github.com/Spectre-x46/",
       "https://www.linkedin.com/in/fdroguetto/"
     ],
-    "knowsAbout": ["WordPress","WooCommerce","PHP","JavaScript","HTML5","CSS3","Python","Linux","E-commerce","Digital Marketing","SEO","Meta Ads"]
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Bootcamp Desarrollo de Aplicaciones Full Stack Python",
+      "credentialCategory": "certificate",
+      "recognizedBy": { "@type": "Organization", "name": "Talento Digital para Chile" },
+      "dateCreated": "2026-08-04",
+      "url": "https://www.acreditta.com/credential/8f73702b-0511-40f1-80b0-6224284c8eab"
+    },
+    "knowsAbout": [
+      "E-commerce", "WooCommerce", "WordPress", "PHP", "JavaScript", "React",
+      "Node.js", "n8n", "OpenAI API", "Agentes de IA", "APIs REST", "CRM",
+      "Automatización", "Meta Ads", "Analítica digital", "Producción de contenido",
+      "Core Web Vitals", "Accesibilidad web", "Python", "Linux"
+    ]
   }
   </script>
 
-  <!-- Google Fonts -->
+  <!-- Fuentes: sólo los pesos que se usan -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet" />
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+
+  <!-- Marca que el JS arrancó. Sin esto, las apariciones no ocultan nada:
+       una página que depende de JavaScript para ser legible es una página rota. -->
+  <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
   <div id="root"></div>
