@@ -205,17 +205,18 @@ const otros = [
   {
     n: '04',
     titulo: 'El Bajón de la Cami',
-    estado: 'Proyecto de cliente · pausado',
-    tono: 'neutral',
-    contexto: 'Menú digital y pedidos · Santiago',
+    estado: 'Prototipo funcional · pausado',
+    tono: 'pending',
+    contexto: 'Prototipo de menú digital y pedidos · cliente',
     href: 'https://elbajondelacami.netlify.app/',
     img: '/assets/trabajo-bajon.webp',
-    alt: 'Catálogo de El Bajón de la Cami con fichas de producto, precios y la barra de carrito con el total',
+    alt: 'Prototipo del menú digital: fichas de producto con precio y la barra de carrito con el total',
     texto:
-      'Menú digital para un local de comida: catálogo por categorías con foto, precio y descripción, promociones aparte, ficha de producto con notas para la cocina, carrito con total, elección entre retiro en local o envío a domicilio, y el pedido armado y enviado por WhatsApp. También muestra la ubicación en un mapa.',
+      'Un cliente quería explorar cómo podría funcionar un menú digital para su negocio antes de decidir si avanzaba con una versión definitiva. Construí un prototipo funcional con catálogo por categorías, ficha de producto, carrito con notas para la cocina, retiro o despacho, ubicación y generación del pedido por WhatsApp. Probé el recorrido completo y funciona.',
     nota:
-      'Está pausado. Verifiqué el recorrido completo —agregar, carrito, entrega y envío del pedido— y funciona.',
-    tags: ['JavaScript', 'Alpine.js', 'Tailwind', 'Pedido por WhatsApp'],
+      'Es una prueba de concepto, no el catálogo definitivo del negocio. Las imágenes de producto fueron generadas con IA y parte de los productos mostrados son demostrativos: no necesariamente corresponden a la oferta real del cliente. El proyecto está actualmente en pausa.',
+    notaDestacada: true,
+    tags: ['Prototipado', 'JavaScript', 'Alpine.js', 'Tailwind', 'Pedido por WhatsApp'],
   },
 ]
 
@@ -265,7 +266,13 @@ function OtrosTrabajos() {
               <span className="mt-1 block text-sm text-ink-faint">{o.contexto}</span>
 
               <span className="mt-4 block max-w-prose text-base text-ink-muted">{o.texto}</span>
-              <span className="mt-3 block max-w-prose text-sm text-ink-faint">{o.nota}</span>
+              <span
+                className={`mt-3 block max-w-prose text-sm text-ink-faint ${
+                  o.notaDestacada ? 'border-l-2 border-[color:var(--pending)] pl-3' : ''
+                }`}
+              >
+                {o.nota}
+              </span>
 
               <span className="mt-5 flex flex-wrap gap-1.5">
                 {o.tags.map(t => <Tag key={t}>{t}</Tag>)}
