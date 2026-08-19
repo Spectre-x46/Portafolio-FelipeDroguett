@@ -70,6 +70,95 @@
 }
 
 @layer components {
+  /* ── Tipografía protagonista ──────────────────────────────────────────────
+     Gradiente vertical mate. Busca aspecto editorial y ligeramente metálico,
+     no cromado ni neón. El color de respaldo importa: si el navegador no
+     soporta background-clip:text, el nombre se ve igual de legible. */
+  .display-metal {
+    color: #D3D9DE;
+    background-image: linear-gradient(180deg, #5C636D 0%, #AEB7BF 46%, #E6EBEF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+    .display-metal { background-image: none; -webkit-text-fill-color: currentColor; }
+  }
+
+  /* Retrato: el original viene sobre negro puro. En lugar de recortarlo
+     —lo que estropearía pelo y orejas— se desvanecen los bordes superior y
+     laterales para que se funda con el fondo. */
+  .portrait-mask {
+    /* Móvil: además del borde superior y los laterales, el torso se disuelve
+       por abajo para que el texto pueda apoyarse encima sin recortarlo. */
+    -webkit-mask-image:
+      linear-gradient(to bottom, transparent 0%, #000 13%, #000 62%, transparent 99%),
+      linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-image:
+      linear-gradient(to bottom, transparent 0%, #000 13%, #000 62%, transparent 99%),
+      linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+  @media (min-width: 1024px) {
+    /* Escritorio: entra por el borde inferior, así que ahí no se desvanece. */
+    .portrait-mask {
+      -webkit-mask-image:
+        linear-gradient(to bottom, transparent 0%, #000 16%),
+        linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%);
+      mask-image:
+        linear-gradient(to bottom, transparent 0%, #000 16%),
+        linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%);
+    }
+  }
+
+  /* ── Entrada del hero ─────────────────────────────────────────────────────
+     Escalonada y corta: nada obliga a esperar. */
+  .enter { animation: enter-up 620ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .enter-1 { animation-delay: 60ms; }
+  .enter-2 { animation-delay: 220ms; }
+  .enter-3 { animation-delay: 340ms; }
+  .enter-4 { animation-delay: 420ms; }
+  .enter-5 { animation-delay: 500ms; }
+
+  @keyframes enter-up {
+    from { opacity: 0; transform: translate3d(0, 26px, 0); }
+    to   { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .enter { animation: none !important; }
+  }
+
+  /* ── Superficie clara ─────────────────────────────────────────────────────
+     Corte de ritmo a media página. Blanco cálido, no blanco puro: sobre una
+     pantalla con el resto en negro, el blanco puro deslumbra. */
+  .on-light {
+    background: #F1EFEA;
+    color: #14171B;                 /* 15.3:1 */
+  }
+  /* Colores explícitos en lugar de opacidades: con opacity el contraste real
+     depende del fondo y aquí 27 textos bajaban de 4.5:1 sin que se notara. */
+  .on-light .ink-2 { color: #3C424A; }   /*  8.4:1 — cuerpo secundario */
+  .on-light .ink-3 { color: #5B626B; }   /*  5.2:1 — etiquetas y notas */
+  .on-light .ink-deco {                   /* decorativo, aria-hidden */
+    color: rgba(20, 23, 27, 0.17);
+  }
+  .on-light .eyebrow-light {
+    font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    color: rgba(20, 23, 27, 0.55);
+  }
+  .on-light .link-light {
+    color: #8A5A05;                 /* ámbar oscurecido: 5.4:1 sobre #F1EFEA */
+    text-decoration: underline;
+    text-decoration-color: rgba(138, 90, 5, 0.4);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 160ms ease;
+  }
+  .on-light .link-light:hover { text-decoration-color: #8A5A05; }
+  .on-light :focus-visible { outline-color: #14171B; }
+
   /* Superficie de contenido. Sólida y legible — sin glass generalizado. */
   .surface {
     background: var(--bg-raised);

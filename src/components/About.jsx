@@ -1,14 +1,13 @@
 import Reveal from '../lib/Reveal'
-import { Section } from '../lib/ui'
 
 /**
  * Criterio.
  *
- * El copy de esta sección era lo mejor del sitio anterior — concreto, en
- * primera persona, imposible de copiar a otro portfolio. Se conserva la voz;
- * sólo se corrigió el pilar de seguridad, que presentaba la formación en
- * hardening como si hubiera causado el trabajo de fiabilidad. Es al revés:
- * era un interés previo que después resultó útil.
+ * Era una fila de tres tarjetas idénticas, que hacía que la mejor frase del
+ * sitio pareciera documentación. Ahora es editorial: la frase a escala de
+ * manifiesto y los tres principios como entradas con regla, no como cajas.
+ *
+ * El texto no se tocó: estaba aprobado.
  */
 const pilares = [
   {
@@ -33,24 +32,53 @@ const pilares = [
 
 export default function About() {
   return (
-    <Section
-      id="criterio"
-      className="bg-[color:var(--bg-sunken)]"
-      n="02 — Criterio"
-      title="No vendo una herramienta. Vendo criterio."
-      lead="La tecnología aprendida desde el problema —y no al revés— resuelve distinto."
-    >
-      <div className="grid gap-px overflow-hidden rounded-lg border border-[color:var(--line)] bg-[color:var(--line)] md:grid-cols-3">
-        {pilares.map((p, i) => (
-          <Reveal key={p.n} delay={i * 0.07}>
-            <div className="h-full bg-raised p-6 sm:p-7">
-              <p className="measure mb-4 text-xs text-accent-ink">{p.n}</p>
-              <h3 className="font-display text-lg font-semibold leading-snug text-ink">{p.title}</h3>
-              <p className="mt-3 text-base text-ink-muted">{p.text}</p>
-            </div>
-          </Reveal>
-        ))}
+    <section id="criterio" className="scroll-mt-20 py-24 sm:py-32">
+      <div className="mx-auto max-w-page px-5 sm:px-8">
+
+        <Reveal>
+          <p className="eyebrow mb-8">02 — Criterio</p>
+        </Reveal>
+
+        <Reveal delay={0.05}>
+          <h2
+            className="max-w-[16ch] font-display font-extrabold leading-[0.92] tracking-[-0.035em] text-ink"
+            style={{ fontSize: 'clamp(2.2rem, 7vw, 5rem)' }}
+          >
+            No vendo una herramienta.{' '}
+            <span className="text-accent-ink">Vendo criterio.</span>
+          </h2>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <p className="mt-8 max-w-prose text-lg text-ink-muted">
+            La tecnología aprendida desde el problema —y no al revés— resuelve distinto.
+          </p>
+        </Reveal>
+
+        <div className="mt-16 sm:mt-24">
+          {pilares.map((p, i) => (
+            <Reveal key={p.n} delay={i * 0.06}>
+              <div className="grid gap-4 border-t border-[color:var(--line)] py-9 sm:py-12 md:grid-cols-[5rem_minmax(0,22rem)_minmax(0,1fr)] md:gap-10">
+                <p
+                  className="measure font-display font-extrabold leading-none text-[color:var(--line-strong)]"
+                  style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)' }}
+                  aria-hidden="true"
+                >
+                  {p.n}
+                </p>
+                <h3
+                  className="font-display font-semibold leading-tight text-ink"
+                  style={{ fontSize: 'clamp(1.15rem, 2vw, 1.6rem)' }}
+                >
+                  {p.title}
+                </h3>
+                <p className="max-w-prose text-base text-ink-muted">{p.text}</p>
+              </div>
+            </Reveal>
+          ))}
+          <div className="border-t border-[color:var(--line)]" />
+        </div>
       </div>
-    </Section>
+    </section>
   )
 }

@@ -1,143 +1,152 @@
-import { Link } from 'react-router-dom'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
-import Reveal from '../lib/Reveal'
+import { ArrowRight } from 'lucide-react'
+
+import useParallax from '../lib/useParallax'
 
 /**
  * Hero.
  *
- * No lleva eslogan. Su único trabajo es que en 15 segundos alguien entienda
- * aproximadamente a qué me dedico y tenga un motivo para seguir bajando.
- * La evidencia está aquí arriba y se renderiza en TODOS los anchos — en la
- * versión anterior la tarjeta de prueba era `hidden lg:block` y desaparecía
- * por debajo de 1024px, que es donde llega la mayoría del tráfico.
+ * Composición completa en lugar de «texto a la izquierda + tarjeta a la
+ * derecha». Tres capas: fondo con una sola fuente de luz, el nombre a escala
+ * tipográfica grande, y el personaje delante rompiendo la línea de texto.
+ *
+ * El retrato tapa el cuarto inferior de las letras, no su mitad: leemos por la
+ * parte alta de los caracteres, así que ahí se gana profundidad sin perder
+ * legibilidad. Sigue leyéndose FELIPE DROGUETT desde cualquier ancho.
+ *
+ * Sin eslogan. El nombre y dos frases de hechos.
  */
 export default function Hero() {
+  const portrait = useParallax({ max: 9 })
+
   return (
-    <section className="relative overflow-hidden border-b border-[color:var(--line)]">
-      {/* Fondo: una sola fuente de luz cenital. Sin orbes, sin grid decorativo. */}
+    <section className="relative flex min-h-[100svh] flex-col overflow-hidden">
+
+      {/* ── Capa 0 · fondo ── */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        {/* luz cenital ámbar, muy contenida */}
+        <div
+          className="absolute inset-x-0 top-0 h-[55%]"
+          style={{ background: 'radial-gradient(70% 100% at 50% 0%, rgba(232,163,61,0.11) 0%, transparent 68%)' }}
+        />
+        {/* pozo oscuro bajo el personaje: el retrato viene sobre negro puro y
+            esto hace que su recuadro deje de existir visualmente */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 46% 62% at 50% 92%, #000 0%, rgba(0,0,0,0.92) 34%, rgba(0,0,0,0.62) 58%, rgba(0,0,0,0.24) 78%, transparent 94%)',
+          }}
+        />
+      </div>
+
+      {/* ── Capa 1 · nombre ──
+          Se coloca arriba a propósito: así el retrato entra por debajo y sólo
+          muerde el tercio inferior de las letras. Leemos por la parte alta de
+          los caracteres, de modo que el nombre sigue completo. */}
+      <div className="relative z-10 flex flex-1 items-start justify-center px-5 pt-[13svh] sm:px-8 sm:pt-[14svh] lg:pt-[23svh]">
+        <h1 className="enter enter-1 w-full text-center">
+          <span className="sr-only">Felipe Droguett</span>
+          <span
+            aria-hidden="true"
+            className="display-metal block font-display font-extrabold uppercase leading-[0.86] tracking-[-0.04em] lg:leading-[0.84] lg:tracking-[-0.045em]"
+            style={{ fontSize: 'clamp(2.9rem, 15vw, 8.6rem)' }}
+          >
+            <span className="block lg:inline">Felipe</span>
+            <span className="hidden lg:inline">&nbsp;</span>
+            <span className="block lg:inline">Droguett</span>
+          </span>
+        </h1>
+      </div>
+
+      {/* ── Capa 2 · personaje ──
+          En pantallas grandes entra por el borde inferior. En móvil no cabe
+          así —el contenido de abajo lo enterraría— de modo que se ancla arriba,
+          solapando el nombre, y el torso se disuelve sobre el texto. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[420px]"
-        style={{ background: 'radial-gradient(60% 100% at 22% 0%, rgba(232,163,61,0.10) 0%, transparent 70%)' }}
+        className="pointer-events-none absolute inset-x-0 top-[26svh] z-20 flex justify-center lg:top-auto lg:bottom-0"
+      >
+        <div ref={portrait} className="enter enter-2 portrait-mask">
+          <picture>
+            <source srcSet="/assets/felipe-3d-sm.webp" media="(max-width: 640px)" />
+            <img
+              src="/assets/felipe-3d.webp"
+              alt=""
+              width="1100"
+              height="1639"
+              fetchpriority="high"
+              decoding="async"
+              className="block h-auto w-[74vw] sm:w-[52vw] lg:w-[clamp(300px,38vw,448px)]"
+            />
+          </picture>
+        </div>
+      </div>
+
+      {/* Velo entre el retrato y el texto. En móvil el torso llega hasta donde
+          va el párrafo y sin esto el texto compite con la cara. Va por encima
+          del personaje y por debajo del contenido. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[25] h-[52svh] lg:hidden"
+        style={{ background: 'linear-gradient(to top, var(--bg) 18%, rgba(11,13,16,0.94) 42%, rgba(11,13,16,0.55) 68%, transparent 100%)' }}
       />
 
-      <div className="relative mx-auto max-w-page px-5 pb-10 pt-24 sm:px-8 sm:pb-12 sm:pt-32">
-        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-14">
+      {/* ── Capa 3 · contenido funcional ── */}
+      <div className="relative z-30 mx-auto w-full max-w-page px-5 pb-6 sm:px-8">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
 
-          {/* ── Identidad ── */}
-          <div>
-            <Reveal>
-              <p className="eyebrow mb-5">Droguett Consulting SpA · Santiago, Chile</p>
-            </Reveal>
+          <p className="enter enter-3 max-w-[26rem] text-sm text-ink-muted sm:text-base lg:max-w-[22rem]">
+            Entré a grabar videos para un negocio. Tres años después sigo ahí:
+            <span className="text-ink"> contenido, campañas, tienda online</span> y, desde julio,
+            <span className="text-ink"> atención automatizada</span>.
+          </p>
 
-            <Reveal delay={0.05}>
-              <h1 className="font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
-                Felipe Droguett
-              </h1>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <div className="mt-6 max-w-prose space-y-4 text-base text-ink-muted">
-                <p>
-                  Llevo tres años trabajando dentro del mismo negocio. Entré a grabarle videos para
-                  Instagram y terminé ocupándome de su tienda online y de su publicidad.
-                </p>
-                <p className="text-ink">
-                  Desde julio construyo un sistema que responde consultas comerciales por chat. No
-                  planifiqué esa secuencia: cada parte apareció cuando la anterior funcionó.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.15}>
-              <div className="mt-9 flex flex-wrap gap-3">
-                <a
-                  href="#trabajo"
-                  className="inline-flex min-h-[44px] items-center gap-2 rounded bg-accent px-5 text-sm font-medium text-[#0B0D10] transition-colors duration-150 hover:bg-accent-ink"
-                >
-                  Ver en qué he trabajado <ArrowRight size={16} aria-hidden="true" />
-                </a>
-                <a
-                  href="#contacto"
-                  className="inline-flex min-h-[44px] items-center gap-2 rounded border border-strong px-5 text-sm font-medium text-ink transition-colors duration-150 hover:border-accent-line hover:text-accent-ink"
-                >
-                  Hablemos
-                </a>
-              </div>
-            </Reveal>
+          <div className="enter enter-4 flex flex-wrap gap-3 lg:justify-end">
+            <a
+              href="#trabajo"
+              className="inline-flex min-h-[48px] items-center gap-2 rounded-full bg-accent px-6 text-sm font-medium text-[#0B0D10] transition-colors duration-150 hover:bg-accent-ink"
+            >
+              Ver mi trabajo <ArrowRight size={16} aria-hidden="true" />
+            </a>
+            <a
+              href="#contacto"
+              className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-strong px-6 text-sm font-medium text-ink transition-colors duration-150 hover:border-accent-line hover:text-accent-ink"
+            >
+              Hablemos
+            </a>
           </div>
-
-          {/* ── Evidencia. Visible en todos los anchos. ── */}
-          <Reveal delay={0.2}>
-            <aside className="surface rounded-lg p-5 sm:p-6">
-              <p className="eyebrow mb-4">Un caso, tres años</p>
-
-              <p className="text-sm leading-relaxed text-ink-muted">
-                Tokyo Tunning vendía accesorios en dos puestos de feria, sin marca ni forma de vender
-                fuera del persa. Hoy tiene tienda online, envía a todo Chile y hace su propia
-                publicidad.
-              </p>
-
-              <dl className="mt-5 space-y-3.5">
-                <div>
-                  <dt className="text-sm text-ink">Las ventas del negocio se multiplicaron por treinta</dt>
-                  <dd className="measure mt-0.5 text-sm text-accent-ink">
-                    $500K → $15M al mes · 18 meses
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm text-ink">
-                    En el CyberDay, cada peso puesto en publicidad devolvió veintisiete
-                  </dt>
-                  <dd className="measure mt-0.5 text-sm text-accent-ink">
-                    ROAS 27:1 · jun 2026 · 3 días
-                  </dd>
-                </div>
-              </dl>
-
-              <Link
-                to="/caso/tokyo-tunning"
-                className="mt-6 inline-flex min-h-[44px] items-center gap-2 text-sm font-medium text-accent-ink underline decoration-[color:var(--accent-line)] underline-offset-4 transition-colors hover:decoration-[color:var(--accent)]"
-              >
-                Leer el caso completo
-                <ArrowUpRight size={15} aria-hidden="true" />
-              </Link>
-            </aside>
-          </Reveal>
         </div>
-
-        {/* Franja de datos. Cierra el bloque con hechos comprobables en lugar
-            de con espacio vacío, y es donde vive la credencial: enlazada y
-            verificable, pero sin ocupar el titular. */}
-        <Reveal delay={0.26}>
-          <dl className="mt-8 grid gap-px overflow-hidden rounded border border-[color:var(--line)] bg-[color:var(--line)] sm:mt-10 sm:grid-cols-3">
-            <div className="bg-raised px-5 py-4">
-              <dt className="measure text-xs text-ink-faint">Con el mismo cliente</dt>
-              <dd className="mt-1 text-sm text-ink">Tres años · 2023 – 2026</dd>
-            </div>
-            <div className="bg-raised px-5 py-4">
-              <dt className="measure text-xs text-ink-faint">Construyendo ahora</dt>
-              <dd className="mt-1 text-sm text-ink">
-                Atención comercial automatizada · desde jul 2026
-              </dd>
-            </div>
-            <div className="bg-raised px-5 py-4">
-              <dt className="measure text-xs text-ink-faint">Formación acreditada</dt>
-              <dd className="mt-1 text-sm text-ink">
-                Full Stack Python ·{' '}
-                <a
-                  href="https://www.acreditta.com/credential/8f73702b-0511-40f1-80b0-6224284c8eab"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link"
-                >
-                  verificable
-                </a>
-              </dd>
-            </div>
-          </dl>
-        </Reveal>
       </div>
+
+      {/* ── Raíl de evidencia ── */}
+      <div className="relative z-30 border-t border-[color:var(--line)]">
+        <dl className="enter enter-5 mx-auto grid max-w-page grid-cols-2 gap-x-6 gap-y-4 px-5 py-5 sm:px-8 lg:grid-cols-3">
+          <div>
+            <dt className="measure text-xs text-ink-faint">3 años</dt>
+            <dd className="mt-0.5 text-sm text-ink">en el mismo negocio</dd>
+          </div>
+          <div>
+            <dt className="measure text-xs text-accent-ink">27:1</dt>
+            <dd className="mt-0.5 text-sm text-ink">
+              retorno publicitario<span className="text-ink-faint"> · CyberDay 2026</span>
+            </dd>
+          </div>
+          <div className="col-span-2 lg:col-span-1">
+            <dt className="measure text-xs text-ink-faint">Full Stack Python</dt>
+            <dd className="mt-0.5 text-sm text-ink">
+              <a
+                href="https://www.acreditta.com/credential/8f73702b-0511-40f1-80b0-6224284c8eab"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link"
+              >
+                credencial verificable
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
     </section>
   )
 }

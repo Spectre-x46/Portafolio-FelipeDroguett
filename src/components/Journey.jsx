@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { ChevronDown, ChevronUp, ExternalLink } from 'lucide-react'
 import Reveal from '../lib/Reveal'
-import { Section } from '../lib/ui'
+
 
 /**
  * Trayectoria y formación.
@@ -117,13 +117,29 @@ export default function Journey() {
   const ocultas = timeline.length - timeline.filter(t => !t.optional).length
 
   return (
-    <Section
-      id="trayectoria"
-      n="04 — Trayectoria"
-      title="Diez años dentro de negocios reales, casi ninguno de ellos tecnológico."
-      lead="Está aquí abajo a propósito: explica de dónde viene el criterio, pero no es lo que vengo a demostrar."
-    >
-      <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
+    <section id="trayectoria" className="scroll-mt-20 py-24 sm:py-32">
+      <div className="mx-auto max-w-page px-5 sm:px-8">
+        <Reveal>
+          <p className="eyebrow mb-8">04 — Trayectoria</p>
+        </Reveal>
+        <Reveal delay={0.05}>
+          {/* Escala deliberadamente menor que Trabajo o Capacidades: esta
+              sección respalda el criterio, no compite con la evidencia. */}
+          <h2
+            className="max-w-[22ch] font-display font-semibold leading-[1.05] tracking-[-0.02em] text-ink"
+            style={{ fontSize: 'clamp(1.6rem, 3.6vw, 2.6rem)' }}
+          >
+            Diez años dentro de negocios reales, casi ninguno de ellos tecnológico.
+          </h2>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <p className="mt-5 max-w-prose text-base text-ink-muted">
+            Está aquí abajo a propósito: explica de dónde viene el criterio, pero no es lo que vengo
+            a demostrar.
+          </p>
+        </Reveal>
+
+      <div className="mt-14 grid gap-12 sm:mt-20 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
 
         {/* ── Línea de tiempo ── */}
         <div>
@@ -203,6 +219,7 @@ export default function Journey() {
           </aside>
         </Reveal>
       </div>
-    </Section>
+      </div>
+    </section>
   )
 }

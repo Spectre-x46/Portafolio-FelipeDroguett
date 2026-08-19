@@ -1,20 +1,21 @@
 import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
 import Reveal from '../lib/Reveal'
-import { Section, Tag } from '../lib/ui'
 
 /**
  * Capacidades.
  *
- * Sustituye a la antigua sección "Stack & Habilidades", que era una nube de
- * chips: omitía todo lo que uso a diario (Node, n8n, LLM, APIs, CRM, tests) y
- * en cambio destacaba Bootstrap 5 y DaVinci Resolve al mismo nivel que PHP.
+ * Superficie clara, a media página. Es el corte de ritmo del recorrido: rompe
+ * la sucesión de negro sobre negro y hace que esta sección se recuerde aparte.
  *
- * Regla que se aplica aquí: ninguna capacidad aparece sin una evidencia que se
- * pueda abrir. Si no hay evidencia enlazable, la capacidad no se declara.
+ * Número grande a la izquierda, contenido a la derecha, reglas horizontales.
+ * Nada de cuatro cajas iguales. Las herramientas quedan subordinadas a la
+ * capacidad: primero el problema en lenguaje normal, después con qué se
+ * resuelve, y sólo entonces el enlace a la evidencia.
  */
 const capacidades = [
   {
+    n: '01',
     problema: 'El negocio no tiene quien lo conozca',
     title: 'Traer clientes',
     text:
@@ -24,6 +25,7 @@ const capacidades = [
     evidencia: 'Caso Tokyo Tunning · capítulo Atraer',
   },
   {
+    n: '02',
     problema: 'Llegan visitas pero no compran',
     title: 'Construir la tienda',
     text:
@@ -33,6 +35,7 @@ const capacidades = [
     evidencia: 'Caso Tokyo Tunning · capítulo Convertir',
   },
   {
+    n: '03',
     problema: 'Hay más consultas de las que alguien puede responder',
     title: 'Automatizar la atención',
     text:
@@ -42,6 +45,7 @@ const capacidades = [
     evidencia: 'Caso Agente comercial · cómo funciona',
   },
   {
+    n: '04',
     problema: 'Funciona, pero no sé si puedo confiar en él',
     title: 'Probar que funciona',
     text:
@@ -54,42 +58,77 @@ const capacidades = [
 
 export default function Capabilities() {
   return (
-    <Section
-      id="capacidades"
-      n="03 — Capacidades"
-      title="Cada una apareció resolviendo el problema que dejó la anterior."
-      lead="No es una lista de disciplinas. Es el orden en que fueron haciendo falta."
-    >
-      <div className="grid gap-5 md:grid-cols-2">
-        {capacidades.map((c, i) => (
-          <Reveal key={c.title} delay={i * 0.06}>
-            <article className="surface flex h-full flex-col rounded-lg p-6 transition-colors duration-200 hover:border-[color:var(--accent-line)]">
-              <p className="measure text-xs text-ink-faint">{c.problema}</p>
-              <h3 className="mt-3 font-display text-lg font-semibold text-ink">{c.title}</h3>
-              <p className="mt-3 flex-1 text-base text-ink-muted">{c.text}</p>
+    <section id="capacidades" className="on-light scroll-mt-20 py-24 sm:py-32">
+      <div className="mx-auto max-w-page px-5 sm:px-8">
 
-              <div className="mt-5 flex flex-wrap gap-1.5">
-                {c.tools.map(t => <Tag key={t}>{t}</Tag>)}
+        <Reveal>
+          <p className="eyebrow-light mb-8">03 — Capacidades</p>
+        </Reveal>
+
+        <Reveal delay={0.05}>
+          <h2
+            className="max-w-[18ch] font-display font-extrabold leading-[0.92] tracking-[-0.035em]"
+            style={{ fontSize: 'clamp(2.2rem, 7vw, 5rem)' }}
+          >
+            Cada una apareció resolviendo el problema que dejó la anterior.
+          </h2>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <p className="ink-2 mt-8 max-w-prose text-lg">
+            No es una lista de disciplinas. Es el orden en que fueron haciendo falta.
+          </p>
+        </Reveal>
+
+        <div className="mt-16 sm:mt-24">
+          {capacidades.map((c, i) => (
+            <Reveal key={c.n} delay={Math.min(i * 0.05, 0.2)}>
+              <div className="grid gap-5 border-t border-[rgba(11,13,16,0.16)] py-10 sm:py-14 md:grid-cols-[minmax(0,7rem)_minmax(0,1fr)] md:gap-12">
+                <p
+                  className="ink-deco measure font-display font-extrabold leading-none"
+                  style={{ fontSize: 'clamp(2.6rem, 7vw, 5.5rem)' }}
+                  aria-hidden="true"
+                >
+                  {c.n}
+                </p>
+
+                <div>
+                  <p className="ink-3 measure text-xs">{c.problema}</p>
+                  <h3
+                    className="mt-3 font-display font-bold uppercase leading-none tracking-[-0.02em]"
+                    style={{ fontSize: 'clamp(1.5rem, 3.4vw, 2.5rem)' }}
+                  >
+                    {c.title}
+                  </h3>
+                  <p className="ink-2 mt-5 max-w-prose text-base">{c.text}</p>
+
+                  <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">
+                    {c.tools.map(t => (
+                      <span key={t} className="ink-3 measure text-xs">{t}</span>
+                    ))}
+                  </div>
+
+                  <Link
+                    to={c.to}
+                    className="link-light mt-7 inline-flex min-h-[44px] items-center gap-2 text-sm"
+                  >
+                    {c.evidencia}
+                    <ArrowUpRight size={14} aria-hidden="true" />
+                  </Link>
+                </div>
               </div>
+            </Reveal>
+          ))}
+          <div className="border-t border-[rgba(11,13,16,0.16)]" />
+        </div>
 
-              <Link
-                to={c.to}
-                className="mt-5 inline-flex min-h-[44px] items-center gap-2 text-sm text-accent-ink underline decoration-[color:var(--accent-line)] underline-offset-4 transition-colors hover:decoration-[color:var(--accent)]"
-              >
-                {c.evidencia}
-                <ArrowUpRight size={14} aria-hidden="true" />
-              </Link>
-            </article>
-          </Reveal>
-        ))}
+        <Reveal delay={0.1}>
+          <p className="ink-3 mt-10 max-w-prose text-sm">
+            También grabo y edito. Uso DaVinci Resolve y Photoshop a diario, pero son herramientas
+            de la primera capacidad, no una competencia aparte.
+          </p>
+        </Reveal>
       </div>
-
-      <Reveal delay={0.2}>
-        <p className="mt-8 max-w-prose text-sm text-ink-faint">
-          También grabo y edito. Uso DaVinci Resolve y Photoshop a diario, pero son herramientas de
-          la primera capacidad, no una competencia aparte.
-        </p>
-      </Reveal>
-    </Section>
+    </section>
   )
 }
