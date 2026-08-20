@@ -1,5 +1,7 @@
 node_modules/
 dist/
+dist-ssr/
+dist-sinprerender/
 .playwright-mcp/
 .DS_Store
 *.local

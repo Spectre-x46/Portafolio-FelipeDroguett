@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const ORIGIN = 'https://felipe-droguett.netlify.app'
+import { ORIGIN } from './seo-routes'
 
 function setMeta(selector, attr, value) {
   let el = document.head.querySelector(selector)
@@ -27,6 +27,10 @@ function setLink(rel, href) {
  * Metadatos por ruta, sin dependencias externas.
  * En la v1 el case study heredaba el <title> de la home: ambas rutas eran
  * indistinguibles en buscadores y al compartirse.
+ *
+ * Esto sólo cubre la navegación en cliente. El HTML que se sirve ya trae los
+ * valores correctos de su ruta escritos en el build; los textos salen de la
+ * misma tabla, `./seo-routes.js`.
  */
 export default function useSeo({ title, description, path = '/', image = '/assets/og-image.png' }) {
   useEffect(() => {
