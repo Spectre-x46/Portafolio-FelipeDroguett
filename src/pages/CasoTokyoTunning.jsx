@@ -70,7 +70,7 @@ export default function CasoTokyoTunning() {
 
       <figure className="mt-10">
         <img
-          src="/assets/proyecto-tokyo.jpg"
+          src="/assets/proyecto-tokyo.webp"
           alt="Portada de la tienda online de Tokyo Tunning, con el menú de categorías y la franja de garantías sobre una fotografía de producto"
           width="1280"
           height="900"
