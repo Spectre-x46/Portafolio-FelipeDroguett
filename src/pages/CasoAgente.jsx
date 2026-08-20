@@ -3,6 +3,7 @@ import { ArrowLeft, CornerDownRight } from 'lucide-react'
 import Reveal from '../lib/Reveal'
 import { Measure, Status } from '../lib/ui'
 import useSeo from '../lib/useSeo'
+import { SEO } from '../lib/seo-routes'
 
 /**
  * Caso · Agente comercial conversacional.
@@ -30,12 +31,7 @@ function Chapter({ id, n, title, children }) {
 }
 
 export default function CasoAgente() {
-  useSeo({
-    title: 'Agente comercial conversacional — caso de estudio | Felipe Droguett',
-    description:
-      'Un sistema que responde consultas comerciales por chat sin inventar precios ni stock. Arquitectura, evaluación sobre 48.937 mensajes reales, fallos encontrados y estado actual — contado sin maquillar.',
-    path: '/caso/agente-comercial',
-  })
+  useSeo(SEO['/caso/agente-comercial'])
 
   return (
     <article className="mx-auto max-w-[54rem] px-5 pb-16 pt-24 sm:px-8 sm:pt-28">

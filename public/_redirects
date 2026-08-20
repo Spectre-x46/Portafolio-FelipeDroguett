@@ -1,1 +1,9 @@
-/*  /index.html  200
+# Las dos rutas prerenderizadas se sirven desde su propio HTML, no desde el
+# comodín. Van antes que /* a propósito: la primera regla que encaja gana, y si
+# el comodín las alcanzase devolvería el HTML de la home —que es exactamente el
+# fallo que el prerender viene a arreglar—.
+/caso/tokyo-tunning       /caso/tokyo-tunning/index.html      200
+/caso/agente-comercial    /caso/agente-comercial/index.html   200
+
+# Todo lo demás sigue entrando por la SPA.
+/*                        /index.html                         200

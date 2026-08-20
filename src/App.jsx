@@ -10,6 +10,7 @@ import Journey from './components/Journey'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import useSeo from './lib/useSeo'
+import { SEO } from './lib/seo-routes'
 
 // Los case studies se cargan bajo demanda. Antes viajaban en el mismo bundle
 // que la home: todo el mundo descargaba el caso completo sin abrirlo.
@@ -29,12 +30,7 @@ function ScrollManager() {
 }
 
 function Home() {
-  useSeo({
-    title: 'Felipe Droguett — desarrollo, campañas y automatización comercial',
-    description:
-      'Trabajo dentro de negocios que venden online: su tienda, su publicidad y la automatización de su atención. Dos casos documentados con métricas fechadas.',
-    path: '/',
-  })
+  useSeo(SEO['/'])
 
   return (
     <>

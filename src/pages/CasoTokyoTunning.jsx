@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowLeft, ExternalLink } from 'lucide-react'
 import { Measure, Status } from '../lib/ui'
 import useSeo from '../lib/useSeo'
+import { SEO } from '../lib/seo-routes'
 
 /**
  * Caso · Tokyo Tunning.
@@ -30,12 +31,7 @@ function Chapter({ id, n, title, children }) {
 }
 
 export default function CasoTokyoTunning() {
-  useSeo({
-    title: 'Tokyo Tunning — de dos puestos de feria a e-commerce | Felipe Droguett',
-    description:
-      'Tres años dentro del mismo negocio: contenido, campañas, tienda online, catálogo y medición. Con las métricas fechadas y la deuda técnica que quedó abierta.',
-    path: '/caso/tokyo-tunning',
-  })
+  useSeo(SEO['/caso/tokyo-tunning'])
 
   return (
     <article className="mx-auto max-w-[54rem] px-5 pb-16 pt-24 sm:px-8 sm:pt-28">

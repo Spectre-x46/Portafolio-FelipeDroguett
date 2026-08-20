@@ -2,6 +2,20 @@
   command   = "npm run build"
   publish   = "dist"
 
+# Rutas prerenderizadas. Cada una tiene su propio HTML con su contenido y sus
+# metadatos, escritos en el build por scripts/prerender.mjs. Van antes del
+# comodín: si éste las alcanzara, LinkedIn, WhatsApp y compañía volverían a ver
+# la preview de la home al compartir un case study.
+[[redirects]]
+  from   = "/caso/tokyo-tunning"
+  to     = "/caso/tokyo-tunning/index.html"
+  status = 200
+
+[[redirects]]
+  from   = "/caso/agente-comercial"
+  to     = "/caso/agente-comercial/index.html"
+  status = 200
+
 [[redirects]]
   from   = "/*"
   to     = "/index.html"
