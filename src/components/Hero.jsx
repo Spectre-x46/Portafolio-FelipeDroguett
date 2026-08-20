@@ -60,7 +60,17 @@ export default function Hero() {
       {/* ── Capa 2 · personaje ──
           En pantallas grandes entra por el borde inferior. En móvil no cabe
           así —el contenido de abajo lo enterraría— de modo que se ancla arriba,
-          solapando el nombre, y el torso se disuelve sobre el texto. */}
+          solapando el nombre, y el torso se disuelve sobre el texto.
+
+          El ancho en xl lleva un tercer término, `53svh`, y no es cosmético.
+          El retrato se dimensionaba sólo contra el ANCHO del viewport mientras
+          su posición y la del nombre dependían del ALTO: en 16:9 el alto que
+          salía de ese ancho llegaba al 90% de la pantalla, el pelo subía hasta
+          la banda del texto y "DRO" desaparecía —el hero se leía FELIPE GUETT
+          a 1280, 1366 y 1536—. Con el tope por altura el retrato ocupa ~79% en
+          cualquier relación de aspecto. A 1920 no cambia nada: ahí sigue
+          mandando el tope de 545px. El solape se conserva: el pelo muerde la
+          base de las letras, que es el efecto buscado. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-[26svh] z-20 flex justify-center [perspective:1400px] xl:top-auto xl:bottom-0"
@@ -82,76 +92,80 @@ export default function Hero() {
               height="1639"
               fetchpriority="high"
               decoding="async"
-              className="block h-auto w-[74vw] sm:w-[52vw] lg:w-[44vw] xl:w-[clamp(300px,34vw,545px)]"
+              className="block h-auto w-[74vw] sm:w-[52vw] lg:w-[44vw] xl:w-[min(34vw,545px,53svh)]"
             />
             </picture>
           </div>
         </div>
       </div>
 
-      {/* Velo entre el retrato y el texto. En móvil el torso llega hasta donde
-          va el párrafo y sin esto el texto compite con la cara. Va por encima
-          del personaje y por debajo del contenido. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[25] h-[52svh] xl:hidden"
-        style={{ background: 'linear-gradient(to top, var(--bg) 18%, rgba(11,13,16,0.94) 42%, rgba(11,13,16,0.55) 68%, transparent 100%)' }}
-      />
+      {/* ── Capa 3 · contenido funcional + raíl ──
+          Van dentro de un mismo contenedor por una razón concreta: el velo que
+          protege el copy se ancla a ESTE bloque, no al viewport.
 
-      {/* ── Capa 3 · contenido funcional ── */}
-      <div className="relative z-30 mx-auto w-full max-w-page px-5 pb-6 sm:px-8">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+          Antes el velo medía `52svh` desde el borde inferior de la sección. En
+          pantallas altas eso cubría el texto por casualidad; en pantallas
+          cortas la sección crece más que el viewport, el bloque de contenido
+          sube y el velo se quedaba por debajo: a 320×568 el párrafo caía 185 px
+          por encima del velo, directamente sobre la cara. Anclado al contenido
+          la relación deja de depender de la altura de pantalla. */}
+      <div className="relative z-30">
+        <div aria-hidden="true" className="hero-veil pointer-events-none absolute inset-x-0 bottom-0 xl:hidden" />
 
-          <p className="enter enter-3 max-w-[26rem] text-sm text-ink-muted sm:text-base lg:max-w-[22rem]">
-            Entré a grabar videos para un negocio. Tres años después sigo ahí:
-            <span className="text-ink"> contenido, campañas, tienda online</span> y, desde julio,
-            <span className="text-ink"> atención automatizada</span>.
-          </p>
+        <div className="relative mx-auto w-full max-w-page px-5 pb-6 sm:px-8">
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
 
-          <div className="enter enter-4 flex flex-wrap gap-3 lg:justify-end">
-            <a
-              href="#trabajo"
-              className="inline-flex min-h-[48px] items-center gap-2 rounded-full bg-accent px-6 text-sm font-medium text-[#0B0D10] transition-colors duration-150 hover:bg-accent-ink"
-            >
-              Ver mi trabajo <ArrowRight size={16} aria-hidden="true" />
-            </a>
-            <a
-              href="#contacto"
-              className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-strong px-6 text-sm font-medium text-ink transition-colors duration-150 hover:border-accent-line hover:text-accent-ink"
-            >
-              Hablemos
-            </a>
+            <p className="enter enter-3 max-w-[26rem] text-sm text-ink-muted sm:text-base lg:max-w-[22rem]">
+              Entré a grabar videos para un negocio. Tres años después sigo ahí:
+              <span className="text-ink"> contenido, campañas, tienda online</span> y, desde julio,
+              <span className="text-ink"> atención automatizada</span>.
+            </p>
+
+            <div className="enter enter-4 flex flex-wrap gap-3 lg:justify-end">
+              <a
+                href="#trabajo"
+                className="inline-flex min-h-[48px] items-center gap-2 rounded-full bg-accent px-6 text-sm font-medium text-[#0B0D10] transition-colors duration-150 hover:bg-accent-ink"
+              >
+                Ver mi trabajo <ArrowRight size={16} aria-hidden="true" />
+              </a>
+              <a
+                href="#contacto"
+                className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-strong px-6 text-sm font-medium text-ink transition-colors duration-150 hover:border-accent-line hover:text-accent-ink"
+              >
+                Hablemos
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* ── Raíl de evidencia ── */}
-      <div className="relative z-30 border-t border-[color:var(--line)]">
-        <dl className="enter enter-5 mx-auto grid max-w-page grid-cols-2 gap-x-6 gap-y-4 px-5 py-5 sm:px-8 lg:grid-cols-3">
-          <div>
-            <dt className="measure text-xs text-ink-faint">3 años</dt>
-            <dd className="mt-0.5 text-sm text-ink">en el mismo negocio</dd>
-          </div>
-          <div>
-            <dt className="measure text-xs text-accent-ink">27:1</dt>
-            <dd className="mt-0.5 text-sm text-ink">
-              retorno publicitario<span className="text-ink-faint"> · CyberDay 2026</span>
-            </dd>
-          </div>
-          <div className="col-span-2 lg:col-span-1">
-            <dt className="measure text-xs text-ink-faint">Full Stack Python</dt>
-            <dd className="mt-0.5 text-sm text-ink">
-              <a
-                href="https://www.acreditta.com/credential/8f73702b-0511-40f1-80b0-6224284c8eab"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link"
-              >
-                credencial verificable
-              </a>
-            </dd>
-          </div>
-        </dl>
+        {/* ── Raíl de evidencia ── */}
+        <div className="relative border-t border-[color:var(--line)]">
+          <dl className="enter enter-5 mx-auto grid max-w-page grid-cols-2 gap-x-6 gap-y-4 px-5 py-5 sm:px-8 lg:grid-cols-3">
+            <div>
+              <dt className="measure text-xs text-ink-faint">3 años</dt>
+              <dd className="mt-0.5 text-sm text-ink">en el mismo negocio</dd>
+            </div>
+            <div>
+              <dt className="measure text-xs text-accent-ink">27:1</dt>
+              <dd className="mt-0.5 text-sm text-ink">
+                retorno publicitario<span className="text-ink-faint"> · CyberDay 2026</span>
+              </dd>
+            </div>
+            <div className="col-span-2 lg:col-span-1">
+              <dt className="measure text-xs text-ink-faint">Full Stack Python</dt>
+              <dd className="mt-0.5 text-sm text-ink">
+                <a
+                  href="https://www.acreditta.com/credential/8f73702b-0511-40f1-80b0-6224284c8eab"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link"
+                >
+                  credencial verificable
+                </a>
+              </dd>
+            </div>
+          </dl>
+        </div>
       </div>
 
     </section>

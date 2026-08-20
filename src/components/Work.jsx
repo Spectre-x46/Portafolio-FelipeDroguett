@@ -258,7 +258,7 @@ function OtrosTrabajos() {
 
             <span className="min-w-0">
               <span className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                <span className="measure text-sm text-[color:var(--ink-deco)] lg:hidden" aria-hidden="true">
+                <span className="measure text-sm text-[color:var(--ink-deco-sm)] lg:hidden" aria-hidden="true">
                   {o.n}
                 </span>
                 <span className="font-display text-lg font-semibold text-ink">{o.titulo}</span>
