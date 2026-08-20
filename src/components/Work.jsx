@@ -47,7 +47,7 @@ export default function Work() {
             <div className="grid lg:grid-cols-[1.05fr_1fr]">
               <div className="relative order-2 min-h-[220px] border-t border-[color:var(--line)] lg:order-1 lg:border-r lg:border-t-0">
                 <img
-                  src="/assets/proyecto-tokyo.jpg"
+                  src="/assets/proyecto-tokyo.webp"
                   alt="Tienda online de Tokyo Tunning en producción, con el menú de categorías sobre una fotografía de producto"
                   width="1280"
                   height="900"
