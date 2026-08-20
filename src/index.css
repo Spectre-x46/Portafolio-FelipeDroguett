@@ -32,6 +32,12 @@
        son texto renderizado y el estándar del proyecto no admite excepciones
        cómodas. Medidos: 3.55:1 sobre --bg-raised y 3.29:1 sobre la clara. */
     --ink-deco:    rgba(255, 255, 255, 0.38);
+    /* El mismo papel, pero cuando el índice se compone a tamaño de cuerpo.
+       A 15 px deja de ser «texto grande» para WCAG y el mínimo pasa de 3:1 a
+       4.5:1, que el token de arriba no alcanza (3.49:1). Se sube sólo aquí:
+       aclarar --ink-deco entero cambiaría el peso visual de los números
+       gigantes de Trabajo, Criterio y Capacidades, que sí cumplen. */
+    --ink-deco-sm: rgba(255, 255, 255, 0.46);
 
     /* Semánticos de estado (evidencia) */
     --ok:          #6BBF8A;
@@ -122,6 +128,56 @@
     }
   }
 
+  /* ── Velo del hero (móvil y tablet) ───────────────────────────────────────
+     Protege el copy del hero del retrato que tiene detrás. Está anclado al
+     bloque de contenido —no al viewport— así que su borde inferior es el de la
+     sección y su borde superior cae siempre `N` px por encima del texto, sea
+     cual sea la altura de pantalla.
+
+     Por qué hay dos ramas y no una sola caída:
+
+     El espacio libre entre el nombre y el copy no es constante, y no puede
+     serlo: el bloque del nombre es `flex-1`, de modo que se queda con lo que
+     sobra. Medido en producción son 267 px a 390×844, 171 px a 360×800, 32 px
+     a 360×640 y 0 px a 320×568 —ahí el párrafo empieza exactamente donde
+     termina "DROGUETT"—.
+
+     Con una sola caída larga habría que elegir cuál se rompe: 68 px de caída
+     apagan la base del nombre en pantallas cortas (el velo va por encima de la
+     tipografía), y 0 px de caída dibujan un canto duro sobre el torso en las
+     altas. La rama por altura evita las dos cosas. En pantallas cortas la
+     caída es 0 porque justo ahí el retrato todavía está en su zona de máscara
+     transparente: el canto cae sobre fondo liso y no se ve. */
+  .hero-veil {
+    top: -4.25rem;
+    /* Estas paradas no son nuevas: son el degradado que ya había, medido a
+       390×844 —donde la composición está aprobada— y reescrito en píxeles
+       desde el borde superior del velo en vez de en porcentajes de una altura
+       que dependía del viewport. A 390 el resultado es el mismo pixel a pixel;
+       la diferencia es que ahora se comporta igual a cualquier altura. */
+    background: linear-gradient(
+      to bottom,
+      transparent 0,
+      rgba(11, 13, 16, 0.55) 70px,
+      rgba(11, 13, 16, 0.92) 112px,
+      var(--bg) 200px,
+      var(--bg) 100%
+    );
+  }
+  @media (max-height: 700px) {
+    .hero-veil {
+      top: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 0,
+        rgba(11, 13, 16, 0.45) 26px,
+        rgba(11, 13, 16, 0.93) 62px,
+        var(--bg) 120px,
+        var(--bg) 100%
+      );
+    }
+  }
+
   /* ── Entrada del hero ─────────────────────────────────────────────────────
      Escalonada y corta: nada obliga a esperar. */
   .enter { animation: enter-up 620ms cubic-bezier(0.22, 1, 0.36, 1) both; }
@@ -155,7 +211,10 @@
     font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
     font-size: 0.8125rem;
     letter-spacing: 0.08em;
-    color: rgba(20, 23, 27, 0.55);
+    /* Era rgba(20,23,27,0.55) y daba 3.84:1 — por debajo del 4.5:1 que exige
+       un texto real de 13 px. Mismo motivo que .ink-2 y .ink-3: con opacidad
+       el contraste depende del fondo y aquí no llegaba. 4.73:1 medido. */
+    color: #676A6F;
   }
   .on-light .link-light {
     color: #8A5A05;                 /* ámbar oscurecido: 5.4:1 sobre #F1EFEA */
