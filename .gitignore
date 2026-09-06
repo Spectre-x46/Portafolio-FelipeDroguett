@@ -5,3 +5,6 @@ dist-sinprerender/
 .playwright-mcp/
 .DS_Store
 *.local
+
+# Ajustes locales de Claude Code (rutas y permisos de cada maquina)
+.claude/settings.local.json
