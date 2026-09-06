@@ -1,0 +1,14 @@
+# El repositorio viaja entre Windows y Linux. Sin esto, un checkout en Windows
+# convierte los saltos de linea a CRLF y al volver a Linux git marca como
+# modificados ficheros cuyo contenido es identico.
+* text=auto eol=lf
+
+# Binarios: que git no toque su contenido.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.pdf  binary
+*.ico  binary
+*.woff binary
+*.woff2 binary
