@@ -6,5 +6,7 @@ dist-sinprerender/
 .DS_Store
 *.local
 
-# Ajustes locales de Claude Code (rutas y permisos de cada maquina)
-.claude/settings.local.json
+# Configuración local de Claude Code: skills de terceros, agentes y permisos de
+# cada máquina. Sirven para trabajar en el proyecto pero no son parte de él, y
+# versionadas hacían que GitHub presentara este repositorio como Python.
+.claude/
