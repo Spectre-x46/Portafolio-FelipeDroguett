@@ -24,8 +24,8 @@ const timeline = [
     org: 'Droguett Consulting SpA',
     title: 'Desarrollo, campañas y automatización comercial',
     body:
-      'Reconstruí y mantengo la tienda online de Tokyo Tunning —plantillas propias en PHP sobre WooCommerce, unos 380 productos, 62 servicios con precio publicado— y llevo su publicidad y su producción de contenido con plan anual, procedimientos escritos y reporte mensual. En paralelo, desde julio, construyo un sistema de atención comercial automatizada: arquitectura, integración con CRM y una evaluación con bancos sellados antes de correr.',
-    note: 'Antes de tocar la tienda, una auditoría formal de nueve fases: 35 hallazgos y 4 decisiones de arquitectura registradas. En agosto, siete fases de mejora desplegadas y verificadas en producción.',
+      'Reconstruí y mantengo la tienda online de Tokyo Tunning, y llevo su publicidad y su contenido con plan anual, procedimientos escritos y reporte mensual. Desde julio construyo un asistente de ventas con IA que responde consultas con los precios y el stock reales del negocio.',
+    note: 'La tienda hoy: 380 productos, envío a todo Chile y 62 servicios con precio publicado.',
     current: true,
   },
   {
