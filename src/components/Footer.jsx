@@ -13,7 +13,7 @@ import { EXTERNOS, EXTERNO_ATTRS } from '../lib/links'
  * mandaba a la gente al eslabón más débil del ecosistema justo al terminar de
  * leer.
  */
-const verificacion = [EXTERNOS.github, EXTERNOS.linkedin, EXTERNOS.credencial]
+const verificacion = [EXTERNOS.github, EXTERNOS.linkedin, EXTERNOS.credencial, EXTERNOS.diploma]
 
 export default function Footer() {
   return (

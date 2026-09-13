@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 
 import useParallax from '../lib/useParallax'
+import { EXTERNOS, EXTERNO_ATTRS } from '../lib/links'
 
 /**
  * Hero.
@@ -146,20 +147,21 @@ export default function Hero() {
               <dd className="mt-0.5 text-sm text-ink">en el mismo negocio</dd>
             </div>
             <div>
+              {/* Retorno combinado: ventas totales del evento ÷ gasto en Meta. No
+                  es lo que la plataforma se atribuyó; el caso lo explica. */}
               <dt className="measure text-xs text-accent-ink">27:1</dt>
               <dd className="mt-0.5 text-sm text-ink">
-                retorno publicitario<span className="text-ink-faint"> · CyberDay 2026</span>
+                ventas por peso en publicidad<span className="text-ink-faint"> · CyberDay 2026</span>
               </dd>
             </div>
             <div className="col-span-2 lg:col-span-1">
-              <dt className="measure text-xs text-ink-faint">Full Stack Python</dt>
+              <dt className="measure text-xs text-ink-faint">Full Stack Python · 462 h</dt>
               <dd className="mt-0.5 text-sm text-ink">
-                <a
-                  href="https://www.acreditta.com/credential/8f73702b-0511-40f1-80b0-6224284c8eab"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link"
-                >
+                <a href={EXTERNOS.diploma.href} {...EXTERNO_ATTRS} className="link">
+                  diploma
+                </a>
+                <span className="text-ink-faint"> · </span>
+                <a href={EXTERNOS.credencial.href} {...EXTERNO_ATTRS} className="link">
                   credencial verificable
                 </a>
               </dd>

@@ -47,8 +47,8 @@ export default function Work() {
             <div className="grid lg:grid-cols-[1.05fr_1fr]">
               <div className="relative order-2 min-h-[220px] border-t border-[color:var(--line)] lg:order-1 lg:border-r lg:border-t-0">
                 <img
-                  src="/assets/proyecto-tokyo.webp"
-                  alt="Tienda online de Tokyo Tunning en producción, con el menú de categorías sobre una fotografía de producto"
+                  src="/assets/proyecto-tokyo-2026-09.webp"
+                  alt="Portada de la tienda de Tokyo Tunning en producción: el titular «¿Auto con problemas?», los botones Servicios y precios y Ver catálogo, y el menú con el botón Cotizar"
                   width="1280"
                   height="900"
                   loading="lazy"
@@ -78,7 +78,7 @@ export default function Work() {
                 >
                   Tokyo Tunning
                 </h3>
-                <p className="mt-2 text-sm text-ink-faint">Accesorios automotrices · Santiago</p>
+                <p className="mt-2 text-sm text-ink-faint">Accesorios y taller automotriz · San Bernardo</p>
 
                 <p className="mt-6 flex-1 text-base text-ink-muted">
                   Empezó con dos puestos de feria y sin nombre de marca. Le inventé el nombre, le
@@ -121,7 +121,7 @@ export default function Work() {
                     02
                   </span>
                   <div className="flex flex-col items-end gap-2">
-                    <Status tone="pending">En validación</Status>
+                    <Status tone="pending">En reparación</Status>
                     <span className="measure text-xs text-ink-faint">2026 · en curso</span>
                   </div>
                 </div>
@@ -140,11 +140,13 @@ export default function Work() {
                   Un evento de venta funcionó técnicamente pero se perdieron ventas porque nadie
                   alcanzó a responder las consultas a tiempo. Estoy construyendo el sistema que
                   responde: consulta precios y stock reales antes de afirmar nada, y cuando no puede
-                  estar seguro, le pasa la conversación a una persona.
+                  estar seguro, le pasa la conversación a una persona. En septiembre lo sometí a un
+                  examen de 1.000 conversaciones selladas y no lo pasó: el caso cuenta por qué y
+                  cómo lo estoy reparando.
                 </p>
 
                 <div className="mt-7 flex flex-wrap gap-1.5">
-                  {['Node.js', 'n8n', 'LLM', 'CRM', 'Evaluación'].map(t => (
+                  {['Node.js', 'LLM', 'Código determinista', 'CRM', 'Evaluación'].map(t => (
                     <Tag key={t}>{t}</Tag>
                   ))}
                 </div>
@@ -158,11 +160,11 @@ export default function Work() {
               </div>
 
               <div className="order-2 border-t border-[color:var(--line)] bg-[color:var(--bg)] p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10">
-                <p className="eyebrow mb-1">Orquestación</p>
+                <p className="eyebrow mb-1">Arquitectura</p>
                 <p className="mb-6 text-sm text-ink-muted">
-                  El recorrido de un mensaje, tal como está en el workflow.
+                  El recorrido de un mensaje en la versión actual.
                 </p>
-                <WorkflowGraph />
+                <ArquitecturaGraph />
               </div>
             </div>
           </article>
@@ -190,18 +192,18 @@ export default function Work() {
 const otros = [
   {
     n: '03',
-    titulo: 'El Telégrafo',
-    estado: 'Funcional · interfaz en curso',
-    tono: 'pending',
-    contexto: 'Estación de práctica de CW · proyecto personal',
+    titulo: 'Código Morse Online',
+    estado: 'Publicado · V4.2',
+    tono: 'ok',
+    contexto: 'Aprender Morse de oído · proyecto personal',
     href: 'https://codigo-morse-online.netlify.app/',
-    img: '/assets/trabajo-telegrafo.webp',
-    alt: 'Interfaz del Telégrafo: la llave abierta con su medidor de duración y la palabra SOS traducida a puntos y rayas',
+    img: '/assets/trabajo-morse.webp',
+    alt: 'Portada de Código Morse Online: una llave de telegrafía junto al titular «Aprende Morse, sin fricción» y los botones Empezar y Ver modo libre',
     texto:
-      'Volví al código Morse que aprendí de niño y terminé construyendo el sitio donde practicarlo. Es una llave que funciona en el navegador: se mantiene pulsada la barra espaciadora y el sistema mide cuánto dura cada pulsación para distinguir punto de raya. Tiene modo de copia y de transmisión, con velocidad en palabras por minuto y tono ajustable, como en un equipo real.',
+      'Volví al código Morse que aprendí de niño y terminé construyendo dónde practicarlo. Lo rehice desde cero con dos caminos: Aprender, que te pone a escuchar diez señales sin configurar nada e insiste en las letras que fallas, y Modo libre, con la llave, un traductor y el abecedario. El sonido manda: la temporización sigue el estándar PARIS con espaciado Farnsworth, y cada símbolo se ilumina leyendo el reloj del propio audio, así que imagen y sonido no se desfasan.',
     nota:
-      'Lo hice funcional antes que bonito y se nota: la interfaz todavía le debe bastante al contenido.',
-    tags: ['JavaScript', 'Web Audio', 'Temporización CW', 'Sin dependencias'],
+      'Al auditar la V4 descubrí que el espaciado Farnsworth estaba mal calculado: pedir 5 palabras por minuto sonaba a 9,05. El test que debía detectarlo comparaba el motor contra una copia del mismo error. Hoy 70 pruebas lo miden contra la definición del estándar, sin navegador y sin instalar nada.',
+    tags: ['JavaScript', 'Web Audio API', 'Módulos ES nativos', 'Sin dependencias', 'node:test'],
   },
   {
     n: '04',
@@ -293,102 +295,110 @@ function OtrosTrabajos() {
 }
 
 /**
- * Grafo real del workflow de orquestación.
+ * Arquitectura actual del agente (generación 3), tal como está en el código.
  *
- * No es un dibujo ilustrativo: los nodos y las conexiones se transcribieron del
- * JSON del workflow que estuvo recibiendo eventos. Se conservan los nombres
- * reales salvo dos, cambiados por seguridad: la ruta del webhook y el canal
- * concreto de salida. No aparecen identificadores, URLs, puertos ni cliente.
+ * Sustituye al grafo transcrito del workflow de n8n, que era la generación
+ * anterior: n8n ya no está en el camino de un mensaje. Las etapas llevan
+ * nombres descriptivos en vez de los de las carpetas para que se lea sin
+ * contexto; los nombres reales están en el caso. No aparecen identificadores,
+ * URLs, puertos, el CRM concreto ni el cliente.
  *
- * Lo que hace legible el diagrama es la forma: dos compuertas pueden terminar
- * el turno antes de que el mensaje llegue al modelo.
+ * Cada tipo de nodo se distingue por forma y por palabra, no sólo por color:
+ * las compuertas son preguntas, los dos pasos con modelo dicen «modelo» y van
+ * rellenos, y el núcleo determinista es el único con borde doble de grosor.
  */
-const NODOS = [
-  { id: 'wh',   t: 'Webhook de entrada', y: 6 },
-  { id: 'pre',  t: 'Preprocess',         y: 44 },
-  { id: 'g1',   t: 'V2RejectGate',       y: 82,  gate: true },
-  { id: 'g2',   t: 'TakeoverGate',       y: 120, gate: true },
-  { id: 'ag',   t: 'AI Agent',           y: 166, alto: 40 },
-  { id: 'val',  t: 'Validator',          y: 226 },
-  { id: 'snd',  t: 'Envío al canal',     y: 264 },
-  { id: 'env',  t: 'Build V2 Envelope',  y: 302 },
-  { id: 'res',  t: 'Respond',            y: 340 },
+const ETAPAS = [
+  { id: 'in',   t: 'Aviso del CRM',          y: 6 },
+  { id: 'own',  t: '¿Atiende una persona?',   y: 42,  gate: true },
+  { id: 'und',  t: 'Comprensión',            y: 78,  llm: true,  sub: 'modelo · propone qué se pide', alto: 36 },
+  { id: 'ctr',  t: '¿Cumple el contrato?',    y: 128, gate: true },
+  { id: 'core', t: 'Núcleo determinista',    y: 164, core: true, sub: 'catálogo · reglas · evidencia', alto: 36 },
+  { id: 'pol',  t: '¿Lo tiene que ver alguien?', y: 214, gate: true },
+  { id: 'cmp',  t: 'Redacción',              y: 250, llm: true,  sub: 'modelo · sin herramientas', alto: 36 },
+  { id: 'val',  t: 'Validador',              y: 300, sub: 'repara · recupera por código', alto: 36 },
+  { id: 'out',  t: 'Salida',                 y: 350, sub: 'dueño re-chequeado · sin duplicar', alto: 36 },
 ]
-const RAMAS = [
-  { t: 'V2RejectResponder',  y: 82 },
-  { t: 'SilencedResponder',  y: 120 },
+const DESVIOS = [
+  { t: 'Silencio',      y: 42 },
+  { t: 'Turno cortado', y: 128 },
+  // La derivación sí sale por la misma salida: lleva el aviso al cliente.
+  { t: 'Tarea y aviso', y: 214, vuelve: true },
 ]
 
-function WorkflowGraph() {
+function ArquitecturaGraph() {
   const W = 186, X = 8, RX = 196, RW = 116
+  const salida = ETAPAS[ETAPAS.length - 1]
   return (
     <figure className="m-0">
       <svg
-        viewBox="0 0 320 372"
+        viewBox="0 0 320 392"
         className="w-full"
         role="img"
-        aria-label="Grafo del workflow: el webhook entra en Preprocess y pasa por dos compuertas. La primera puede rechazar el turno; la segunda lo silencia si una persona ya tomó la conversación. Sólo si ambas dejan pasar interviene el modelo, después el validador y el envío."
+        aria-label="Arquitectura actual: el aviso del CRM pasa por una compuerta que calla si una persona ya atiende. El modelo propone qué se pide; si la propuesta no cumple el contrato, el turno se corta. El núcleo determinista resuelve catálogo, reglas y evidencia, y decide si el caso lo tiene que ver una persona, en cuyo caso crea una tarea y avisa al cliente. Si no, el modelo redacta sin herramientas, el validador revisa y la salida vuelve a comprobar quién es dueño de la conversación."
       >
         <defs>
-          <marker id="wf-a" markerWidth="5" markerHeight="5" refX="4.2" refY="2.5" orient="auto">
+          <marker id="ag-a" markerWidth="5" markerHeight="5" refX="4.2" refY="2.5" orient="auto">
             <path d="M0,0 L5,2.5 L0,5 Z" fill="var(--ink-faint)" />
           </marker>
         </defs>
 
         {/* columna principal */}
-        {NODOS.map((n, i) => {
+        {ETAPAS.map((n, i) => {
           const h = n.alto ?? 22
-          const next = NODOS[i + 1]
+          const next = ETAPAS[i + 1]
+          const acento = n.gate || n.llm
           return (
             <g key={n.id}>
               <rect
                 x={X} y={n.y} width={W} height={h} rx="2"
-                fill={n.id === 'ag' ? 'var(--accent-weak)' : 'var(--bg-raised)'}
-                stroke={n.gate ? 'var(--accent-line)' : n.id === 'ag' ? 'var(--accent-line)' : 'var(--line-strong)'}
+                fill={n.llm ? 'var(--accent-weak)' : 'var(--bg-raised)'}
+                stroke={acento ? 'var(--accent-line)' : n.core ? 'var(--ink-faint)' : 'var(--line-strong)'}
+                strokeWidth={n.core ? 2 : 1}
               />
               <text
                 x={X + 10} y={n.y + 14.5}
-                fill={n.gate || n.id === 'ag' ? 'var(--accent-ink)' : 'var(--ink-muted)'}
+                fill={acento ? 'var(--accent-ink)' : n.core ? 'var(--ink)' : 'var(--ink-muted)'}
                 fontSize="9.5" fontFamily="ui-monospace, monospace"
               >{n.t}</text>
-              {n.id === 'ag' && (
-                <text x={X + 10} y={n.y + 30} fill="var(--ink-faint)" fontSize="8" fontFamily="ui-monospace, monospace">
-                  modelo · memoria · 4 herramientas
+              {n.sub && (
+                <text x={X + 10} y={n.y + 29} fill="var(--ink-faint)" fontSize="8" fontFamily="ui-monospace, monospace">
+                  {n.sub}
                 </text>
               )}
               {next && (
                 <line
                   x1={X + 30} y1={n.y + h} x2={X + 30} y2={next.y - 1}
-                  stroke="var(--ink-faint)" strokeWidth="1" markerEnd="url(#wf-a)"
+                  stroke="var(--ink-faint)" strokeWidth="1" markerEnd="url(#ag-a)"
                 />
               )}
             </g>
           )
         })}
 
-        {/* salidas laterales de las dos compuertas */}
-        {RAMAS.map((r, i) => (
+        {/* desvíos laterales de las tres compuertas */}
+        {DESVIOS.map(r => (
           <g key={r.t}>
             <line x1={X + W} y1={r.y + 11} x2={RX - 1} y2={r.y + 11}
-                  stroke="var(--ink-faint)" strokeWidth="1" markerEnd="url(#wf-a)" />
+                  stroke="var(--ink-faint)" strokeWidth="1" markerEnd="url(#ag-a)" />
             <rect x={RX} y={r.y} width={RW} height="22" rx="2"
                   fill="var(--bg-raised)" stroke="var(--line-strong)" />
             <text x={RX + 8} y={r.y + 14.5} fill="var(--ink-muted)"
                   fontSize="9.5" fontFamily="ui-monospace, monospace">{r.t}</text>
-            {/* bajan a reunirse con el tramo final */}
-            <path
-              d={`M ${RX + RW / 2} ${r.y + 22} V ${i === 0 ? 345 : 307} H ${X + W + 4}`}
-              fill="none" stroke="var(--line-strong)" strokeWidth="1"
-              strokeDasharray="3 3" markerEnd="url(#wf-a)"
-            />
+            {r.vuelve && (
+              <path
+                d={`M ${RX + RW / 2} ${r.y + 22} V ${salida.y + 18} H ${X + W + 4}`}
+                fill="none" stroke="var(--line-strong)" strokeWidth="1"
+                strokeDasharray="3 3" markerEnd="url(#ag-a)"
+              />
+            )}
           </g>
         ))}
       </svg>
 
       <figcaption className="measure mt-4 text-xs leading-relaxed text-ink-faint">
-        Transcrito del workflow real. Dos compuertas pueden cerrar el turno antes del modelo:
-        una rechaza el mensaje si no cumple el contrato, la otra se calla si una persona ya
-        está atendiendo.
+        Versión actual. El modelo aparece dos veces —para entender y para redactar— y en ninguna
+        decide precio, stock ni a quién derivar: eso lo resuelve el código del medio. Tres
+        compuertas pueden cerrar el turno antes de que salga texto.
       </figcaption>
     </figure>
   )
