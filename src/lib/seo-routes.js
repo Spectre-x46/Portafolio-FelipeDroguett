@@ -32,7 +32,7 @@ export const SEO = {
     path: '/caso/tokyo-tunning',
     title: 'Tokyo Tunning — de dos puestos de feria a e-commerce | Felipe Droguett',
     description:
-      'Tres años dentro del mismo negocio: contenido, campañas, tienda online, catálogo y medición. Con las métricas fechadas y la deuda técnica que quedó abierta.',
+      'Cómo un negocio de dos puestos de feria llegó a vender $15 millones al mes: marca, contenido, campañas y una tienda online con 380 productos.',
     // Captura real de la tienda en producción, recortada a 1200×630. No es
     // arte generado: es el mismo sitio que enlaza el caso.
     image: '/assets/og-tokyo-2026-09.jpg',
@@ -41,13 +41,13 @@ export const SEO = {
 
   '/caso/agente-comercial': {
     path: '/caso/agente-comercial',
-    title: 'Agente comercial conversacional — caso de estudio | Felipe Droguett',
+    title: 'Agente comercial con IA — caso de estudio | Felipe Droguett',
     // El estado va explícito en la descripción y no en el título porque el
     // título se trunca antes en casi todas las superficies. «No atiende
     // clientes reales» es literalmente lo que declara el caso; no dice ni
     // sugiere «en producción».
     description:
-      'Un sistema que responde consultas comerciales por chat sin inventar precios ni stock. Su arquitectura, un examen sobre 1.000 conversaciones selladas que no pasó y cómo se está reparando. Todavía no atiende clientes reales.',
+      'Un asistente de ventas por chat que responde con los precios y el stock reales del negocio y pasa a una persona cuando no está seguro. Cómo funciona, cómo lo pruebo y en qué punto está: todavía en pruebas.',
     // Deuda declarada: no hay una imagen propia para este caso. La única pieza
     // visual es el grafo de la arquitectura, que es un SVG en la portada y no
     // un asset. Hasta que exista, hereda la de la home.

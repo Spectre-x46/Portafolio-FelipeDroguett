@@ -39,7 +39,7 @@ const capacidades = [
     problema: 'Hay más consultas de las que alguien puede responder',
     title: 'Automatizar la atención',
     text:
-      'Sistemas que conectan el CRM, el catálogo y un modelo de lenguaje para responder consultas comerciales — con la regla de que el modelo nunca inventa un precio ni un stock: los consulta.',
+      'Asistentes que conectan el CRM, el catálogo y la IA para responder consultas de venta al instante — con una regla: la IA nunca inventa un precio ni un stock, los consulta.',
     tools: ['Node.js', 'n8n', 'OpenAI API', 'CRM / webhooks', 'APIs REST'],
     to: '/caso/agente-comercial#flujo',
     evidencia: 'Caso Agente comercial · cómo funciona',
@@ -49,8 +49,8 @@ const capacidades = [
     problema: 'Funciona, pero no sé si puedo confiar en él',
     title: 'Probar que funciona',
     text:
-      'Suites de pruebas, bancos de evaluación sellados antes de ver una sola respuesta, criterios de aprobación congelados antes de medir, y registro de por qué el sistema decidió lo que decidió. Es la parte que nadie ve y la que decide si algo puede salir a producción — o, como pasó en septiembre, que todavía no.',
-    tools: ['Tests deterministas', 'Bancos sellados', 'Pre-registro', 'Trazabilidad'],
+      'Antes de poner algo frente a clientes, lo pruebo con casos reales: conversaciones del propio negocio, pruebas automáticas y un registro de por qué el sistema hizo lo que hizo. Es la parte que no se ve y la que evita que un error llegue al cliente.',
+    tools: ['Pruebas automáticas', 'Casos reales', 'Trazabilidad'],
     to: '/caso/agente-comercial#evaluacion',
     evidencia: 'Caso Agente comercial · cómo sé que funciona',
   },

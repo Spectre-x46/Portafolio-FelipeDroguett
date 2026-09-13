@@ -30,9 +30,8 @@ export default function Work() {
             Dos casos en profundidad
           </h2>
           <p className="mt-6 max-w-prose text-base text-ink-muted">
-            Los dos primeros están documentados de punta a punta: qué había, qué decidí, qué se
-            rompió y qué falta. Más abajo hay otros proyectos funcionales que muestran otra parte
-            del trabajo.
+            Los dos primeros están contados de punta a punta: el problema del negocio, lo que hice
+            y lo que logró. Más abajo, otros proyectos que muestran otra parte de mi trabajo.
           </p>
         </Reveal>
       </div>
@@ -81,14 +80,14 @@ export default function Work() {
                 <p className="mt-2 text-sm text-ink-faint">Accesorios y taller automotriz · San Bernardo</p>
 
                 <p className="mt-6 flex-1 text-base text-ink-muted">
-                  Empezó con dos puestos de feria y sin nombre de marca. Le inventé el nombre, le
-                  armé las redes y grabé el contenido. Cuando el negocio creció más rápido que su
-                  forma de vender, reconstruí la tienda entera: catálogo, pagos, medición y
-                  publicidad.
+                  Empezó con dos puestos de feria y sin nombre. Le creé la marca, las redes y el
+                  contenido, y sus ventas se multiplicaron por treinta en año y medio. Después
+                  reconstruí su tienda online: 380 productos, envío a todo Chile y 62 servicios con
+                  precio publicado. En el CyberDay vendió 27 veces lo invertido en publicidad.
                 </p>
 
                 <div className="mt-7 flex flex-wrap gap-1.5">
-                  {['Contenido', 'Meta Ads', 'WooCommerce', 'PHP', 'Performance'].map(t => (
+                  {['Marca y contenido', 'Meta Ads', 'Tienda online', 'WooCommerce', 'SEO'].map(t => (
                     <Tag key={t}>{t}</Tag>
                   ))}
                 </div>
@@ -121,7 +120,7 @@ export default function Work() {
                     02
                   </span>
                   <div className="flex flex-col items-end gap-2">
-                    <Status tone="pending">En reparación</Status>
+                    <Status tone="pending">En pruebas</Status>
                     <span className="measure text-xs text-ink-faint">2026 · en curso</span>
                   </div>
                 </div>
@@ -137,16 +136,15 @@ export default function Work() {
                 </p>
 
                 <p className="mt-6 flex-1 text-base text-ink-muted">
-                  Un evento de venta funcionó técnicamente pero se perdieron ventas porque nadie
-                  alcanzó a responder las consultas a tiempo. Estoy construyendo el sistema que
-                  responde: consulta precios y stock reales antes de afirmar nada, y cuando no puede
-                  estar seguro, le pasa la conversación a una persona. En septiembre lo sometí a un
-                  examen de 1.000 conversaciones selladas y no lo pasó: el caso cuenta por qué y
-                  cómo lo estoy reparando.
+                  Un evento de venta funcionó, pero se perdieron ventas porque nadie alcanzó a
+                  responder a tiempo. Estoy construyendo el asistente que contesta por chat con los
+                  precios y el stock reales del negocio, y que pasa la conversación a una persona
+                  cuando no está seguro. Ya funciona de punta a punta en pruebas; lo estoy afinando
+                  antes de ponerlo frente a clientes.
                 </p>
 
                 <div className="mt-7 flex flex-wrap gap-1.5">
-                  {['Node.js', 'LLM', 'Código determinista', 'CRM', 'Evaluación'].map(t => (
+                  {['IA', 'Node.js', 'CRM', 'Automatización', 'Pruebas automáticas'].map(t => (
                     <Tag key={t}>{t}</Tag>
                   ))}
                 </div>
@@ -160,9 +158,9 @@ export default function Work() {
               </div>
 
               <div className="order-2 border-t border-[color:var(--line)] bg-[color:var(--bg)] p-6 sm:p-8 lg:border-l lg:border-t-0 lg:p-10">
-                <p className="eyebrow mb-1">Arquitectura</p>
+                <p className="eyebrow mb-1">Cómo funciona</p>
                 <p className="mb-6 text-sm text-ink-muted">
-                  El recorrido de un mensaje en la versión actual.
+                  El recorrido de una consulta.
                 </p>
                 <ArquitecturaGraph />
               </div>
@@ -193,17 +191,17 @@ const otros = [
   {
     n: '03',
     titulo: 'Código Morse Online',
-    estado: 'Publicado · V4.2',
+    estado: 'Publicado',
     tono: 'ok',
     contexto: 'Aprender Morse de oído · proyecto personal',
     href: 'https://codigo-morse-online.netlify.app/',
     img: '/assets/trabajo-morse.webp',
     alt: 'Portada de Código Morse Online: una llave de telegrafía junto al titular «Aprende Morse, sin fricción» y los botones Empezar y Ver modo libre',
     texto:
-      'Volví al código Morse que aprendí de niño y terminé construyendo dónde practicarlo. Lo rehice desde cero con dos caminos: Aprender, que te pone a escuchar diez señales sin configurar nada e insiste en las letras que fallas, y Modo libre, con la llave, un traductor y el abecedario. El sonido manda: la temporización sigue el estándar PARIS con espaciado Farnsworth, y cada símbolo se ilumina leyendo el reloj del propio audio, así que imagen y sonido no se desfasan.',
+      'Volví al código Morse que aprendí de niño y construí un sitio para aprenderlo de oído: escuchas una señal, eliges la letra y avanzas, sin configurar nada. El sistema insiste solo en las letras que más te cuestan, y hay un modo libre con llave de telegrafía, traductor y abecedario.',
     nota:
-      'Al auditar la V4 descubrí que el espaciado Farnsworth estaba mal calculado: pedir 5 palabras por minuto sonaba a 9,05. El test que debía detectarlo comparaba el motor contra una copia del mismo error. Hoy 70 pruebas lo miden contra la definición del estándar, sin navegador y sin instalar nada.',
-    tags: ['JavaScript', 'Web Audio API', 'Módulos ES nativos', 'Sin dependencias', 'node:test'],
+      'Lo rehice desde cero en septiembre. Carga al instante, no hay que instalar nada y 70 pruebas automáticas cuidan que cada señal suene con el ritmo correcto.',
+    tags: ['JavaScript', 'Audio en el navegador', 'Accesibilidad', 'Sin dependencias'],
   },
   {
     n: '04',
@@ -298,31 +296,31 @@ function OtrosTrabajos() {
  * Arquitectura actual del agente (generación 3), tal como está en el código.
  *
  * Sustituye al grafo transcrito del workflow de n8n, que era la generación
- * anterior: n8n ya no está en el camino de un mensaje. Las etapas llevan
- * nombres descriptivos en vez de los de las carpetas para que se lea sin
- * contexto; los nombres reales están en el caso. No aparecen identificadores,
- * URLs, puertos, el CRM concreto ni el cliente.
+ * anterior: n8n ya no está en el camino de un mensaje. Las etapas se nombran
+ * en lenguaje llano, para quien no programa; los nombres del código viven en
+ * el repositorio. No aparecen identificadores, URLs, puertos, el CRM concreto
+ * ni el cliente.
  *
  * Cada tipo de nodo se distingue por forma y por palabra, no sólo por color:
- * las compuertas son preguntas, los dos pasos con modelo dicen «modelo» y van
- * rellenos, y el núcleo determinista es el único con borde doble de grosor.
+ * las compuertas son preguntas, los dos pasos con IA dicen «IA» y van
+ * rellenos, y la búsqueda de datos reales es la única con borde grueso.
  */
 const ETAPAS = [
-  { id: 'in',   t: 'Aviso del CRM',          y: 6 },
-  { id: 'own',  t: '¿Atiende una persona?',   y: 42,  gate: true },
-  { id: 'und',  t: 'Comprensión',            y: 78,  llm: true,  sub: 'modelo · propone qué se pide', alto: 36 },
-  { id: 'ctr',  t: '¿Cumple el contrato?',    y: 128, gate: true },
-  { id: 'core', t: 'Núcleo determinista',    y: 164, core: true, sub: 'catálogo · reglas · evidencia', alto: 36 },
-  { id: 'pol',  t: '¿Lo tiene que ver alguien?', y: 214, gate: true },
-  { id: 'cmp',  t: 'Redacción',              y: 250, llm: true,  sub: 'modelo · sin herramientas', alto: 36 },
-  { id: 'val',  t: 'Validador',              y: 300, sub: 'repara · recupera por código', alto: 36 },
-  { id: 'out',  t: 'Salida',                 y: 350, sub: 'dueño re-chequeado · sin duplicar', alto: 36 },
+  { id: 'in',   t: 'Llega la consulta',       y: 6 },
+  { id: 'own',  t: '¿Ya la atiende alguien?', y: 42,  gate: true },
+  { id: 'und',  t: 'Entiende qué se pide',    y: 78,  llm: true,  sub: 'IA · producto, auto, intención', alto: 36 },
+  { id: 'ctr',  t: '¿Se entendió bien?',      y: 128, gate: true },
+  { id: 'core', t: 'Busca los datos reales',  y: 164, core: true, sub: 'catálogo · precios · stock', alto: 36 },
+  { id: 'pol',  t: '¿Necesita una persona?',  y: 214, gate: true },
+  { id: 'cmp',  t: 'Redacta la respuesta',    y: 250, llm: true,  sub: 'IA · sólo con esos datos', alto: 36 },
+  { id: 'val',  t: 'Revisión automática',     y: 300, sub: 'nada sin respaldo', alto: 36 },
+  { id: 'out',  t: 'Responde',                y: 350, sub: 'por el mismo canal', alto: 36 },
 ]
 const DESVIOS = [
-  { t: 'Silencio',      y: 42 },
-  { t: 'Turno cortado', y: 128 },
-  // La derivación sí sale por la misma salida: lleva el aviso al cliente.
-  { t: 'Tarea y aviso', y: 214, vuelve: true },
+  { t: 'No interviene',  y: 42 },
+  { t: 'No responde',    y: 128 },
+  // Pasar a una persona sí sale por la misma vía: lleva el aviso al cliente.
+  { t: 'Pasa a persona', y: 214, vuelve: true },
 ]
 
 function ArquitecturaGraph() {
@@ -334,7 +332,7 @@ function ArquitecturaGraph() {
         viewBox="0 0 320 392"
         className="w-full"
         role="img"
-        aria-label="Arquitectura actual: el aviso del CRM pasa por una compuerta que calla si una persona ya atiende. El modelo propone qué se pide; si la propuesta no cumple el contrato, el turno se corta. El núcleo determinista resuelve catálogo, reglas y evidencia, y decide si el caso lo tiene que ver una persona, en cuyo caso crea una tarea y avisa al cliente. Si no, el modelo redacta sin herramientas, el validador revisa y la salida vuelve a comprobar quién es dueño de la conversación."
+        aria-label="Recorrido de una consulta: si una persona del equipo ya la atiende, el asistente no interviene. Si no, la IA entiende qué se pide; si no se entendió bien, no responde. El sistema busca los datos reales de catálogo, precios y stock y decide si hace falta una persona, en cuyo caso le pasa la conversación y avisa al cliente. Si no, la IA redacta sólo con esos datos, una revisión automática comprueba que todo tenga respaldo y el asistente responde."
       >
         <defs>
           <marker id="ag-a" markerWidth="5" markerHeight="5" refX="4.2" refY="2.5" orient="auto">
@@ -396,9 +394,9 @@ function ArquitecturaGraph() {
       </svg>
 
       <figcaption className="measure mt-4 text-xs leading-relaxed text-ink-faint">
-        Versión actual. El modelo aparece dos veces —para entender y para redactar— y en ninguna
-        decide precio, stock ni a quién derivar: eso lo resuelve el código del medio. Tres
-        compuertas pueden cerrar el turno antes de que salga texto.
+        La IA aparece dos veces —para entender y para redactar— y nunca pone un precio ni un
+        stock: esos datos los busca el sistema. Si algo no cuadra, no responde o le pasa la
+        conversación a una persona.
       </figcaption>
     </figure>
   )
