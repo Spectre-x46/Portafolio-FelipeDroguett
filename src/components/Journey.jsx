@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ChevronDown, ChevronUp, ExternalLink } from 'lucide-react'
 import Reveal from '../lib/Reveal'
+import { EXTERNOS, EXTERNO_ATTRS } from '../lib/links'
 
 
 /**
@@ -23,7 +24,8 @@ const timeline = [
     org: 'Droguett Consulting SpA',
     title: 'Desarrollo, campañas y automatización comercial',
     body:
-      'Mantengo y desarrollo la tienda online de Tokyo Tunning, y llevo su publicidad y su producción de contenido con plan anual, procedimientos escritos y reporte mensual. En paralelo, desde julio, construyo un sistema de atención comercial automatizada: arquitectura, integración con CRM y una suite de evaluación construida sobre conversaciones reales anonimizadas.',
+      'Reconstruí y mantengo la tienda online de Tokyo Tunning —plantillas propias en PHP sobre WooCommerce, unos 380 productos, 62 servicios con precio publicado— y llevo su publicidad y su producción de contenido con plan anual, procedimientos escritos y reporte mensual. En paralelo, desde julio, construyo un sistema de atención comercial automatizada: arquitectura, integración con CRM y una evaluación con bancos sellados antes de correr.',
+    note: 'Antes de tocar la tienda, una auditoría formal de nueve fases: 35 hallazgos y 4 decisiones de arquitectura registradas. En agosto, siete fases de mejora desplegadas y verificadas en producción.',
     current: true,
   },
   {
@@ -32,8 +34,8 @@ const timeline = [
     org: 'Tokyo Tunning',
     title: 'Digitalización y crecimiento',
     body:
-      'Propuse y ejecuté el paso de dos puestos de feria a un e-commerce completo. Nombre de marca, redes, contenido, campañas, y después la tienda: plantillas propias en PHP sobre WooCommerce, carrito asíncrono, 364 productos con pasarela de pago.',
-    note: 'Auditoría formal de nueve fases con más de 30 hallazgos y 4 decisiones de arquitectura registradas.',
+      'Propuse y ejecuté el paso de dos puestos de feria a un negocio que vende por redes y por internet. Nombre de marca, redes, contenido y campañas: el negocio creció por videos antes de tener local físico o siquiera empresa formal.',
+    note: 'Las ventas pasaron de $500K a $15M al mes en año y medio, según los reportes del propio negocio.',
   },
   {
     id: 4,
@@ -86,11 +88,16 @@ const timeline = [
 
 const formacion = [
   {
-    label: 'Desarrollo de Aplicaciones Full Stack Python',
-    place: 'Talento Digital para Chile',
-    date: 'Acreditado · ago 2026',
+    // Dos pruebas del mismo programa: el diploma de la academia que lo dictó
+    // (abr 2026, 462 h) y la credencial que emitió Talento Digital (ago 2026).
+    label: 'Desarrollo de Aplicaciones Full Stack Python Trainee',
+    place: 'IT Academy by Kibernum · Talento Digital para Chile',
+    date: '462 horas · diploma abr 2026 · credencial ago 2026',
     official: 'BOOTCAMP DESARROLLO APLICACIONES FULL STACK PYTHON TRAINEE',
-    href: 'https://www.acreditta.com/credential/8f73702b-0511-40f1-80b0-6224284c8eab',
+    pruebas: [
+      { label: 'Ver diploma', href: EXTERNOS.diploma.href },
+      { label: 'Verificar credencial', href: EXTERNOS.credencial.href },
+    ],
     highlight: true,
   },
   {
@@ -195,17 +202,22 @@ export default function Journey() {
                   <p className="mt-1 text-xs text-ink-faint">{f.place}</p>
                   <p className="measure mt-1.5 text-xs text-ink-faint">{f.date}</p>
 
-                  {f.href && (
+                  {f.pruebas && (
                     <>
-                      <a
-                        href={f.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-2.5 inline-flex min-h-[44px] items-center gap-1.5 text-xs text-accent-ink underline decoration-[color:var(--accent-line)] underline-offset-4 transition-colors hover:decoration-[color:var(--accent)]"
-                      >
-                        Verificar credencial
-                        <ExternalLink size={12} aria-hidden="true" />
-                      </a>
+                      <div className="mt-1.5 flex flex-wrap gap-x-4">
+                        {f.pruebas.map(p => (
+                          <a
+                            key={p.label}
+                            href={p.href}
+                            {...EXTERNO_ATTRS}
+                            className="inline-flex min-h-[44px] items-center gap-1.5 text-xs text-accent-ink underline decoration-[color:var(--accent-line)] underline-offset-4 transition-colors hover:decoration-[color:var(--accent)]"
+                          >
+                            {p.label}
+                            <ExternalLink size={12} aria-hidden="true" />
+                            <span className="sr-only">(se abre en una pestaña nueva)</span>
+                          </a>
+                        ))}
+                      </div>
                       <p className="measure text-xs leading-snug text-ink-faint">{f.official}</p>
                     </>
                   )}

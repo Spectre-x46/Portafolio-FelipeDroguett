@@ -35,7 +35,7 @@ export const SEO = {
       'Tres años dentro del mismo negocio: contenido, campañas, tienda online, catálogo y medición. Con las métricas fechadas y la deuda técnica que quedó abierta.',
     // Captura real de la tienda en producción, recortada a 1200×630. No es
     // arte generado: es el mismo sitio que enlaza el caso.
-    image: '/assets/og-tokyo.jpg',
+    image: '/assets/og-tokyo-2026-09.jpg',
     imageAlt: 'Tienda online de Tokyo Tunning en producción',
   },
 
@@ -43,13 +43,14 @@ export const SEO = {
     path: '/caso/agente-comercial',
     title: 'Agente comercial conversacional — caso de estudio | Felipe Droguett',
     // El estado va explícito en la descripción y no en el título porque el
-    // título se trunca antes en casi todas las superficies. «En validación» es
-    // literalmente lo que declara el caso; no dice ni sugiere «en producción».
+    // título se trunca antes en casi todas las superficies. «No atiende
+    // clientes reales» es literalmente lo que declara el caso; no dice ni
+    // sugiere «en producción».
     description:
-      'Un sistema que responde consultas comerciales por chat sin inventar precios ni stock. Arquitectura, evaluación sobre 48.937 mensajes reales y los fallos encontrados. En validación: todavía no atiende clientes reales.',
+      'Un sistema que responde consultas comerciales por chat sin inventar precios ni stock. Su arquitectura, un examen sobre 1.000 conversaciones selladas que no pasó y cómo se está reparando. Todavía no atiende clientes reales.',
     // Deuda declarada: no hay una imagen propia para este caso. La única pieza
-    // visual es el grafo del workflow, que es un SVG en la página y no un
-    // asset. Hasta que exista, hereda la de la home.
+    // visual es el grafo de la arquitectura, que es un SVG en la portada y no
+    // un asset. Hasta que exista, hereda la de la home.
     image: '/assets/og-image.png',
     imageAlt: 'Felipe Droguett — caso de estudio de un agente comercial conversacional',
   },

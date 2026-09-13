@@ -49,8 +49,8 @@ const capacidades = [
     problema: 'Funciona, pero no sé si puedo confiar en él',
     title: 'Probar que funciona',
     text:
-      'Suites de pruebas, conjuntos de evaluación construidos sobre conversaciones reales anonimizadas, y registro de por qué el sistema decidió lo que decidió. Es la parte que nadie ve y la que decide si algo puede salir a producción.',
-    tools: ['Tests deterministas', 'Datasets de evaluación', 'Trazabilidad', 'Observabilidad'],
+      'Suites de pruebas, bancos de evaluación sellados antes de ver una sola respuesta, criterios de aprobación congelados antes de medir, y registro de por qué el sistema decidió lo que decidió. Es la parte que nadie ve y la que decide si algo puede salir a producción — o, como pasó en septiembre, que todavía no.',
+    tools: ['Tests deterministas', 'Bancos sellados', 'Pre-registro', 'Trazabilidad'],
     to: '/caso/agente-comercial#evaluacion',
     evidencia: 'Caso Agente comercial · cómo sé que funciona',
   },

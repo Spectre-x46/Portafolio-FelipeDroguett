@@ -9,7 +9,8 @@
  *   este sitio  → trabajo, decisiones y evidencia
  *   GitHub      → profundidad técnica y documentación
  *   LinkedIn    → trayectoria y contexto profesional
- *   credencial  → validación formal
+ *   credencial  → validación formal, verificable en la plataforma emisora
+ *   diploma     → el documento de la academia, servido desde este sitio
  */
 export const EXTERNOS = {
   github: {
@@ -29,6 +30,14 @@ export const EXTERNOS = {
     handle: 'Full Stack Python · Talento Digital',
     href: 'https://www.acreditta.com/credential/8f73702b-0511-40f1-80b0-6224284c8eab',
     nota: 'Verificable',
+  },
+  diploma: {
+    label: 'Diploma',
+    handle: 'Full Stack Python Trainee · IT Academy by Kibernum',
+    // Copia del PDF original con los metadatos limpios: el original llevaba
+    // como autor el nombre de quien lo maquetó. El contenido es idéntico.
+    href: '/assets/diploma-full-stack-python.pdf',
+    nota: 'PDF · 462 horas',
   },
 }
 
